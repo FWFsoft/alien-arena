@@ -1,0 +1,1515 @@
+fileFormatVersion: 2
+guid: 722c3ad3d64d511429b2bc59b2c80678
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2631240003643833724
+    second: ScifiCharAnim1_0
+  - first:
+      213: 2955973869830635656
+    second: ScifiCharAnim1_1
+  - first:
+      213: -2541488672296242843
+    second: ScifiCharAnim1_2
+  - first:
+      213: -4300420228923721428
+    second: ScifiCharAnim1_3
+  - first:
+      213: 3032680501710115390
+    second: ScifiCharAnim1_4
+  - first:
+      213: 7306304093017287450
+    second: ScifiCharAnim1_5
+  - first:
+      213: -694399293103100653
+    second: ScifiCharAnim1_6
+  - first:
+      213: -1525249984122367007
+    second: ScifiCharAnim1_7
+  - first:
+      213: 1550042177436560247
+    second: ScifiCharAnim1_8
+  - first:
+      213: 7226115179674602675
+    second: ScifiCharAnim1_9
+  - first:
+      213: 6067340764403929962
+    second: ScifiCharAnim1_10
+  - first:
+      213: -5109574703144877427
+    second: ScifiCharAnim1_11
+  - first:
+      213: -4731903916612510525
+    second: ScifiCharAnim1_12
+  - first:
+      213: -7480361232489439596
+    second: ScifiCharAnim1_13
+  - first:
+      213: -5905703701255909155
+    second: ScifiCharAnim1_14
+  - first:
+      213: 8966350236428884687
+    second: ScifiCharAnim1_15
+  - first:
+      213: 7738001462298763544
+    second: ScifiCharAnim1_16
+  - first:
+      213: -9070245030443105203
+    second: ScifiCharAnim1_17
+  - first:
+      213: 5160581166012774954
+    second: ScifiCharAnim1_18
+  - first:
+      213: -5088062527512873838
+    second: ScifiCharAnim1_19
+  - first:
+      213: 5098354483981705347
+    second: ScifiCharAnim1_20
+  - first:
+      213: 34864099124336386
+    second: ScifiCharAnim1_21
+  - first:
+      213: -6027628662029441785
+    second: ScifiCharAnim1_22
+  - first:
+      213: 7669467184963113417
+    second: ScifiCharAnim1_23
+  - first:
+      213: 5945529982915553463
+    second: ScifiCharAnim1_24
+  - first:
+      213: 8500426781751593146
+    second: ScifiCharAnim1_25
+  - first:
+      213: 7785094532909428156
+    second: ScifiCharAnim1_26
+  - first:
+      213: -4325676343491057272
+    second: ScifiCharAnim1_27
+  - first:
+      213: -5490251456887173430
+    second: ScifiCharAnim1_28
+  - first:
+      213: 880521917192577921
+    second: ScifiCharAnim1_29
+  - first:
+      213: -8108768294713251777
+    second: ScifiCharAnim1_30
+  - first:
+      213: 5048990696084173611
+    second: ScifiCharAnim1_31
+  - first:
+      213: 4220722329781511809
+    second: ScifiCharAnim1_32
+  - first:
+      213: -5616565729810716023
+    second: ScifiCharAnim1_33
+  - first:
+      213: 6971614332779872296
+    second: ScifiCharAnim1_34
+  - first:
+      213: -2145309850920101378
+    second: ScifiCharAnim1_35
+  - first:
+      213: 6396713194699122241
+    second: ScifiCharAnim1_36
+  - first:
+      213: 5868533512618710595
+    second: ScifiCharAnim1_37
+  - first:
+      213: -659609464029763550
+    second: ScifiCharAnim1_38
+  - first:
+      213: 6089407321420660458
+    second: ScifiCharAnim1_39
+  - first:
+      213: -1795760952518938368
+    second: ScifiCharAnim1_40
+  - first:
+      213: -6614654848903206535
+    second: ScifiCharAnim1_41
+  - first:
+      213: 7423520564982019187
+    second: ScifiCharAnim1_42
+  - first:
+      213: 1408183393304828338
+    second: ScifiCharAnim1_43
+  - first:
+      213: -1298921226218465243
+    second: ScifiCharAnim1_44
+  - first:
+      213: -7173168630754367169
+    second: ScifiCharAnim1_45
+  - first:
+      213: 3065538387675809059
+    second: ScifiCharAnim1_46
+  - first:
+      213: -4286769247332885413
+    second: ScifiCharAnim1_47
+  - first:
+      213: 5931165991969491574
+    second: ScifiCharAnim1_48
+  - first:
+      213: -6427325753741979930
+    second: ScifiCharAnim1_49
+  - first:
+      213: 8258598412203192819
+    second: ScifiCharAnim1_50
+  - first:
+      213: 2960605734060497604
+    second: ScifiCharAnim1_51
+  - first:
+      213: 7532828842015228193
+    second: ScifiCharAnim1_52
+  - first:
+      213: -8137094683150429415
+    second: ScifiCharAnim1_53
+  - first:
+      213: -5525667782662071475
+    second: ScifiCharAnim1_54
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ScifiCharAnim1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 486
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7dfcf7a7da048420800000000000000
+      internalID: 2631240003643833724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_1
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 486
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 880879cb29ab50920800000000000000
+      internalID: 2955973869830635656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_2
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 486
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5617a179481dabcd0800000000000000
+      internalID: -2541488672296242843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_3
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 486
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c29f81e1696d154c0800000000000000
+      internalID: -4300420228923721428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_4
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 486
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e325fa539de361a20800000000000000
+      internalID: 3032680501710115390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 432
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1b2745bcd4356560800000000000000
+      internalID: 7306304093017287450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_6
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 432
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31dae42a58ffc56f0800000000000000
+      internalID: -694399293103100653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_7
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 432
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e357b6783935dae0800000000000000
+      internalID: -1525249984122367007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_8
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 432
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77baafcd52bd28510800000000000000
+      internalID: 1550042177436560247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_9
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 432
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bc00966871584460800000000000000
+      internalID: 7226115179674602675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 378
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a631b817746833450800000000000000
+      internalID: 6067340764403929962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_11
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 378
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d824ab111e42719b0800000000000000
+      internalID: -5109574703144877427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_12
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 378
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cc18036576e45eb0800000000000000
+      internalID: -4731903916612510525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_13
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 378
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49e1dd9771b603890800000000000000
+      internalID: -7480361232489439596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_14
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 378
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd09ee106c9ba0ea0800000000000000
+      internalID: -5905703701255909155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 324
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fca5516c800ee6c70800000000000000
+      internalID: 8966350236428884687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_16
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 324
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81165cf0557e26b60800000000000000
+      internalID: 7738001462298763544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_17
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 324
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d44cfa67334002280800000000000000
+      internalID: -9070245030443105203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_18
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 324
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2a33c28a311e9740800000000000000
+      internalID: 5160581166012774954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_19
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 324
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2947e94c6129369b0800000000000000
+      internalID: -5088062527512873838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 270
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 380efb4146ef0c640800000000000000
+      internalID: 5098354483981705347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_21
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 270
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20758b3a6bcdb7000800000000000000
+      internalID: 34864099124336386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_22
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 270
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 705a5c9eaaf895ca0800000000000000
+      internalID: -6027628662029441785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_23
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 270
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c1dd3825cb6f6a60800000000000000
+      internalID: 7669467184963113417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_24
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 270
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b8ad19c404c28250800000000000000
+      internalID: 5945529982915553463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_25
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 270
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab8458dee1597f570800000000000000
+      internalID: 8500426781751593146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_26
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 270
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbde6e00b363a0c60800000000000000
+      internalID: 7785094532909428156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_27
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 270
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 889a7e4b84c18f3c0800000000000000
+      internalID: -4325676343491057272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 216
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ace4ba87365bec3b0800000000000000
+      internalID: -5490251456887173430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_29
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 216
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 183a53bb40e383c00800000000000000
+      internalID: 880521917192577921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_30
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 216
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f38aaa3b23ed77f80800000000000000
+      internalID: -8108768294713251777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_31
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 216
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b237952994e911640800000000000000
+      internalID: 5048990696084173611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_32
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 216
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 186af2ab894039a30800000000000000
+      internalID: 4220722329781511809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_33
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 216
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98aeff00a33fd02b0800000000000000
+      internalID: -5616565729810716023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_34
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 216
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 820cd586c4620c060800000000000000
+      internalID: 6971614332779872296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_35
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 216
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef9d2c29e045a32e0800000000000000
+      internalID: -2145309850920101378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 162
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 146681462c0b5c850800000000000000
+      internalID: 6396713194699122241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_37
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 162
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3461d1c0328317150800000000000000
+      internalID: 5868533512618710595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_38
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 162
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 228250eefa898d6f0800000000000000
+      internalID: -659609464029763550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_39
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 162
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeef0fd12bbe18450800000000000000
+      internalID: 6089407321420660458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_40
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 162
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00177939dec2417e0800000000000000
+      internalID: -1795760952518938368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_41
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 162
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9792f4bf5760434a0800000000000000
+      internalID: -6614654848903206535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_42
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 162
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3747f825f94a50760800000000000000
+      internalID: 7423520564982019187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_43
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 162
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b9d988d55fda8310800000000000000
+      internalID: 1408183393304828338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 108
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5289808d60e49fde0800000000000000
+      internalID: -1298921226218465243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_45
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 108
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3929e9a229c37c90800000000000000
+      internalID: -7173168630754367169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_46
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 108
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3258db2fbeafa8a20800000000000000
+      internalID: 3065538387675809059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_47
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 108
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5c97a2f4165284c0800000000000000
+      internalID: -4286769247332885413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_48
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 108
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67a08378b0cbf4250800000000000000
+      internalID: 5931165991969491574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 54
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ee4d78c74d8dc6a0800000000000000
+      internalID: -6427325753741979930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_50
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 54
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f1f9fdff7f6c9270800000000000000
+      internalID: 8258598412203192819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_51
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 54
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ca19aaaa3f261920800000000000000
+      internalID: 2960605734060497604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1218222dbebf98860800000000000000
+      internalID: 7532828842015228193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_53
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 0
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91359137f7b331f80800000000000000
+      internalID: -8137094683150429415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScifiCharAnim1_54
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 0
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4b5b9b8d62e053b0800000000000000
+      internalID: -5525667782662071475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      ScifiCharAnim1_0: 2631240003643833724
+      ScifiCharAnim1_1: 2955973869830635656
+      ScifiCharAnim1_10: 6067340764403929962
+      ScifiCharAnim1_11: -5109574703144877427
+      ScifiCharAnim1_12: -4731903916612510525
+      ScifiCharAnim1_13: -7480361232489439596
+      ScifiCharAnim1_14: -5905703701255909155
+      ScifiCharAnim1_15: 8966350236428884687
+      ScifiCharAnim1_16: 7738001462298763544
+      ScifiCharAnim1_17: -9070245030443105203
+      ScifiCharAnim1_18: 5160581166012774954
+      ScifiCharAnim1_19: -5088062527512873838
+      ScifiCharAnim1_2: -2541488672296242843
+      ScifiCharAnim1_20: 5098354483981705347
+      ScifiCharAnim1_21: 34864099124336386
+      ScifiCharAnim1_22: -6027628662029441785
+      ScifiCharAnim1_23: 7669467184963113417
+      ScifiCharAnim1_24: 5945529982915553463
+      ScifiCharAnim1_25: 8500426781751593146
+      ScifiCharAnim1_26: 7785094532909428156
+      ScifiCharAnim1_27: -4325676343491057272
+      ScifiCharAnim1_28: -5490251456887173430
+      ScifiCharAnim1_29: 880521917192577921
+      ScifiCharAnim1_3: -4300420228923721428
+      ScifiCharAnim1_30: -8108768294713251777
+      ScifiCharAnim1_31: 5048990696084173611
+      ScifiCharAnim1_32: 4220722329781511809
+      ScifiCharAnim1_33: -5616565729810716023
+      ScifiCharAnim1_34: 6971614332779872296
+      ScifiCharAnim1_35: -2145309850920101378
+      ScifiCharAnim1_36: 6396713194699122241
+      ScifiCharAnim1_37: 5868533512618710595
+      ScifiCharAnim1_38: -659609464029763550
+      ScifiCharAnim1_39: 6089407321420660458
+      ScifiCharAnim1_4: 3032680501710115390
+      ScifiCharAnim1_40: -1795760952518938368
+      ScifiCharAnim1_41: -6614654848903206535
+      ScifiCharAnim1_42: 7423520564982019187
+      ScifiCharAnim1_43: 1408183393304828338
+      ScifiCharAnim1_44: -1298921226218465243
+      ScifiCharAnim1_45: -7173168630754367169
+      ScifiCharAnim1_46: 3065538387675809059
+      ScifiCharAnim1_47: -4286769247332885413
+      ScifiCharAnim1_48: 5931165991969491574
+      ScifiCharAnim1_49: -6427325753741979930
+      ScifiCharAnim1_5: 7306304093017287450
+      ScifiCharAnim1_50: 8258598412203192819
+      ScifiCharAnim1_51: 2960605734060497604
+      ScifiCharAnim1_52: 7532828842015228193
+      ScifiCharAnim1_53: -8137094683150429415
+      ScifiCharAnim1_54: -5525667782662071475
+      ScifiCharAnim1_6: -694399293103100653
+      ScifiCharAnim1_7: -1525249984122367007
+      ScifiCharAnim1_8: 1550042177436560247
+      ScifiCharAnim1_9: 7226115179674602675
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

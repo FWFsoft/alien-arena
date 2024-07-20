@@ -1,0 +1,1152 @@
+fileFormatVersion: 2
+guid: f36dc293dd6c96a458252573d62ad9e3
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1206
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7197d3084ea31374ab55abbe8bb153a4
+      internalID: 1596862173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_1
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 1206
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 747ec6d18f624514cb950c4ab8140e6d
+      internalID: -57208204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_2
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 1206
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bec1ff8b437f55349b12d6d165efcdd6
+      internalID: -1259315144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_3
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 1206
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce764272346f01a4ebee6e14c6999e21
+      internalID: 1104856005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_4
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 1206
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f74c71f7fa9db44da91926babfa9245
+      internalID: -24723359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_5
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 1206
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e7178c18235704438116fcda30d74cf
+      internalID: 891486841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_6
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 1206
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0c534a1bde2ab341b8878cbebf97626
+      internalID: -581427249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1005
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70b5489618e327b4b98f5f9c6477112a
+      internalID: -341510989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_8
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 1005
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cddfdad85202854d8b62c00f7de0af5
+      internalID: 661229079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_9
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 1005
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f7da5e44d5414046b1a05f541c172b2
+      internalID: 948692607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_10
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 1005
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b08cb3e2fb84f247bda895da9f8d677
+      internalID: 1927651317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_11
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 1005
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d97049aecb08c04a97d62ef53dbd8fa
+      internalID: 1376360316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_12
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 1005
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d5bbf7dcd036614daeb85a16f15f83e
+      internalID: 1376730707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_13
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 1005
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d53c608c285b5c948a60ecf39c998ba8
+      internalID: 1038403106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 804
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e15f1858f0fb224496c13111fd4affa
+      internalID: -1925213658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_15
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 804
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4848f6743f81dae439cdec16387e72a9
+      internalID: -1294703765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_16
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 804
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5657573464bbea04091108bab3df8bfa
+      internalID: -716093676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_17
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 804
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3911ab2d4383f874fa776863451d3af8
+      internalID: -592977284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_18
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 804
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 318b525569a6d5e4195976c995e669ed
+      internalID: -1107223531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_19
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 804
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e59b992842d087446986f413660c9023
+      internalID: 1295261338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_20
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 804
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b638c3dfc30d62746859519b0f3ae875
+      internalID: 1099342733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 603
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae2f6990e7513ea48a5e29a05a7435ee
+      internalID: -113807407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_22
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 603
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09a05dd75b1651c44aef894b2f4d41c4
+      internalID: -254176333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_23
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 603
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff0fe8fe28401b14fae01ae0756de9ce
+      internalID: -2020778051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_24
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 603
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a7eb01715e5c2b4f8158907a03346fa
+      internalID: 1503485180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_25
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 603
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b1c2582ad80d0c4899d617a88a74880
+      internalID: 258512378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_26
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 603
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2058a22d86ce18849b12c3eaaf98f9e9
+      internalID: -703398227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_27
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 603
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af30dfd5441ebaa4887f5a4a8a8ff79b
+      internalID: 1738245334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 402
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c2d1a0b3e2f8b54bb7f7af95dde458d
+      internalID: 623194518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_29
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 402
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7cb765da8858d048bb283840fae069d
+      internalID: -1656253051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_30
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 402
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd66efe482991004bb1cca08a9038077
+      internalID: 619259690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_31
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 402
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2eee3538f90cabd429b7f6fc7998c7ec
+      internalID: 438003712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_32
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 402
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e56694deeaf8e741baf3034b0ce33a7
+      internalID: -293181537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_33
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 402
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2e212eb66f37de4f8db2188fe2bb84a
+      internalID: -829030125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_34
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 402
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e79d74a22aa31842805475a0cbda811
+      internalID: 1215145248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 201
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2befc42317551945939d55ca02aea0a
+      internalID: -1554015244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_36
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 201
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca40324c7c26e7c48b3f13f356fd6339
+      internalID: -933916482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_37
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 201
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 276f8cf3b8a5f794198d5b1208593bab
+      internalID: -2075636948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_38
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 201
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73336a92259c7e7478a15d023ba5011f
+      internalID: 307758569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_39
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 201
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a82ce64c223de4544b9514465a4dc109
+      internalID: -350693215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_40
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 201
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01bcdbc3fea1dfb4eaf2a799eeae4300
+      internalID: 26203927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_41
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 201
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9c47c0657ba7f941bb357e68e101699
+      internalID: -1196246021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f85cb0cc2a0d7848b7ad0d8368796a7
+      internalID: 1123899645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_43
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 0
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c14359940bbf274d959877ab5f16cc8
+      internalID: -1720545208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_44
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 0
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c23dd710ac340af428c7d88fe90db5c0
+      internalID: -1119237294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NORMAL_MAP_All_Tiles_45
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 0
+        width: 173
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 821d123fbfb026240a8c8034e7419347
+      internalID: -1877545739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      NORMAL_MAP_All_Tiles_0: 1596862173
+      NORMAL_MAP_All_Tiles_1: -57208204
+      NORMAL_MAP_All_Tiles_10: 1927651317
+      NORMAL_MAP_All_Tiles_11: 1376360316
+      NORMAL_MAP_All_Tiles_12: 1376730707
+      NORMAL_MAP_All_Tiles_13: 1038403106
+      NORMAL_MAP_All_Tiles_14: -1925213658
+      NORMAL_MAP_All_Tiles_15: -1294703765
+      NORMAL_MAP_All_Tiles_16: -716093676
+      NORMAL_MAP_All_Tiles_17: -592977284
+      NORMAL_MAP_All_Tiles_18: -1107223531
+      NORMAL_MAP_All_Tiles_19: 1295261338
+      NORMAL_MAP_All_Tiles_2: -1259315144
+      NORMAL_MAP_All_Tiles_20: 1099342733
+      NORMAL_MAP_All_Tiles_21: -113807407
+      NORMAL_MAP_All_Tiles_22: -254176333
+      NORMAL_MAP_All_Tiles_23: -2020778051
+      NORMAL_MAP_All_Tiles_24: 1503485180
+      NORMAL_MAP_All_Tiles_25: 258512378
+      NORMAL_MAP_All_Tiles_26: -703398227
+      NORMAL_MAP_All_Tiles_27: 1738245334
+      NORMAL_MAP_All_Tiles_28: 623194518
+      NORMAL_MAP_All_Tiles_29: -1656253051
+      NORMAL_MAP_All_Tiles_3: 1104856005
+      NORMAL_MAP_All_Tiles_30: 619259690
+      NORMAL_MAP_All_Tiles_31: 438003712
+      NORMAL_MAP_All_Tiles_32: -293181537
+      NORMAL_MAP_All_Tiles_33: -829030125
+      NORMAL_MAP_All_Tiles_34: 1215145248
+      NORMAL_MAP_All_Tiles_35: -1554015244
+      NORMAL_MAP_All_Tiles_36: -933916482
+      NORMAL_MAP_All_Tiles_37: -2075636948
+      NORMAL_MAP_All_Tiles_38: 307758569
+      NORMAL_MAP_All_Tiles_39: -350693215
+      NORMAL_MAP_All_Tiles_4: -24723359
+      NORMAL_MAP_All_Tiles_40: 26203927
+      NORMAL_MAP_All_Tiles_41: -1196246021
+      NORMAL_MAP_All_Tiles_42: 1123899645
+      NORMAL_MAP_All_Tiles_43: -1720545208
+      NORMAL_MAP_All_Tiles_44: -1119237294
+      NORMAL_MAP_All_Tiles_45: -1877545739
+      NORMAL_MAP_All_Tiles_5: 891486841
+      NORMAL_MAP_All_Tiles_6: -581427249
+      NORMAL_MAP_All_Tiles_7: -341510989
+      NORMAL_MAP_All_Tiles_8: 661229079
+      NORMAL_MAP_All_Tiles_9: 948692607
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
