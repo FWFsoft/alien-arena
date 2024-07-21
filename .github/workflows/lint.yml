@@ -1,19 +1,24 @@
-steps:
-  - name: Checkout
-    uses: actions/checkout@v3
+name: Format check on pull request
+on: pull_request
+jobs:
+  dotnet-format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-  - name: Glob Match
-    id: glob
-    uses: zyactions/glob@v2
-    with:
-      pattern: |
-        Assets/Scripts/*.cs
-      return-pipe: true
+      - name: Glob Match
+        id: glob
+        uses: zyactions/glob@v2
+        with:
+          pattern: |
+            Assets/Scripts/*.cs
+          return-pipe: true
 
-  - name: .NET Lint
-    uses: zyactions/dotnet-lint@v1
-    with:
-      workspace: test/Test.csproj
-      include: '-'
-      pipe: ${{ steps.glob.outputs.pipe }}
-      implicit-restore: true
+      - name: .NET Lint
+        uses: zyactions/dotnet-lint@v1
+        with:
+          workspace: test/Test.csproj
+          include: '-'
+          pipe: ${{ steps.glob.outputs.pipe }}
+          implicit-restore: true
