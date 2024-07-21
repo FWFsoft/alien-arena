@@ -18,6 +18,7 @@ jobs:
       - name: .NET Lint
         uses: zyactions/dotnet-lint@v1
         with:
+          workspace: Assets/Scripts/
           include: '-'
           pipe: ${{ steps.glob.outputs.pipe }}
           implicit-restore: true
