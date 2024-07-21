@@ -1,32 +1,19 @@
----
-name: Lint
-
-on:  # yamllint disable-line rule:truthy
-  pull_request: null
-
-permissions: { }
-
+name: Format check on pull request
+on: pull_request
 jobs:
-  build:
-    name: Lint
+  dotnet-format:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      packages: read
-      # To report GitHub Actions status checks
-      statuses: write
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          # super-linter needs the full git history to get the
-          # list of files that changed across commits
-          fetch-depth: 0
+      - name: Checkout repo
+        uses: actions/checkout@v2
 
-      - name: Super-linter
-        uses: super-linter/super-linter@v6.7.0  # x-release-please-version
-        # env:
-          # To report GitHub Actions status checks
-          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Add dotnet-format problem matcher
+        uses: xt0rted/dotnet-format-problem-matcher@v1
+
+      - name: Restore dotnet tools
+        uses: xt0rted/dotnet-tool-restore@v1
+
+      - name: Run dotnet format
+        uses: xt0rted/dotnet-format@v1
+        with:
+          only-changed-files: "true"
