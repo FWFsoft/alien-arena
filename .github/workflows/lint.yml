@@ -1,19 +1,19 @@
-name: Format check on pull request
-on: pull_request
-jobs:
-  dotnet-format:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
+steps:
+  - name: Checkout
+    uses: actions/checkout@v3
 
-      - name: Add dotnet-format problem matcher
-        uses: xt0rted/dotnet-format-problem-matcher@v1
+  - name: Glob Match
+    id: glob
+    uses: zyactions/glob@v2
+    with:
+      pattern: |
+        Assets/Scripts/*.cs
+      return-pipe: true
 
-      - name: Restore dotnet tools
-        uses: xt0rted/dotnet-tool-restore@v1
-
-      - name: Run dotnet format
-        uses: xt0rted/dotnet-format@v1
-        with:
-          only-changed-files: "false"
+  - name: .NET Lint
+    uses: zyactions/dotnet-lint@v1
+    with:
+      workspace: test/Test.csproj
+      include: '-'
+      pipe: ${{ steps.glob.outputs.pipe }}
+      implicit-restore: true
