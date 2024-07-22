@@ -1,7 +1,7 @@
-name: Format check on pull request
+name: Runs tests on Pull Requests
 on: pull_request
 jobs:
-  dotnet-format:
+  unity-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
