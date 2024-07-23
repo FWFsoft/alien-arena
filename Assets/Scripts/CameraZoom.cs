@@ -18,6 +18,8 @@ public class CameraZoom : MonoBehaviour
         zoom = cam.orthographicSize;
     }
 
+    // Disable camera movement for now
+    /*
     private void Update()
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
@@ -25,5 +27,6 @@ public class CameraZoom : MonoBehaviour
         zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
         cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, zoom, ref velocity, smoothTime);
     }
+    */
 
 }
