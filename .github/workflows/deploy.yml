@@ -1,0 +1,61 @@
+name: Push new build
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Cache package files
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/unity3d
+          key: unity-cache-${{ runner.os }}-${{ hashFiles('Packages/manifest.json') }}
+          restore-keys: |
+            unity-cache-${{ runner.os }}-
+      - name: Cache Library files
+        uses: actions/cache@v3
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+      - name: Build Project
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: WebGL
+
+      - name: Set version info
+        run: |
+          RELEASE_DATE=$(date --rfc-3339=date)
+          SHORT_HASH=$(git rev-parse --short HEAD)
+          echo "VERSION=${RELEASE_DATE}-${SHORT_HASH}">> ${GITHUB_ENV}
+
+      - name: Upload build to itch.io
+        uses: robpc/itchio-upload-action@v1
+        with:
+          path: build
+          project: mckornfield/alien-arena # TODO: Replace with a service address
+          channel: webgl
+          api-key: ${{ secrets.BUTLER_API_KEY }}
+          version: ${{ env.VERSION }}
+      - name: Notify Discord on Failure
+        if: failure()
+        env:
+          JOB_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"The job '${{ github.workflow }}' didn't quite make it. Please have a look when you get a chance. ${JOB_URL}\"}" ${DISCORD_WEBHOOK_URL}
