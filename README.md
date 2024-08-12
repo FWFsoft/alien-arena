@@ -14,3 +14,11 @@
 1. Make code/ asset changes as appropriate and make sure to add them
 1. Push up your changes and get at least
 one approval from the team
+
+### Secrets
+
+To interact with EOS, add the following to an `Assets/.env` file:
+```
+EPIC_CLIENT_ID=
+EPIC_CLIENT_SECRET=
+```

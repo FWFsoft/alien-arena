@@ -243,14 +243,15 @@ namespace EpicTransport {
             // Make sure to set up the logging interface as early as possible: after initializing.
             LoggingInterface.SetLogLevel(LogCategory.AllCategories, epicLoggerLevel);
             LoggingInterface.SetCallback(message => Logger.EpicDebugLog(message));
-
+            var epicClientId = SecretReader.GetSecret("EPIC_CLIENT_ID");
+            var epicClientSecret = SecretReader.GetSecret("EPIC_CLIENT_SECRET");
             var options = new Options() {
                 ProductId = apiKeys.epicProductId,
                 SandboxId = apiKeys.epicSandboxId,
                 DeploymentId = apiKeys.epicDeploymentId,
                 ClientCredentials = new ClientCredentials() {
-                    ClientId = apiKeys.epicClientId,
-                    ClientSecret = apiKeys.epicClientSecret
+                    ClientId = epicClientId,
+                    ClientSecret = epicClientSecret
                 },
                 TickBudgetInMilliseconds = tickBudgetInMilliseconds
             };
