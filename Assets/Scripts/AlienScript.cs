@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Creatures.Api;
 using UnityEditor;
 using UnityEngine;
 
-public class AlienScript : MonoBehaviour
+public class AlienScript : Creature
 {
     public Animator animator;
     public Animator frothyAnimator;
     public float maximumAttackDistance = 100;
     [SerializeField]
     public HealthScript healthScript;
-    public float speed = 3;
     public bool isDead = false;
 
     private void Update()
@@ -32,7 +32,7 @@ public class AlienScript : MonoBehaviour
             var isLeft = target.transform.position.x < transform.position.x;
 
             this.transform.rotation = Quaternion.Euler(new Vector3(0f, isLeft ? 180f : 0f, 0f));
-            var step = speed * Time.deltaTime;
+            var step = Speed * Time.deltaTime;
 
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
         }
