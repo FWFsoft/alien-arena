@@ -1,5 +1,6 @@
 ﻿using Epic.OnlineServices;
 using Epic.OnlineServices.P2P;
+using Mirror;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,7 +23,7 @@ namespace EpicTransport {
             s.OnConnected += (id) => transport.OnServerConnected.Invoke(id);
             s.OnDisconnected += (id) => transport.OnServerDisconnected.Invoke(id);
             s.OnReceivedData += (id, data, channel) => transport.OnServerDataReceived.Invoke(id, new ArraySegment<byte>(data), channel);
-            s.OnReceivedError += (id, exception) => transport.OnServerError.Invoke(id, exception);
+            s.OnReceivedError += (id, exception) => transport.OnServerError.Invoke(id, TransportError.Unexpected, exception.ToString());
 
             if (!EOSSDKComponent.Initialized) {
                 Debug.LogError("EOS not initialized.");
