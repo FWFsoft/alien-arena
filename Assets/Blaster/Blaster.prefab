@@ -214,7 +214,7 @@ MonoBehaviour:
   timeBetweenTab: 5
   timeBetweenD: 0.5
   input: {fileID: 0}
-  force: 4.5
+  force: 2
 --- !u!1 &6507786229415094740
 GameObject:
   m_ObjectHideFlags: 0

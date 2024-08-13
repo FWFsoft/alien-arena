@@ -27,7 +27,7 @@ public class ShootingScript : MonoBehaviour
     [SerializeField]
     InputHandler input;
 
-    public float force = 4.5f;
+    public float force = 0.1f;
 
     // Start is called before the first frame update
     void Start()
