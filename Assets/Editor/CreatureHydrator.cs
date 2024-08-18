@@ -215,33 +215,33 @@ public class CreatureHydrator : Editor
 
     private static string GenerateScriptContent(string unitName, string generaName, float speed, int health)
     {
-        return $@"
-            using UnityEngine;
-            using Creatures.Api;
+        return $@"using UnityEngine;
+using Creatures.Api;
+
+namespace Creatures.impl
+{{
+    public class {unitName}Script : Creature, {generaName}
+    {{
+        public string GeneraType => ""{generaName}"";
+        
+        void Start()
+        {{
+            Speed = {speed}f;
+            HealthScript = new HealthScript({health});
             
-            namespace Creatures.impl
-            {{
-                public class {unitName}Script : Creature, {generaName}
-                {{
-                    public string GeneraType => ""{generaName}"";
-                    
-                    void Start()
-                    {{
-                        Speed = {speed}f;
-                        HealthScript = new HealthScript({health});
-                        
-                        // Add custom initialization logic here
-                    }}
+            // Add custom initialization logic here
+        }}
 
-                    // Optional: Override the Update method if custom logic is needed
-                    protected override void Update()
-                    {{
-                        base.Update();
+        // Optional: Override the Update method if custom logic is needed
+        protected override void Update()
+        {{
+            base.Update();
 
-                        // Add custom update logic here, if necessary
-                    }}
-                }}
-            }}";
+            // Add custom update logic here, if necessary
+        }}
+    }}
+}}
+";
     }
 
     [System.Serializable]
