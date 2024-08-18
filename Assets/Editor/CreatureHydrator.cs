@@ -86,6 +86,9 @@ public class CreatureHydrator : Editor
 
         // Initialize the Idle sprite
         Sprite idleSprite = null;
+        
+        // Initialize the Idle canvas size
+        CanvasSize idleCanvasSize = null;
 
         // Create states for the animations
         AnimatorState idleState = null;
@@ -120,6 +123,7 @@ public class CreatureHydrator : Editor
             {
                 idleState = state;
                 idleSprite = sprites[0];  // Set the idle sprite for when/if no animations are playing
+                idleCanvasSize = animationSpec.canvas; // Capture the canvas size from Idle.yml
             }
             else if (animation.name.Equals("Run", StringComparison.OrdinalIgnoreCase))
             {
@@ -181,6 +185,37 @@ public class CreatureHydrator : Editor
         {
             spriteRenderer.sprite = idleSprite;
         }
+        
+        // Add a CapsuleCollider2D component
+        var collider = unitPrefab.AddComponent<CapsuleCollider2D>();
+        // Set the size of the collider
+        if (idleCanvasSize != null)
+        {
+            // Normalize the canvas size by 64 and then scale by 0.3 (this is what we had for the original dude)
+            float normalizedWidth = (float)idleCanvasSize.width / 64f;
+            float normalizedHeight = (float)idleCanvasSize.height / 64f;
+
+            collider.size = new Vector2(normalizedWidth * 0.3f, normalizedHeight * 0.3f);
+        }
+
+        collider.isTrigger = true;
+        collider.usedByEffector = false;
+        collider.direction = CapsuleDirection2D.Vertical;
+
+        // Add a Rigidbody2D component
+        var rigidbody = unitPrefab.AddComponent<Rigidbody2D>();
+        // Set Rigidbody2D properties
+        rigidbody.bodyType = RigidbodyType2D.Dynamic;
+        rigidbody.gravityScale = 0;
+        rigidbody.simulated = true;
+        rigidbody.useAutoMass = false;
+        rigidbody.mass = 1;
+        rigidbody.drag = 0;
+        rigidbody.angularDrag = 0.05f;
+        rigidbody.collisionDetectionMode = CollisionDetectionMode2D.Discrete;
+        rigidbody.sleepMode = RigidbodySleepMode2D.StartAwake;
+        rigidbody.interpolation = RigidbodyInterpolation2D.None;
+        rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         // Generate a new script extending the appropriate abstract class and place it in the unit's directory
         string scriptPath = Path.Combine(unitDir, $"{unitName}.cs");
