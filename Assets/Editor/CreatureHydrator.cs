@@ -331,8 +331,9 @@ namespace Creatures.impl
         void Start()
         {{
             Speed = {speed}f;
-            HealthScript = new HealthScript({health});
-            
+            HealthScript = gameObject.AddComponent<HealthScript>();
+            HealthScript.health = {health};
+
             // Add custom initialization logic here
         }}
 

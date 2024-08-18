@@ -27,6 +27,7 @@ public class HealthScript : MonoBehaviour
 
     private void Start()
     {
+        // TODO: Race condition here with this and the individual creature.Start() commands
         // If MaxHealth hasn't been set via code, use the value from the inspector (health)
         if (MaxHealth <= 0)
         {
