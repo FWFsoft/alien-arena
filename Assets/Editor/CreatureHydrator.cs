@@ -220,7 +220,7 @@ using Creatures.Api;
 
 namespace Creatures.impl
 {{
-    public class {unitName}Script : Creature, {generaName}
+    public class {unitName}Script : {generaName}
     {{
         public string GeneraType => ""{generaName}"";
         
