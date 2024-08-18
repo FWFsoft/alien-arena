@@ -91,6 +91,21 @@ public class CreatureLinker : Editor
                 if (healthScript == null)
                 {
                     healthScript = unitPrefab.AddComponent<HealthScript>();
+                    
+                    var healthAnimatorField = healthScript.GetType().GetField("enemyAnimator");
+                    if (healthAnimatorField != null)
+                    {
+                        healthAnimatorField.SetValue(healthScript, unitPrefab.GetComponent<Animator>());
+                    }
+
+                    var healthBarField = healthScript.GetType().GetField("healthBar");
+                    if (healthBarField != null)
+                    {
+                        // TODO: Make this not shitty and fragile
+                        string healthBarPath = "Assets/AlienScifiCharacter/InnerHealthBar.prefab";
+                        GameObject healthBarPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(healthBarPath);
+                        healthBarField.SetValue(healthScript, healthBarPrefab.GetComponent<GameObject>());
+                    }
                 }
 
                 // Set the health value on the HealthScript
@@ -119,7 +134,10 @@ public class CreatureLinker : Editor
                     var effectsAnimatorField = effectsManagerScript.GetType().GetField("effectsAnimator");
                     if (effectsAnimatorField != null)
                     {
-                        effectsAnimatorField.SetValue(effectsManagerScript, unitPrefab.GetComponent<Animator>());
+                        // TODO: Make this not shitty and fragile
+                        var dotControllerPath = "Assets/AlienScifiCharacter/DotController.prefab";
+                        GameObject dotControllerPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(dotControllerPath);
+                        effectsAnimatorField.SetValue(effectsManagerScript, dotControllerPrefab.GetComponent<Animator>());
                     }
 
                     // Optionally call the SetupInstance method
