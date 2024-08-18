@@ -214,21 +214,29 @@ public class CreatureHydrator : Editor
     private static string GenerateScriptContent(string unitName, string generaName, float speed, int health)
     {
         return $@"
-        using UnityEngine;
-        using Creatures.Api;
+            using UnityEngine;
+            using Creatures.Api;
 
-        public class {unitName}Script : Creature, {generaName}
-        {{
-            void Start()
+            public class {unitName}Script : Creature, {generaName}
             {{
-                // Add custom logic here
-            }}
+                public string GeneraType => ""{generaName}"";
+                
+                void Start()
+                {{
+                    Speed = {speed}f;
+                    HealthScript = new HealthScript({health});
+                    
+                    // Add custom initialization logic here
+                }}
 
-            void Update()
-            {{
-                // Add custom logic here
-            }}
-        }}";
+                // Optional: Override the Update method if custom logic is needed
+                protected override void Update()
+                {{
+                    base.Update();
+
+                    // Add custom update logic here, if necessary
+                }}
+            }}";
     }
 
     [System.Serializable]
