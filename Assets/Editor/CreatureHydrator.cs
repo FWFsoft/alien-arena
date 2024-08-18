@@ -139,22 +139,29 @@ public class CreatureHydrator : Editor
             animatorController.layers[0].stateMachine.defaultState = idleState;
         }
 
-        // Create transitions based on parameters
+        // Create transitions between Idle, Run, and Die states
         if (idleState != null && runState != null)
         {
+            // Idle -> Run
             AnimatorStateTransition transitionToRun = idleState.AddTransition(runState);
             transitionToRun.AddCondition(AnimatorConditionMode.If, 0, "isMoving");
 
+            // Run -> Idle
             AnimatorStateTransition transitionToIdle = runState.AddTransition(idleState);
             transitionToIdle.AddCondition(AnimatorConditionMode.IfNot, 0, "isMoving");
         }
 
         if (idleState != null && dieState != null)
         {
-            AnimatorStateTransition transitionToDieFromIdle = idleState.AddExitTransition();
+            // Idle -> Die
+            AnimatorStateTransition transitionToDieFromIdle = idleState.AddTransition(dieState);
             transitionToDieFromIdle.AddCondition(AnimatorConditionMode.If, 0, "isDead");
+        }
 
-            AnimatorStateTransition transitionToDieFromRun = runState.AddExitTransition();
+        if (runState != null && dieState != null)
+        {
+            // Run -> Die
+            AnimatorStateTransition transitionToDieFromRun = runState.AddTransition(dieState);
             transitionToDieFromRun.AddCondition(AnimatorConditionMode.If, 0, "isDead");
         }
 
