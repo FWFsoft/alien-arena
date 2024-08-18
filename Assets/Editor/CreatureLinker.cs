@@ -86,6 +86,46 @@ public class CreatureLinker : Editor
                     healthField.SetValue(scriptComponent, healthField.GetValue(scriptComponent));
                 }
 
+                // Add HealthScript if not already added
+                var healthScript = unitPrefab.GetComponent<HealthScript>();
+                if (healthScript == null)
+                {
+                    healthScript = unitPrefab.AddComponent<HealthScript>();
+                }
+
+                // Set the health value on the HealthScript
+                if (healthField != null && healthField.CanWrite)
+                {
+                    float healthValue = (float)healthField.GetValue(scriptComponent);
+                    healthScript.health = healthValue;
+                }
+
+                // Add EffectsManagerScript if not already added
+                var effectsManagerScript = unitPrefab.GetComponent<EffectsManagerScript>();
+                if (effectsManagerScript == null)
+                {
+                    effectsManagerScript = unitPrefab.AddComponent<EffectsManagerScript>();
+                }
+
+                // Link HealthScript and Animator to EffectsManagerScript
+                if (effectsManagerScript != null)
+                {
+                    var healthScriptField = effectsManagerScript.GetType().GetField("healthScript");
+                    if (healthScriptField != null)
+                    {
+                        healthScriptField.SetValue(effectsManagerScript, healthScript);
+                    }
+
+                    var effectsAnimatorField = effectsManagerScript.GetType().GetField("effectsAnimator");
+                    if (effectsAnimatorField != null)
+                    {
+                        effectsAnimatorField.SetValue(effectsManagerScript, unitPrefab.GetComponent<Animator>());
+                    }
+
+                    // Optionally call the SetupInstance method
+                    effectsManagerScript.SetupInstance();
+                }
+
                 // Save the updated prefab
                 PrefabUtility.SaveAsPrefabAsset(unitPrefab, prefabPath);
 
