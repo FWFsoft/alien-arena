@@ -218,25 +218,28 @@ public class CreatureHydrator : Editor
         return $@"
             using UnityEngine;
             using Creatures.Api;
-
-            public class {unitName}Script : Creature, {generaName}
+            
+            namespace Creatures.impl
             {{
-                public string GeneraType => ""{generaName}"";
-                
-                void Start()
+                public class {unitName}Script : Creature, {generaName}
                 {{
-                    Speed = {speed}f;
-                    HealthScript = new HealthScript({health});
+                    public string GeneraType => ""{generaName}"";
                     
-                    // Add custom initialization logic here
-                }}
+                    void Start()
+                    {{
+                        Speed = {speed}f;
+                        HealthScript = new HealthScript({health});
+                        
+                        // Add custom initialization logic here
+                    }}
 
-                // Optional: Override the Update method if custom logic is needed
-                protected override void Update()
-                {{
-                    base.Update();
+                    // Optional: Override the Update method if custom logic is needed
+                    protected override void Update()
+                    {{
+                        base.Update();
 
-                    // Add custom update logic here, if necessary
+                        // Add custom update logic here, if necessary
+                    }}
                 }}
             }}";
     }
