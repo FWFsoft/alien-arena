@@ -220,19 +220,21 @@ public class CreatureHydrator : Editor
         // Generate a new script extending the appropriate abstract class and place it in the unit's directory
         string scriptPath = Path.Combine(unitDir, $"{unitName}.cs");
         File.WriteAllText(scriptPath, GenerateScriptContent(unitName, generaName, unit.speed, unit.health));
+        // Import the specific asset
         AssetDatabase.ImportAsset(scriptPath);
-        
-        // Load the newly generated script
-        MonoScript newScript = AssetDatabase.LoadAssetAtPath<MonoScript>(scriptPath);
-        AssetDatabase.Refresh();
-        // Need to compile the new script file before we can attach it to the prefab
+
+        // Wait for the script to compile
         while (EditorApplication.isCompiling)
         {
             Debug.Log("Waiting for Unity to finish compiling...");
             System.Threading.Thread.Sleep(100);  // Wait for a short time before checking again
         }
-        // Attach the script to the prefab as a component
-        Type scriptType = newScript.GetClass();
+
+        // Load the script after ensuring compilation is complete
+        MonoScript newScript = AssetDatabase.LoadAssetAtPath<MonoScript>(scriptPath);
+
+        // Check if the script is compiled and attach it to the prefab
+        Type scriptType = newScript?.GetClass();
         if (scriptType != null)
         {
             // Add the script component to the prefab
