@@ -221,60 +221,6 @@ public class CreatureHydrator : Editor
         string scriptPath = Path.Combine(unitDir, $"{unitName}.cs");
         File.WriteAllText(scriptPath, GenerateScriptContent(unitName, generaName, unit.speed, unit.health));
         AssetDatabase.ImportAsset(scriptPath);
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
-
-        // Timeout settings
-        int maxWaitTimeMs = 5000; // Max wait time of 5 seconds
-        int checkIntervalMs = 100; // Check every 100ms
-        int waitedTimeMs = 0;
-
-        MonoScript newScript = null;
-        Type scriptType = null;
-
-        // Try loading the script with a timeout
-        while (waitedTimeMs < maxWaitTimeMs)
-        {
-            newScript = AssetDatabase.LoadAssetAtPath<MonoScript>(scriptPath);
-            scriptType = newScript?.GetClass();
-
-            if (scriptType != null)
-            {
-                break;  // Successfully loaded the script and class type
-            }
-
-            System.Threading.Thread.Sleep(checkIntervalMs);
-            waitedTimeMs += checkIntervalMs;
-        }
-        if (scriptType != null)
-        {
-            // Add the script component to the prefab
-            var scriptComponent = unitPrefab.AddComponent(scriptType);
-
-            // Set the Animator field
-            var animatorField = scriptType.GetProperty("Animator");
-            if (animatorField != null && animatorField.CanWrite)
-            {
-                animatorField.SetValue(scriptComponent, animator);
-            }
-
-            // Set other properties (Speed, Health, etc.)
-            var speedField = scriptType.GetProperty("Speed");
-            if (speedField != null && speedField.CanWrite)
-            {
-                speedField.SetValue(scriptComponent, unit.speed);
-            }
-
-            var healthField = scriptType.GetProperty("Health");
-            if (healthField != null && healthField.CanWrite)
-            {
-                healthField.SetValue(scriptComponent, unit.health);
-            }
-        }
-        else
-        {
-            Debug.LogError($"Failed to load the script for {unitName}");
-        }
 
         // Save the prefab in the unit's directory
         string prefabPath = Path.Combine(unitDir, $"{unitName}.prefab");
