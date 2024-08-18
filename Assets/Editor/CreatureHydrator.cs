@@ -221,6 +221,7 @@ public class CreatureHydrator : Editor
         string scriptPath = Path.Combine(unitDir, $"{unitName}.cs");
         File.WriteAllText(scriptPath, GenerateScriptContent(unitName, generaName, unit.speed, unit.health));
         AssetDatabase.ImportAsset(scriptPath);
+        AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
 
         // Timeout settings
