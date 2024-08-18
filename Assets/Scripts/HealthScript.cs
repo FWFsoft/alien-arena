@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,12 +17,21 @@ public class HealthScript : MonoBehaviour
 
     public float deathAnimationLength = 0.50f;
 
-    private float maxHealth;
+    private float MaxHealth { get; set; }
     private float startingScaleX;
+
+    public HealthScript(float maxHealth)
+    {
+        MaxHealth = maxHealth;
+    }
 
     private void Start()
     {
-        maxHealth = health;
+        // If MaxHealth hasn't been set via code, use the value from the inspector (health)
+        if (MaxHealth <= 0)
+        {
+            MaxHealth = health;
+        }
         startingScaleX = healthBar.transform.localScale.x;
     }
 
@@ -36,7 +46,7 @@ public class HealthScript : MonoBehaviour
             Destroy(gameObject, deathAnimationLength);
         }
         var currentScale = healthBar.transform.localScale;
-        healthBar.transform.localScale = new Vector3(startingScaleX * health / maxHealth, currentScale.y, currentScale.z);
+        healthBar.transform.localScale = new Vector3(startingScaleX * health / MaxHealth, currentScale.y, currentScale.z);
 
     }
 
