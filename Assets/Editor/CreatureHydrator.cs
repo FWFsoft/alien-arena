@@ -164,6 +164,14 @@ public class CreatureHydrator : Editor
             AnimatorStateTransition transitionToDieFromRun = runState.AddTransition(dieState);
             transitionToDieFromRun.AddCondition(AnimatorConditionMode.If, 0, "isDead");
         }
+        
+        if (dieState != null)
+        {
+            // Die -> Exit
+            AnimatorStateTransition transitionToExit = dieState.AddExitTransition();
+            transitionToExit.hasExitTime = true;
+            transitionToExit.exitTime = 1.0f; // This ensures the entire Die animation plays before exiting
+        }
 
         // Assign the Animator Controller
         animator.runtimeAnimatorController = animatorController;
