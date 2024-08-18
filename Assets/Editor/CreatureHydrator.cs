@@ -358,7 +358,6 @@ namespace Creatures.impl
 {{
     public class {unitName} : {generaName}
     {{
-        public string GeneraType => ""{generaName}"";
         
         void Start()
         {{
