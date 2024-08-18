@@ -11,6 +11,8 @@ namespace Creatures.Api
         public bool SpeedEnabled { get; set; } = true;
         public bool IsDead { get; set; } = false;
         public HealthScript HealthScript { get; set; }
+        public List<Transform> PatrolPoints { get; set; } = new List<Transform>();
+        private int currentPatrolIndex = 0;
 
         protected virtual void Update()
         {
@@ -32,7 +34,26 @@ namespace Creatures.Api
             }
         }
 
-        protected abstract void Patrol(); // To be implemented by specific creatures
+        protected virtual void Patrol()
+        {
+            if (PatrolPoints == null || PatrolPoints.Count == 0)
+            {
+                return; // No patrol points defined
+            }
+
+            // Get the current patrol point
+            Transform patrolTarget = PatrolPoints[currentPatrolIndex];
+
+            // Move towards the patrol point
+            MoveTowardsTarget(patrolTarget.gameObject);
+
+            // Check if the creature has reached the patrol point
+            if (Vector3.Distance(transform.position, patrolTarget.position) < 0.1f)
+            {
+                // Go to the next patrol point, looping back to the start if necessary
+                currentPatrolIndex = (currentPatrolIndex + 1) % PatrolPoints.Count;
+            }
+        }
 
         protected virtual void MoveTowardsTarget(GameObject target)
         {
