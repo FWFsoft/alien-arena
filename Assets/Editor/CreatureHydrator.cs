@@ -356,7 +356,7 @@ using Creatures.Api;
 
 namespace Creatures.impl
 {{
-    public class {unitName}Script : {generaName}
+    public class {unitName} : {generaName}
     {{
         public string GeneraType => ""{generaName}"";
         
