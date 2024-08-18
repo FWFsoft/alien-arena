@@ -186,8 +186,20 @@ public class CreatureHydrator : Editor
         string scriptPath = Path.Combine(unitDir, $"{unitName}.cs");
         File.WriteAllText(scriptPath, GenerateScriptContent(unitName, generaName, unit.speed, unit.health));
         AssetDatabase.ImportAsset(scriptPath);
-        var newScript = AssetDatabase.LoadAssetAtPath<MonoScript>(scriptPath);
-        unitPrefab.AddComponent(newScript.GetClass());
+        
+        // Load the newly generated script
+        MonoScript newScript = AssetDatabase.LoadAssetAtPath<MonoScript>(scriptPath);
+        
+        // Attach the script to the prefab
+        Type scriptType = newScript.GetClass();
+        if (scriptType != null)
+        {
+            unitPrefab.AddComponent(scriptType);
+        }
+        else
+        {
+            Debug.LogError($"Failed to load the script for {unitName}");
+        }
 
         // Save the prefab in the unit's directory
         string prefabPath = Path.Combine(unitDir, $"{unitName}.prefab");
