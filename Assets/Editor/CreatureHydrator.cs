@@ -225,11 +225,32 @@ public class CreatureHydrator : Editor
         // Load the newly generated script
         MonoScript newScript = AssetDatabase.LoadAssetAtPath<MonoScript>(scriptPath);
         
-        // Attach the script to the prefab
+        // Attach the script to the prefab as a component
         Type scriptType = newScript.GetClass();
         if (scriptType != null)
         {
-            unitPrefab.AddComponent(scriptType);
+            // Add the script component to the prefab
+            var scriptComponent = unitPrefab.AddComponent(scriptType);
+
+            // Set the Animator field
+            var animatorField = scriptType.GetProperty("Animator");
+            if (animatorField != null && animatorField.CanWrite)
+            {
+                animatorField.SetValue(scriptComponent, animator);
+            }
+
+            // Set other properties (Speed, Health, etc.)
+            var speedField = scriptType.GetProperty("Speed");
+            if (speedField != null && speedField.CanWrite)
+            {
+                speedField.SetValue(scriptComponent, unit.speed);
+            }
+
+            var healthField = scriptType.GetProperty("Health");
+            if (healthField != null && healthField.CanWrite)
+            {
+                healthField.SetValue(scriptComponent, unit.health);
+            }
         }
         else
         {
