@@ -10,10 +10,10 @@ public class HealthScript : MonoBehaviour
     public float health;
 
     [SerializeField]
-    private Animator enemyAnimator;
+    public Animator enemyAnimator;
 
     [SerializeField]
-    private GameObject healthBar;
+    public GameObject healthBar;
 
     public float deathAnimationLength = 0.50f;
 
