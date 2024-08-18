@@ -33,6 +33,14 @@ public class CreatureHydrator : Editor
             {
                 string unitName = Path.GetFileName(unitDir);
                 string unitYamlPath = Path.Combine(unitDir, $"{unitName}.yml");
+                string lockFilePath = Path.Combine(unitDir, $"{unitName}.lock");
+
+                // Skip hydration if the lockfile exists
+                if (File.Exists(lockFilePath))
+                {
+                    Debug.Log($"Skipping {unitName} because it has already been hydrated (lockfile exists).");
+                    continue;
+                }
 
                 if (!File.Exists(unitYamlPath))
                 {
@@ -45,6 +53,9 @@ public class CreatureHydrator : Editor
 
                 // Hydrate the creature using the spec and directory
                 HydrateCreature(unit, generaName, unitName, unitDir);
+
+                // Create a lockfile to indicate that this creature has been hydrated
+                File.WriteAllText(lockFilePath, "Hydrated on: " + DateTime.Now.ToString());
             }
         }
     }
@@ -58,35 +69,33 @@ public class CreatureHydrator : Editor
         return deserializer.Deserialize<T>(yamlContent);
     }
 
-
     private static void HydrateCreature(UnitDefinition unit, string generaName, string unitName, string unitDir)
     {
         // Create the Prefab
         GameObject unitPrefab = new GameObject(unitName);
-        SpriteRenderer spriteRenderer = unitPrefab.AddComponent<SpriteRenderer>();  // We'll set the sprite later
+        SpriteRenderer spriteRenderer = unitPrefab.AddComponent<SpriteRenderer>();
         var animator = unitPrefab.AddComponent<Animator>();
 
         // Create an Animator Controller within the unit's directory
         string animatorPath = Path.Combine(unitDir, $"{unitName}Controller.controller");
         AnimatorController animatorController = AnimatorController.CreateAnimatorControllerAtPath(animatorPath);
-        
-        //Initialize idleSprite so we can set it from the Idle animation sheet
+
         Sprite idleSprite = null;
 
         // Process each animation
         foreach (var animation in unit.animations)
         {
             string animationFolderPath = Path.Combine(unitDir, animation.name);
-            string animationYamlPath = Path.Combine(unitDir, $"{animation.name}/{animation.name}.yml");
+            string animationYamlPath = Path.Combine(animationFolderPath, $"{animation.name}.yml");
             string animationYamlContent = File.ReadAllText(animationYamlPath);
             AnimationSpec animationSpec = DeserializeYaml<AnimationSpec>(animationYamlContent);
 
-            string spriteSheetPath = Path.Combine(unitDir, $"{animation.name}/Art/{unitName}_{animation.name}.png");
+            string spriteSheetPath = Path.Combine(animationFolderPath, $"Art/{unitName}_{animation.name}.png");
             Texture2D texture = AssetDatabase.LoadAssetAtPath<Texture2D>(spriteSheetPath);
 
             // Slice the sprite sheet
             Sprite[] sprites = SliceSpriteSheet(texture, animationSpec);
-            // Set the idle sprite as the first frame of the idle animation
+
             if (animation.name.Equals("Idle", StringComparison.OrdinalIgnoreCase) && sprites.Length > 0)
             {
                 idleSprite = sprites[0];
@@ -125,7 +134,6 @@ public class CreatureHydrator : Editor
         int spriteHeight = animationSpec.canvas.height;
         int frames = animationSpec.frames;
 
-        // Calculate the number of sprites in the sprite sheet
         int columns = texture.width / spriteWidth;
         int rows = texture.height / spriteHeight;
 
@@ -135,16 +143,14 @@ public class CreatureHydrator : Editor
             return null;
         }
 
-        // Prepare the list to hold sliced sprites
         List<Sprite> sprites = new List<Sprite>();
 
-        // Meta data for slicing the sprite sheet
         SpriteMetaData[] metaData = new SpriteMetaData[frames];
 
         for (int i = 0; i < frames; i++)
         {
             int x = (i % columns) * spriteWidth;
-            int y = texture.height - spriteHeight - (i / columns) * spriteHeight; // Unity's Y-coordinate is inverted
+            int y = texture.height - spriteHeight - (i / columns) * spriteHeight;
 
             metaData[i] = new SpriteMetaData
             {
@@ -156,20 +162,17 @@ public class CreatureHydrator : Editor
             };
         }
 
-        // Import settings for slicing
         string assetPath = AssetDatabase.GetAssetPath(texture);
         TextureImporter textureImporter = AssetImporter.GetAtPath(assetPath) as TextureImporter;
 
         if (textureImporter != null)
         {
-            textureImporter.isReadable = true; // Ensure the texture is readable
+            textureImporter.isReadable = true;
             textureImporter.spriteImportMode = SpriteImportMode.Multiple;
             textureImporter.spritesheet = metaData;
 
-            // Reimport the asset with the new slicing settings
             AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
 
-            // Load the sliced sprites
             sprites.AddRange(AssetDatabase.LoadAllAssetsAtPath(assetPath).OfType<Sprite>());
         }
         else
@@ -209,7 +212,6 @@ public class CreatureHydrator : Editor
         
         return clip;
     }           
-
 
     private static string GenerateScriptContent(string unitName, string generaName, float speed, int health)
     {
