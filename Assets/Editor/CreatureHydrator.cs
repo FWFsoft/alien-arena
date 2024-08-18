@@ -80,7 +80,17 @@ public class CreatureHydrator : Editor
         string animatorPath = Path.Combine(unitDir, $"{unitName}Controller.controller");
         AnimatorController animatorController = AnimatorController.CreateAnimatorControllerAtPath(animatorPath);
 
+        // Add parameters for controlling the animations
+        animatorController.AddParameter("isMoving", AnimatorControllerParameterType.Bool);
+        animatorController.AddParameter("isDead", AnimatorControllerParameterType.Bool);
+
+        // Initialize the Idle sprite
         Sprite idleSprite = null;
+
+        // Create states for the animations
+        AnimatorState idleState = null;
+        AnimatorState runState = null;
+        AnimatorState dieState = null;
 
         // Process each animation
         foreach (var animation in unit.animations)
@@ -96,14 +106,56 @@ public class CreatureHydrator : Editor
             // Slice the sprite sheet
             Sprite[] sprites = SliceSpriteSheet(texture, animationSpec);
 
-            if (animation.name.Equals("Idle", StringComparison.OrdinalIgnoreCase) && sprites.Length > 0)
+            if (sprites == null || sprites.Length == 0)
             {
-                idleSprite = sprites[0];
+                Debug.LogError($"No sprites found for animation {animation.name} in unit {unitName}");
+                continue;
             }
 
             // Create and add AnimationClip to AnimatorController
             AnimationClip clip = CreateAnimationClip(sprites, animationSpec.frames, animation.name, animationSpec.frameRate, animationFolderPath);
-            animatorController.AddMotion(clip);
+            AnimatorState state = animatorController.layers[0].stateMachine.AddState(animation.name);
+
+            if (animation.name.Equals("Idle", StringComparison.OrdinalIgnoreCase))
+            {
+                idleState = state;
+                idleSprite = sprites[0];  // Set the idle sprite for when/if no animations are playing
+            }
+            else if (animation.name.Equals("Run", StringComparison.OrdinalIgnoreCase))
+            {
+                runState = state;
+            }
+            else if (animation.name.Equals("Die", StringComparison.OrdinalIgnoreCase))
+            {
+                dieState = state;
+            }
+
+            state.motion = clip;
+        }
+
+        // Set Idle as the default state
+        if (idleState != null)
+        {
+            animatorController.layers[0].stateMachine.defaultState = idleState;
+        }
+
+        // Create transitions based on parameters
+        if (idleState != null && runState != null)
+        {
+            AnimatorStateTransition transitionToRun = idleState.AddTransition(runState);
+            transitionToRun.AddCondition(AnimatorConditionMode.If, 0, "isMoving");
+
+            AnimatorStateTransition transitionToIdle = runState.AddTransition(idleState);
+            transitionToIdle.AddCondition(AnimatorConditionMode.IfNot, 0, "isMoving");
+        }
+
+        if (idleState != null && dieState != null)
+        {
+            AnimatorStateTransition transitionToDieFromIdle = idleState.AddExitTransition();
+            transitionToDieFromIdle.AddCondition(AnimatorConditionMode.If, 0, "isDead");
+
+            AnimatorStateTransition transitionToDieFromRun = runState.AddExitTransition();
+            transitionToDieFromRun.AddCondition(AnimatorConditionMode.If, 0, "isDead");
         }
 
         // Assign the Animator Controller
@@ -127,6 +179,7 @@ public class CreatureHydrator : Editor
         PrefabUtility.SaveAsPrefabAsset(unitPrefab, prefabPath);
         GameObject.DestroyImmediate(unitPrefab);
     }
+
 
     private static Sprite[] SliceSpriteSheet(Texture2D texture, AnimationSpec animationSpec)
     {
