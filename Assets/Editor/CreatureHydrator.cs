@@ -18,50 +18,60 @@ public class CreatureHydrator : Editor
 
         foreach (var generaDir in generaDirectories)
         {
-            string generaName = Path.GetFileName(generaDir);
-            string abstractClassPath = Path.Combine(generaDir, $"{generaName}.cs");
+            HydrateAllUnitsForGenera(generaDir);
+        }
+    }
 
-            if (!File.Exists(abstractClassPath))
+    private static void HydrateAllUnitsForGenera(string generaDir)
+    {
+        string generaName = Path.GetFileName(generaDir);
+        string abstractClassPath = Path.Combine(generaDir, $"{generaName}.cs");
+
+        if (!File.Exists(abstractClassPath))
+        {
+            Debug.LogError($"Abstract class for {generaName} not found at {abstractClassPath}");
+            return;
+        }
+
+        string[] unitDirectories = Directory.GetDirectories(generaDir);
+
+        foreach (var unitDir in unitDirectories)
+        {
+            HydrateGeneraUnit(unitDir, generaName);
+        }
+    }
+
+    private static void HydrateGeneraUnit(string unitDir, string generaName)
+    {
+        string unitName = Path.GetFileName(unitDir);
+        string unitYamlPath = Path.Combine(unitDir, $"{unitName}.yml");
+        string lockFilePath = Path.Combine(unitDir, $"{unitName}.lock");
+
+        // Skip hydration if the lockfile exists and hydration is complete
+        if (File.Exists(lockFilePath))
+        {
+            var lockFileContent = File.ReadAllText(lockFilePath);
+            if (lockFileContent.Contains("Hydration: Complete"))
             {
-                Debug.LogError($"Abstract class for {generaName} not found at {abstractClassPath}");
-                continue;
-            }
-
-            string[] unitDirectories = Directory.GetDirectories(generaDir);
-
-            foreach (var unitDir in unitDirectories)
-            {
-                string unitName = Path.GetFileName(unitDir);
-                string unitYamlPath = Path.Combine(unitDir, $"{unitName}.yml");
-                string lockFilePath = Path.Combine(unitDir, $"{unitName}.lock");
-
-                // Skip hydration if the lockfile exists and hydration is complete
-                if (File.Exists(lockFilePath))
-                {
-                    var lockFileContent = File.ReadAllText(lockFilePath);
-                    if (lockFileContent.Contains("Hydration: Complete"))
-                    {
-                        Debug.Log($"Skipping hydration for {unitName} because it has already been hydrated.");
-                        continue;
-                    }
-                }
-
-                if (!File.Exists(unitYamlPath))
-                {
-                    Debug.LogError($"YAML file for unit {unitName} not found at {unitYamlPath}");
-                    continue;
-                }
-
-                string yamlContent = File.ReadAllText(unitYamlPath);
-                UnitDefinition unit = DeserializeYaml<UnitDefinition>(yamlContent);
-
-                // Hydrate the creature using the spec and directory
-                HydrateCreature(unit, generaName, unitName, unitDir);
-
-                // Create or update a lockfile to indicate that this creature has been hydrated
-                File.WriteAllText(lockFilePath, "Hydration: Complete\nLinked: Incomplete");
+                Debug.Log($"Skipping hydration for {unitName} because it has already been hydrated.");
+                return;
             }
         }
+
+        if (!File.Exists(unitYamlPath))
+        {
+            Debug.LogError($"YAML file for unit {unitName} not found at {unitYamlPath}");
+            return;
+        }
+
+        string yamlContent = File.ReadAllText(unitYamlPath);
+        UnitDefinition unit = DeserializeYaml<UnitDefinition>(yamlContent);
+
+        // Hydrate the creature using the spec and directory
+        HydrateCreature(unit, generaName, unitName, unitDir);
+
+        // Create or update a lockfile to indicate that this creature has been hydrated
+        File.WriteAllText(lockFilePath, "Hydration: Complete\nLinked: Incomplete");
     }
 
     private static T DeserializeYaml<T>(string yamlContent)
