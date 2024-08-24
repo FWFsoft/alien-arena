@@ -4,6 +4,6 @@ namespace Creatures.Api
 {
     public interface Genera
     {
-        string GeneraType { get; }
+        GeneraType GeneraType { get; }
     }
 }

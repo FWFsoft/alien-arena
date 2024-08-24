@@ -5,6 +5,6 @@ namespace Creatures.impl
 {
     public abstract class Cerebrian : Creature, Genera
     {
-        public string GeneraType { get; } = "Cerebrian";
+        public GeneraType GeneraType { get; } = GeneraType.Cerebrian;
     }
 }
