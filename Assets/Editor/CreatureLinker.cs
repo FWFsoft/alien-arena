@@ -2,6 +2,7 @@
 using UnityEditor;
 using System;
 using System.IO;
+using System.Linq;
 
 public class CreatureLinker : Editor
 {
@@ -182,6 +183,22 @@ public class CreatureLinker : Editor
 
             // Optionally call the SetupInstance method
             effectsManagerScript.SetupInstance();
+        }
+        
+        // Calculate and set the death animation length
+        AnimationClip deathClip = animator.runtimeAnimatorController.animationClips.FirstOrDefault(clip => clip.name.Contains("Die"));
+        if (deathClip != null)
+        {
+            var deathAnimationLengthField = healthScript.GetType().GetField("deathAnimationLength");
+            if (deathAnimationLengthField != null)
+            {
+                deathAnimationLengthField.SetValue(healthScript, deathClip.length);
+                Debug.Log($"Set deathAnimationLength to {deathClip.length} for {unitName}.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"Death animation clip not found for {unitName}. Ensure the animation is correctly named and assigned.");
         }
 
         // Save the updated prefab
