@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Creatures.Api;
 
 public class CreatureHydrator : Editor
 {
@@ -133,20 +134,25 @@ public class CreatureHydrator : Editor
             AnimationClip clip = CreateAnimationClip(sprites, animationSpec.frames, animation.name, animationSpec.frameRate, animationFolderPath);
             AnimatorState state = animatorController.layers[0].stateMachine.AddState(animation.name);
 
-            if (animation.name.Equals("Idle", StringComparison.OrdinalIgnoreCase))
+            BaseAnimation baseAnimation = (BaseAnimation)Enum.Parse(typeof(BaseAnimation), animation.name, true);
+            
+            switch(baseAnimation)
             {
-                idleState = state;
-                idleSprite = sprites[0];  // Set the idle sprite for when/if no animations are playing
-                idleCanvasSize = animationSpec.canvas; // Capture the canvas size from Idle.yml
+                case BaseAnimation.Run:
+                    runState = state;
+                    break;
+                case BaseAnimation.Idle:
+                    idleState = state;
+                    idleSprite = sprites[0];  // Set the idle sprite for when/if no animations are playing
+                    idleCanvasSize = animationSpec.canvas; // Capture the canvas size from Idle.yml
+                    break;
+                case BaseAnimation.Die:
+                    dieState = state;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
-            else if (animation.name.Equals("Run", StringComparison.OrdinalIgnoreCase))
-            {
-                runState = state;
-            }
-            else if (animation.name.Equals("Die", StringComparison.OrdinalIgnoreCase))
-            {
-                dieState = state;
-            }
+          
 
             state.motion = clip;
         }
