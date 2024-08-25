@@ -7,7 +7,7 @@ namespace Creatures.Api
     {
         public Animator Animator { get; set; }
         public float MaximumAttackDistance { get; set; } = 100f;
-        public float Health { get; set; } = 100;
+        public float Health { get; set; } = 100f;
         public float Speed { get; set; } = 0.5f;
         public bool SpeedEnabled { get; set; } = true;
         public bool IsDead { get; set; } = false;
