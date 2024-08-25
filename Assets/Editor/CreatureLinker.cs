@@ -73,14 +73,36 @@ public class CreatureLinker : Editor
         }
 
         // Add the script component to the prefab
-        var scriptComponent = unitPrefab.AddComponent(scriptType);
+        var scriptComponent = unitPrefab.GetComponent(scriptType);
+        if (scriptComponent == null)
+        {
+            scriptComponent = unitPrefab.AddComponent(scriptType);
+            Debug.Log($"CreatureScript added to {unitName}.");
+        }
 
-        // Set the Animator field
+        // Set the Animator field and link the controller
         var animatorField = scriptType.GetProperty("Animator");
+        Animator animator = unitPrefab.GetComponent<Animator>();
+
         if (animatorField != null && animatorField.CanWrite)
         {
-            Animator animator = unitPrefab.GetComponent<Animator>();
-            animatorField.SetValue(scriptComponent, animator);
+            if (animator != null)
+            {
+                animatorField.SetValue(scriptComponent, animator);
+                var setAnimator = animatorField.GetValue(scriptComponent) as Animator;
+                if (setAnimator != null)
+                {
+                    Debug.Log($"Animator is successfully set for {unitName}. Animator name: {setAnimator.name}");
+                }
+                else
+                {
+                    Debug.LogWarning($"Animator was not set correctly for {unitName}.");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"Animator component not found on {unitName} prefab.");
+            }
         }
 
         // Set other properties (Speed, Health, etc.)
@@ -101,7 +123,14 @@ public class CreatureLinker : Editor
         if (healthScript == null)
         {
             healthScript = unitPrefab.AddComponent<HealthScript>();
-                    
+            
+            // Set the HealthScript field on the scriptComponent
+            var healthScriptFieldScriptComponent = scriptType.GetProperty("HealthScript");
+            if (healthScriptFieldScriptComponent != null && healthScriptFieldScriptComponent.CanWrite)
+            {
+                healthScriptFieldScriptComponent.SetValue(scriptComponent, healthScript);
+            }
+            
             var healthAnimatorField = healthScript.GetType().GetField("enemyAnimator");
             if (healthAnimatorField != null)
             {

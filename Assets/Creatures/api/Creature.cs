@@ -5,33 +5,104 @@ namespace Creatures.Api
 {
     public abstract class Creature : MonoBehaviour
     {
-        public Animator Animator { get; set; }
-        public float MaximumAttackDistance { get; set; } = 100f;
-        public float Health { get; set; } = 100f;
-        public float Speed { get; set; } = 0.5f;
-        public bool SpeedEnabled { get; set; } = true;
-        public bool IsDead { get; set; } = false;
-        public HealthScript HealthScript { get; set; }
-        public List<Transform> PatrolPoints { get; set; } = new List<Transform>();
+        [SerializeField]
+        private Animator animator;
+
+        [SerializeField]
+        private float maximumAttackDistance = 100f;
+
+        [SerializeField]
+        private float health = 100f;
+
+        [SerializeField]
+        private float speed = 0.5f;
+
+        [SerializeField]
+        private bool speedEnabled = true;
+
+        [SerializeField]
+        private bool isDead = false;
+
+        [SerializeField]
+        private HealthScript healthScript;
+
+        [SerializeField]
+        private List<Transform> patrolPoints = new List<Transform>();
+
         private int currentPatrolIndex = 0;
+
+        // Public properties to encapsulate the fields
+        public Animator Animator
+        {
+            get => animator;
+            set => animator = value;
+        }
+
+        public float MaximumAttackDistance
+        {
+            get => maximumAttackDistance;
+            set => maximumAttackDistance = value;
+        }
+
+        public float Health
+        {
+            get => health;
+            set => health = value;
+        }
+
+        public float Speed
+        {
+            get => speed;
+            set => speed = value;
+        }
+
+        public bool SpeedEnabled
+        {
+            get => speedEnabled;
+            set => speedEnabled = value;
+        }
+
+        public bool IsDead
+        {
+            get => isDead;
+            set => isDead = value;
+        }
+
+        public HealthScript HealthScript
+        {
+            get => healthScript;
+            set => healthScript = value;
+        }
+
+        public List<Transform> PatrolPoints
+        {
+            get => patrolPoints;
+            set => patrolPoints = value;
+        }
 
         protected virtual void Update()
         {
-            if (IsDead || HealthScript.isDead())
+           
+            if (HealthScript.isDead())
             {
                 return;
             }
-
-            var target = FindTargetInRange();
-            if (target == null)
+            var target = findPlayerInRange();
+            if(target == null)
             {
                 Animator.SetBool("isMoving", false);
-                Patrol();
-            }
-            else
+                // Add patrol in here
+            } else
             {
+                // Move towards player
+                // TODO: Add an attack when a certain distance away
                 Animator.SetBool("isMoving", true);
-                MoveTowardsTarget(target);
+                var isLeft = target.transform.position.x < transform.position.x;
+
+                this.transform.rotation = Quaternion.Euler(new Vector3(0f, isLeft ? 180f : 0f, 0f));
+                var step = Speed * Time.deltaTime;
+
+                transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
             }
         }
 
@@ -67,6 +138,23 @@ namespace Creatures.Api
         }
 
         protected virtual GameObject FindTargetInRange()
+        {
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+            GameObject closestPlayer = null;
+            float closestDistance = MaximumAttackDistance;
+            foreach (GameObject player in players)
+            {
+                float dist = Vector2.Distance(transform.position, player.transform.position);
+                if (dist < closestDistance)
+                {
+                    closestDistance = dist;
+                    closestPlayer = player;
+                }
+            }
+            return closestPlayer;
+        }
+        private GameObject findPlayerInRange()
         {
             GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
