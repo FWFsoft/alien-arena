@@ -89,6 +89,7 @@ public class CreatureHydrator : Editor
         // Create the Prefab
         GameObject unitPrefab = new GameObject(unitName);
         SpriteRenderer spriteRenderer = unitPrefab.AddComponent<SpriteRenderer>();
+        spriteRenderer.flipX = true;  // Sprite was showing up reversed
         var animator = unitPrefab.AddComponent<Animator>();
 
         // Create an Animator Controller within the unit's directory
@@ -328,6 +329,13 @@ public class CreatureHydrator : Editor
 
         AnimationUtility.SetObjectReferenceCurve(clip, curveBinding, keyframes);
         clip.name = animationName;
+
+        // Set the animation to loop
+        clip.wrapMode = WrapMode.Loop;
+        var settings = AnimationUtility.GetAnimationClipSettings(clip);
+        settings.loopTime = true;
+        AnimationUtility.SetAnimationClipSettings(clip, settings);
+
         string animFilePath = Path.Combine(animationFolderPath, $"{animationName}.anim");
         AssetDatabase.CreateAsset(clip, animFilePath);
         
