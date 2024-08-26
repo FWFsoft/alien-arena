@@ -94,8 +94,6 @@ public class BlasterPlayerScript : MonoBehaviour
         animator.SetFloat("DirectionX", moveInput.x);
         animator.SetFloat("DirectionY", moveInput.y);
 
-        // Debug logs to see the values
-        Debug.Log($"DirectionX: {movement.x}, DirectionY: {movement.y}");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
