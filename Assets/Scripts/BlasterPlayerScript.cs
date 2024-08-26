@@ -15,7 +15,6 @@ public class BlasterPlayerScript : MonoBehaviour
     private float playerHealth;
     public GameObject blasterCharacter;
     public Transform launchOffset;
-    bool movingLeft = false;
 
     void Start()
     {
@@ -32,25 +31,20 @@ public class BlasterPlayerScript : MonoBehaviour
         {
             return;
         }
-        // Set animation
-        bool isMoving = input.move.x != 0 || input.move.y != 0;
-        animator.SetBool("isMoving", isMoving);
 
-        // Set scale for animation direction
-        if (isMoving)
-        {
-            movingLeft = input.move.x < 0;
-        }
-        int direction = movingLeft ? 1 : -1;
-        Vector3 directionVector = new Vector3(direction * Mathf.Abs(blasterCharacter.transform.localScale.x), 
-            blasterCharacter.transform.localScale.y, 
-            blasterCharacter.transform.localScale.z);
-        blasterCharacter.transform.localScale = directionVector;
+        // Calculate movement
+        Vector2 moveInput = input.move;
+        Vector3 movement = new Vector3(moveInput.x, moveInput.y, 0) * speed * Time.deltaTime;
 
         // Move character
-        Vector3 newPosition = new Vector3(input.move.x, input.move.y, 0) * speed * Time.deltaTime;
-        transform.Translate(newPosition);
+        transform.Translate(movement);
 
+        // Set Animator Parameters
+        animator.SetFloat("DirectionX", moveInput.x);
+        animator.SetFloat("DirectionY", moveInput.y);
+
+        // Debug logs to see the values
+        Debug.Log($"DirectionX: {moveInput.x}, DirectionY: {moveInput.y}");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
