@@ -1,0 +1,6 @@
+speed: 0.5
+health: 100
+animations:
+  - name: Run
+  - name: Idle
+  - name: Die

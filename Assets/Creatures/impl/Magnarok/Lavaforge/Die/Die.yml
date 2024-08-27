@@ -1,0 +1,5 @@
+canvas:
+    height: 128
+    width: 102
+frames: 7
+frameRate: 10

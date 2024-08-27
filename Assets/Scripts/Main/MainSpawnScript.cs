@@ -35,7 +35,7 @@ namespace Main
 
         GameObject SpawnEnemyAtPoint(GameObject spawnPoint, int health = 100, int size = 1)
         {
-            Creature enemyInstance = new SpawnChain(enemyToSpawn.GetComponent<AlienScript>(), spawnPoint)
+            Creature enemyInstance = new SpawnChain(enemyToSpawn.GetComponent<Creature>(), spawnPoint)
                 .with(new HealthSpawnAction(health))
                 .with(new SizeSpawnAction(size))
                 .spawn();
