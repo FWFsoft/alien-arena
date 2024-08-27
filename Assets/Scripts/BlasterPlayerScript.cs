@@ -15,7 +15,18 @@ public class BlasterPlayerScript : MonoBehaviour
     private float playerHealth;
     public GameObject blasterCharacter;
     public Transform launchOffset;
-    bool movingLeft = false;
+
+    // Isometric movement vectors for diagonal directions
+    private Vector2 isoUpRight = new Vector2(1, 0.5f);   // W + D
+    private Vector2 isoUpLeft = new Vector2(-1, 0.5f);   // W + A
+    private Vector2 isoDownRight = new Vector2(1, -0.5f); // S + D
+    private Vector2 isoDownLeft = new Vector2(-1, -0.5f); // S + A
+
+    // Standard movement vectors for cardinal directions
+    private Vector2 up = new Vector2(0, 1);    // W
+    private Vector2 down = new Vector2(0, -1); // S
+    private Vector2 right = new Vector2(1, 0); // D
+    private Vector2 left = new Vector2(-1, 0); // A
 
     void Start()
     {
@@ -32,24 +43,56 @@ public class BlasterPlayerScript : MonoBehaviour
         {
             return;
         }
-        // Set animation
-        bool isMoving = input.move.x != 0 || input.move.y != 0;
-        animator.SetBool("isMoving", isMoving);
 
-        // Set scale for animation direction
-        if (isMoving)
+        // Get movement input
+        Vector2 moveInput = input.move;
+
+        // Initialize movement
+        Vector3 movement = Vector3.zero;
+
+        // Calculate movement based on input
+        if (moveInput.y > 0 && moveInput.x > 0) // W + D
         {
-            movingLeft = input.move.x < 0;
+            movement = new Vector3(isoUpRight.x, isoUpRight.y, 0);
         }
-        int direction = movingLeft ? 1 : -1;
-        Vector3 directionVector = new Vector3(direction * Mathf.Abs(blasterCharacter.transform.localScale.x), 
-            blasterCharacter.transform.localScale.y, 
-            blasterCharacter.transform.localScale.z);
-        blasterCharacter.transform.localScale = directionVector;
+        else if (moveInput.y > 0 && moveInput.x < 0) // W + A
+        {
+            movement = new Vector3(isoUpLeft.x, isoUpLeft.y, 0);
+        }
+        else if (moveInput.y < 0 && moveInput.x > 0) // S + D
+        {
+            movement = new Vector3(isoDownRight.x, isoDownRight.y, 0);
+        }
+        else if (moveInput.y < 0 && moveInput.x < 0) // S + A
+        {
+            movement = new Vector3(isoDownLeft.x, isoDownLeft.y, 0);
+        }
+        else if (moveInput.y > 0) // W
+        {
+            movement = new Vector3(up.x, up.y, 0);
+        }
+        else if (moveInput.y < 0) // S
+        {
+            movement = new Vector3(down.x, down.y, 0);
+        }
+        else if (moveInput.x > 0) // D
+        {
+            movement = new Vector3(right.x, right.y, 0);
+        }
+        else if (moveInput.x < 0) // A
+        {
+            movement = new Vector3(left.x, left.y, 0);
+        }
+
+        // Normalize movement for consistent speed and apply speed and time
+        movement = movement.normalized * speed * Time.deltaTime;
 
         // Move character
-        Vector3 newPosition = new Vector3(input.move.x, input.move.y, 0) * speed * Time.deltaTime;
-        transform.Translate(newPosition);
+        transform.Translate(movement);
+
+        // Set Animator Parameters
+        animator.SetFloat("DirectionX", moveInput.x);
+        animator.SetFloat("DirectionY", moveInput.y);
 
     }
 

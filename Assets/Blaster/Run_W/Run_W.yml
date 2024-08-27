@@ -1,0 +1,5 @@
+canvas:
+  height: 64
+  width: 64
+frames: 6
+frameRate: 10
