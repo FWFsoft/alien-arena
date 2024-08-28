@@ -88,25 +88,27 @@ public class CreatureHydrator : Editor
 
         // Add or update SpriteRenderer
         SpriteRenderer spriteRenderer = unitPrefab.GetComponent<SpriteRenderer>() ?? unitPrefab.AddComponent<SpriteRenderer>();
-        spriteRenderer.flipX = true;  // Sprite was showing up reversed
+        spriteRenderer.flipX = true;
 
         // Add or update Animator
         Animator animator = unitPrefab.GetComponent<Animator>() ?? unitPrefab.AddComponent<Animator>();
 
-        // Create or update an Animator Controller within the unit's directory
+        // Create or load the Animator Controller within the unit's directory
         string animatorPath = Path.Combine(unitDir, $"{unitName}Controller.controller");
         AnimatorController animatorController;
 
         if (File.Exists(animatorPath))
         {
+            // Load the existing Animator Controller
             animatorController = AssetDatabase.LoadAssetAtPath<AnimatorController>(animatorPath);
         }
         else
         {
+            // Create a new Animator Controller
             animatorController = AnimatorController.CreateAnimatorControllerAtPath(animatorPath);
         }
 
-        // Add parameters if they don't exist
+        // Ensure 'isMoving' and 'isDead' parameters are present before setting transitions
         AddAnimatorParameterIfNotExists(animatorController, "isMoving", AnimatorControllerParameterType.Bool);
         AddAnimatorParameterIfNotExists(animatorController, "isDead", AnimatorControllerParameterType.Bool);
 
@@ -116,7 +118,7 @@ public class CreatureHydrator : Editor
         // Initialize the Idle canvas size
         CanvasSize idleCanvasSize = null;
 
-        // Create states for the animations
+        // Create or update states for the animations
         AnimatorState idleState = null;
         AnimatorState runState = null;
         AnimatorState dieState = null;
@@ -175,7 +177,7 @@ public class CreatureHydrator : Editor
         }
 
         // Create or update transitions between Idle, Run, and Die states
-        CreateOrUpdateTransitions(idleState, runState, dieState);
+        CreateOrUpdateTransitions(animatorController, idleState, runState, dieState);
         
         // Assign the Animator Controller
         animator.runtimeAnimatorController = animatorController;
@@ -202,6 +204,47 @@ public class CreatureHydrator : Editor
         PrefabUtility.UnloadPrefabContents(unitPrefab);
     }
 
+    private static void CreateOrUpdateTransitions(AnimatorController controller, AnimatorState idleState, AnimatorState runState, AnimatorState dieState)
+    {
+        // Ensure parameters exist before creating transitions
+        var isMovingExists = controller.parameters.Any(p => p.name == "isMoving");
+        var isDeadExists = controller.parameters.Any(p => p.name == "isDead");
+
+        if (isMovingExists && idleState != null && runState != null)
+        {
+            // Idle -> Run
+            CreateOrUpdateTransition(idleState, runState, "isMoving", true);
+
+            // Run -> Idle
+            CreateOrUpdateTransition(runState, idleState, "isMoving", false);
+        }
+        else
+        {
+            Debug.LogWarning("Missing 'isMoving' parameter or states when creating transitions between Idle and Run.");
+        }
+
+        if (isDeadExists && idleState != null && dieState != null)
+        {
+            // Idle -> Die
+            CreateOrUpdateTransition(idleState, dieState, "isDead", true);
+        }
+
+        if (isDeadExists && runState != null && dieState != null)
+        {
+            // Run -> Die
+            CreateOrUpdateTransition(runState, dieState, "isDead", true);
+        }
+
+        if (dieState != null)
+        {
+            // Die -> Exit
+            var transitionToExit = dieState.AddExitTransition();
+            transitionToExit.hasExitTime = true;
+            transitionToExit.exitTime = 1.0f; // This ensures the entire Die animation plays before exiting
+        }
+    }
+
+
     private static void AddAnimatorParameterIfNotExists(AnimatorController animatorController, string parameterName, AnimatorControllerParameterType type)
     {
         if (!animatorController.parameters.Any(p => p.name == parameterName))
@@ -221,38 +264,6 @@ public class CreatureHydrator : Editor
         }
 
         return state;
-    }
-
-    private static void CreateOrUpdateTransitions(AnimatorState idleState, AnimatorState runState, AnimatorState dieState)
-    {
-        if (idleState != null && runState != null)
-        {
-            // Idle -> Run
-            CreateOrUpdateTransition(idleState, runState, "isMoving", true);
-
-            // Run -> Idle
-            CreateOrUpdateTransition(runState, idleState, "isMoving", false);
-        }
-
-        if (idleState != null && dieState != null)
-        {
-            // Idle -> Die
-            CreateOrUpdateTransition(idleState, dieState, "isDead", true);
-        }
-
-        if (runState != null && dieState != null)
-        {
-            // Run -> Die
-            CreateOrUpdateTransition(runState, dieState, "isDead", true);
-        }
-        
-        if (dieState != null)
-        {
-            // Die -> Exit
-            AnimatorStateTransition transitionToExit = dieState.AddExitTransition();
-            transitionToExit.hasExitTime = true;
-            transitionToExit.exitTime = 1.0f; // This ensures the entire Die animation plays before exiting
-        }
     }
 
     private static void CreateOrUpdateTransition(AnimatorState fromState, AnimatorState toState, string conditionName, bool conditionValue)
