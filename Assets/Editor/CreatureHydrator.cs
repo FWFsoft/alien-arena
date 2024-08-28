@@ -46,18 +46,6 @@ public class CreatureHydrator : Editor
     {
         string unitName = Path.GetFileName(unitDir);
         string unitYamlPath = Path.Combine(unitDir, $"{unitName}.yml");
-        string lockFilePath = Path.Combine(unitDir, $"{unitName}.lock");
-
-        // Skip hydration if the lockfile exists and hydration is complete
-        if (File.Exists(lockFilePath))
-        {
-            var lockFileContent = File.ReadAllText(lockFilePath);
-            if (lockFileContent.Contains("Hydration: Complete"))
-            {
-                Debug.Log($"Skipping hydration for {unitName} because it has already been hydrated.");
-                return;
-            }
-        }
 
         if (!File.Exists(unitYamlPath))
         {
@@ -70,9 +58,6 @@ public class CreatureHydrator : Editor
 
         // Hydrate the creature using the spec and directory
         HydrateCreature(unit, generaName, unitName, unitDir);
-
-        // Create or update a lockfile to indicate that this creature has been hydrated
-        File.WriteAllText(lockFilePath, "Hydration: Complete\nLinked: Incomplete");
     }
 
     private static T DeserializeYaml<T>(string yamlContent)
