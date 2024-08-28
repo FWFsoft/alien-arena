@@ -207,32 +207,32 @@ public class CreatureHydrator : Editor
     private static void CreateOrUpdateTransitions(AnimatorController controller, AnimatorState idleState, AnimatorState runState, AnimatorState dieState)
     {
         // Ensure parameters exist before creating transitions
-        var isMovingExists = controller.parameters.Any(p => p.name == "isMoving");
-        var isDeadExists = controller.parameters.Any(p => p.name == "isDead");
+        var isMovingParam = controller.parameters.FirstOrDefault(p => p.name == "isMoving");
+        var isDeadParam = controller.parameters.FirstOrDefault(p => p.name == "isDead");
 
-        if (isMovingExists && idleState != null && runState != null)
+        if (isMovingParam != null && idleState != null && runState != null)
         {
             // Idle -> Run
-            CreateOrUpdateTransition(idleState, runState, "isMoving", true);
+            CreateOrUpdateTransition(idleState, runState, isMovingParam.name, true);
 
             // Run -> Idle
-            CreateOrUpdateTransition(runState, idleState, "isMoving", false);
+            CreateOrUpdateTransition(runState, idleState, isMovingParam.name, false);
         }
         else
         {
             Debug.LogWarning("Missing 'isMoving' parameter or states when creating transitions between Idle and Run.");
         }
 
-        if (isDeadExists && idleState != null && dieState != null)
+        if (isDeadParam != null && idleState != null && dieState != null)
         {
             // Idle -> Die
-            CreateOrUpdateTransition(idleState, dieState, "isDead", true);
+            CreateOrUpdateTransition(idleState, dieState, isDeadParam.name, true);
         }
 
-        if (isDeadExists && runState != null && dieState != null)
+        if (isDeadParam != null && runState != null && dieState != null)
         {
             // Run -> Die
-            CreateOrUpdateTransition(runState, dieState, "isDead", true);
+            CreateOrUpdateTransition(runState, dieState, isDeadParam.name, true);
         }
 
         if (dieState != null)
@@ -273,17 +273,18 @@ public class CreatureHydrator : Editor
 
         if (existingTransition == null)
         {
+            // Create a new transition if it doesn't exist
             existingTransition = fromState.AddTransition(toState);
         }
 
-        // Update the transition condition
-        existingTransition.conditions = new AnimatorCondition[1];
-        existingTransition.conditions[0] = new AnimatorCondition
-        {
-            mode = conditionValue ? AnimatorConditionMode.If : AnimatorConditionMode.IfNot,
-            parameter = conditionName,
-            threshold = 0
-        };
+        // Clear existing conditions to avoid any leftover references
+        existingTransition.conditions = null;
+
+        // Set the condition with an explicit reference to the parameter by name
+        existingTransition.AddCondition(conditionValue ? AnimatorConditionMode.If : AnimatorConditionMode.IfNot, 0, conditionName);
+
+        // Debug to verify that the transition is set correctly
+        Debug.Log($"Transition from '{fromState.name}' to '{toState.name}' using parameter '{conditionName}' set to '{conditionValue}'");
     }
 
     private static void UpdateOrAddCollider(GameObject unitPrefab, CanvasSize idleCanvasSize)
