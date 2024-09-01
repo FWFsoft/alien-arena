@@ -31,7 +31,6 @@ public class CreatureLinker : Editor
         string unitName = Path.GetFileName(unitDir);
         string scriptPath = Path.Combine(unitDir, $"{unitName}.cs");
         string prefabPath = Path.Combine(unitDir, $"{unitName}.prefab");
-        string lockFilePath = Path.Combine(unitDir, $"{unitName}.lock");
 
         // Check if the script and prefab exist
         if (!File.Exists(scriptPath))
@@ -43,17 +42,6 @@ public class CreatureLinker : Editor
         {
             Debug.LogError($"Prefab for {unitName} not found at {prefabPath}");
             return;
-        }
-
-        // Skip linking if the lockfile indicates that linking is complete
-        if (File.Exists(lockFilePath))
-        {
-            var lockFileContent = File.ReadAllText(lockFilePath);
-            if (lockFileContent.Contains("Linked: Complete"))
-            {
-                Debug.Log($"Skipping linking for {unitName} because it has already been linked.");
-                return;
-            }
         }
 
         // Load the prefab
@@ -203,9 +191,6 @@ public class CreatureLinker : Editor
 
         // Save the updated prefab
         PrefabUtility.SaveAsPrefabAsset(unitPrefab, prefabPath);
-
-        // Update the lockfile to indicate that linking is complete
-        File.WriteAllText(lockFilePath, "Hydration: Complete\nLinked: Complete");
 
         Debug.Log($"{unitName} script linked successfully.");
     }

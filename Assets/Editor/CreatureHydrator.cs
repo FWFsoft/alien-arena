@@ -46,18 +46,6 @@ public class CreatureHydrator : Editor
     {
         string unitName = Path.GetFileName(unitDir);
         string unitYamlPath = Path.Combine(unitDir, $"{unitName}.yml");
-        string lockFilePath = Path.Combine(unitDir, $"{unitName}.lock");
-
-        // Skip hydration if the lockfile exists and hydration is complete
-        if (File.Exists(lockFilePath))
-        {
-            var lockFileContent = File.ReadAllText(lockFilePath);
-            if (lockFileContent.Contains("Hydration: Complete"))
-            {
-                Debug.Log($"Skipping hydration for {unitName} because it has already been hydrated.");
-                return;
-            }
-        }
 
         if (!File.Exists(unitYamlPath))
         {
@@ -68,11 +56,8 @@ public class CreatureHydrator : Editor
         string yamlContent = File.ReadAllText(unitYamlPath);
         UnitDefinition unit = DeserializeYaml<UnitDefinition>(yamlContent);
 
-        // Hydrate the creature using the spec and directory
-        HydrateCreature(unit, generaName, unitName, unitDir);
-
-        // Create or update a lockfile to indicate that this creature has been hydrated
-        File.WriteAllText(lockFilePath, "Hydration: Complete\nLinked: Incomplete");
+        // Hydrate or update the creature using the spec and directory
+        HydrateOrUpdateCreature(unit, generaName, unitName, unitDir);
     }
 
     private static T DeserializeYaml<T>(string yamlContent)
@@ -84,21 +69,48 @@ public class CreatureHydrator : Editor
         return deserializer.Deserialize<T>(yamlContent);
     }
 
-    private static void HydrateCreature(UnitDefinition unit, string generaName, string unitName, string unitDir)
+    private static void HydrateOrUpdateCreature(UnitDefinition unit, string generaName, string unitName, string unitDir)
     {
-        // Create the Prefab
-        GameObject unitPrefab = new GameObject(unitName);
-        SpriteRenderer spriteRenderer = unitPrefab.AddComponent<SpriteRenderer>();
-        spriteRenderer.flipX = true;  // Sprite was showing up reversed
-        var animator = unitPrefab.AddComponent<Animator>();
+        string prefabPath = Path.Combine(unitDir, $"{unitName}.prefab");
+        GameObject unitPrefab;
 
-        // Create an Animator Controller within the unit's directory
+        // Check if the prefab already exists
+        if (File.Exists(prefabPath))
+        {
+            // Load the existing prefab
+            unitPrefab = PrefabUtility.LoadPrefabContents(prefabPath);
+        }
+        else
+        {
+            // Create a new prefab
+            unitPrefab = new GameObject(unitName);
+        }
+
+        // Add or update SpriteRenderer
+        SpriteRenderer spriteRenderer = unitPrefab.GetComponent<SpriteRenderer>() ?? unitPrefab.AddComponent<SpriteRenderer>();
+        spriteRenderer.flipX = true;
+
+        // Add or update Animator
+        Animator animator = unitPrefab.GetComponent<Animator>() ?? unitPrefab.AddComponent<Animator>();
+
+        // Create or load the Animator Controller within the unit's directory
         string animatorPath = Path.Combine(unitDir, $"{unitName}Controller.controller");
-        AnimatorController animatorController = AnimatorController.CreateAnimatorControllerAtPath(animatorPath);
+        AnimatorController animatorController;
 
-        // Add parameters for controlling the animations
-        animatorController.AddParameter("isMoving", AnimatorControllerParameterType.Bool);
-        animatorController.AddParameter("isDead", AnimatorControllerParameterType.Bool);
+        if (File.Exists(animatorPath))
+        {
+            // Load the existing Animator Controller
+            animatorController = AssetDatabase.LoadAssetAtPath<AnimatorController>(animatorPath);
+        }
+        else
+        {
+            // Create a new Animator Controller
+            animatorController = AnimatorController.CreateAnimatorControllerAtPath(animatorPath);
+        }
+
+        // Ensure 'isMoving' and 'isDead' parameters are present before setting transitions
+        AddAnimatorParameterIfNotExists(animatorController, "isMoving", AnimatorControllerParameterType.Bool);
+        AddAnimatorParameterIfNotExists(animatorController, "isDead", AnimatorControllerParameterType.Bool);
 
         // Initialize the Idle sprite
         Sprite idleSprite = null;
@@ -106,7 +118,7 @@ public class CreatureHydrator : Editor
         // Initialize the Idle canvas size
         CanvasSize idleCanvasSize = null;
 
-        // Create states for the animations
+        // Create or update states for the animations
         AnimatorState idleState = null;
         AnimatorState runState = null;
         AnimatorState dieState = null;
@@ -131,9 +143,9 @@ public class CreatureHydrator : Editor
                 continue;
             }
 
-            // Create and add AnimationClip to AnimatorController
-            AnimationClip clip = CreateAnimationClip(sprites, animationSpec.frames, animation.name, animationSpec.frameRate, animationFolderPath);
-            AnimatorState state = animatorController.layers[0].stateMachine.AddState(animation.name);
+            // Create and add or update AnimationClip to AnimatorController
+            AnimationClip clip = CreateOrUpdateAnimationClip(sprites, animationSpec.frames, animation.name, animationSpec.frameRate, animationFolderPath);
+            AnimatorState state = GetOrCreateAnimatorState(animatorController, animation.name);
 
             BaseAnimation baseAnimation = (BaseAnimation)Enum.Parse(typeof(BaseAnimation), animation.name, true);
             
@@ -164,40 +176,9 @@ public class CreatureHydrator : Editor
             animatorController.layers[0].stateMachine.defaultState = idleState;
         }
 
-        // Create transitions between Idle, Run, and Die states
-        if (idleState != null && runState != null)
-        {
-            // Idle -> Run
-            AnimatorStateTransition transitionToRun = idleState.AddTransition(runState);
-            transitionToRun.AddCondition(AnimatorConditionMode.If, 0, "isMoving");
-
-            // Run -> Idle
-            AnimatorStateTransition transitionToIdle = runState.AddTransition(idleState);
-            transitionToIdle.AddCondition(AnimatorConditionMode.IfNot, 0, "isMoving");
-        }
-
-        if (idleState != null && dieState != null)
-        {
-            // Idle -> Die
-            AnimatorStateTransition transitionToDieFromIdle = idleState.AddTransition(dieState);
-            transitionToDieFromIdle.AddCondition(AnimatorConditionMode.If, 0, "isDead");
-        }
-
-        if (runState != null && dieState != null)
-        {
-            // Run -> Die
-            AnimatorStateTransition transitionToDieFromRun = runState.AddTransition(dieState);
-            transitionToDieFromRun.AddCondition(AnimatorConditionMode.If, 0, "isDead");
-        }
+        // Create or update transitions between Idle, Run, and Die states
+        CreateOrUpdateTransitions(animatorController, idleState, runState, dieState);
         
-        if (dieState != null)
-        {
-            // Die -> Exit
-            AnimatorStateTransition transitionToExit = dieState.AddExitTransition();
-            transitionToExit.hasExitTime = true;
-            transitionToExit.exitTime = 1.0f; // This ensures the entire Die animation plays before exiting
-        }
-
         // Assign the Animator Controller
         animator.runtimeAnimatorController = animatorController;
 
@@ -206,9 +187,111 @@ public class CreatureHydrator : Editor
         {
             spriteRenderer.sprite = idleSprite;
         }
-        
-        // Add a CapsuleCollider2D component
-        var collider = unitPrefab.AddComponent<CapsuleCollider2D>();
+
+        // Add or update a CapsuleCollider2D component
+        UpdateOrAddCollider(unitPrefab, idleCanvasSize);
+
+        // Add or update a Rigidbody2D component
+        UpdateOrAddRigidbody(unitPrefab);
+
+        // Generate a new script extending the appropriate abstract class and place it in the unit's directory
+        string scriptPath = Path.Combine(unitDir, $"{unitName}.cs");
+        File.WriteAllText(scriptPath, GenerateScriptContent(unitName, generaName, unit.speed, unit.health));
+        AssetDatabase.ImportAsset(scriptPath);
+
+        // Save the prefab in the unit's directory
+        PrefabUtility.SaveAsPrefabAsset(unitPrefab, prefabPath);
+        PrefabUtility.UnloadPrefabContents(unitPrefab);
+    }
+
+    private static void CreateOrUpdateTransitions(AnimatorController controller, AnimatorState idleState, AnimatorState runState, AnimatorState dieState)
+    {
+        // Ensure parameters exist before creating transitions
+        var isMovingParam = controller.parameters.FirstOrDefault(p => p.name == "isMoving");
+        var isDeadParam = controller.parameters.FirstOrDefault(p => p.name == "isDead");
+
+        if (isMovingParam != null && idleState != null && runState != null)
+        {
+            // Idle -> Run
+            CreateOrUpdateTransition(idleState, runState, isMovingParam.name, true);
+
+            // Run -> Idle
+            CreateOrUpdateTransition(runState, idleState, isMovingParam.name, false);
+        }
+        else
+        {
+            Debug.LogWarning("Missing 'isMoving' parameter or states when creating transitions between Idle and Run.");
+        }
+
+        if (isDeadParam != null && idleState != null && dieState != null)
+        {
+            // Idle -> Die
+            CreateOrUpdateTransition(idleState, dieState, isDeadParam.name, true);
+        }
+
+        if (isDeadParam != null && runState != null && dieState != null)
+        {
+            // Run -> Die
+            CreateOrUpdateTransition(runState, dieState, isDeadParam.name, true);
+        }
+
+        if (dieState != null)
+        {
+            // Die -> Exit
+            var transitionToExit = dieState.AddExitTransition();
+            transitionToExit.hasExitTime = true;
+            transitionToExit.exitTime = 1.0f; // This ensures the entire Die animation plays before exiting
+        }
+    }
+
+
+    private static void AddAnimatorParameterIfNotExists(AnimatorController animatorController, string parameterName, AnimatorControllerParameterType type)
+    {
+        if (!animatorController.parameters.Any(p => p.name == parameterName))
+        {
+            animatorController.AddParameter(parameterName, type);
+        }
+    }
+
+    private static AnimatorState GetOrCreateAnimatorState(AnimatorController controller, string stateName)
+    {
+        var stateMachine = controller.layers[0].stateMachine;
+        var state = stateMachine.states.FirstOrDefault(s => s.state.name == stateName).state;
+
+        if (state == null)
+        {
+            state = stateMachine.AddState(stateName);
+        }
+
+        return state;
+    }
+
+    private static void CreateOrUpdateTransition(AnimatorState fromState, AnimatorState toState, string conditionName, bool conditionValue)
+    {
+        // Check if transition already exists
+        var existingTransition = fromState.transitions.FirstOrDefault(t => t.destinationState == toState);
+
+        if (existingTransition == null)
+        {
+            // Create a new transition if it doesn't exist
+            existingTransition = fromState.AddTransition(toState);
+        }
+
+        // Clear existing conditions to avoid any leftover references
+        existingTransition.conditions = null;
+
+        // Set the condition with an explicit reference to the parameter by name
+        existingTransition.AddCondition(conditionValue ? AnimatorConditionMode.If : AnimatorConditionMode.IfNot, 0, conditionName);
+
+        // Debug to verify that the transition is set correctly
+        Debug.Log($"Transition from '{fromState.name}' to '{toState.name}' using parameter '{conditionName}' set to '{conditionValue}'");
+    }
+
+    private static void UpdateOrAddCollider(GameObject unitPrefab, CanvasSize idleCanvasSize)
+    {
+        // Add or update CapsuleCollider2D component
+        var collider = unitPrefab.GetComponent<CapsuleCollider2D>() ?? unitPrefab.AddComponent<CapsuleCollider2D>();
+
         // Set the size of the collider
         if (idleCanvasSize != null)
         {
@@ -222,9 +305,13 @@ public class CreatureHydrator : Editor
         collider.isTrigger = true;
         collider.usedByEffector = false;
         collider.direction = CapsuleDirection2D.Vertical;
+    }
 
-        // Add a Rigidbody2D component
-        var rigidbody = unitPrefab.AddComponent<Rigidbody2D>();
+    private static void UpdateOrAddRigidbody(GameObject unitPrefab)
+    {
+        // Add or update Rigidbody2D component
+        var rigidbody = unitPrefab.GetComponent<Rigidbody2D>() ?? unitPrefab.AddComponent<Rigidbody2D>();
+
         // Set Rigidbody2D properties
         rigidbody.bodyType = RigidbodyType2D.Dynamic;
         rigidbody.gravityScale = 0;
@@ -237,16 +324,6 @@ public class CreatureHydrator : Editor
         rigidbody.sleepMode = RigidbodySleepMode2D.StartAwake;
         rigidbody.interpolation = RigidbodyInterpolation2D.None;
         rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-
-        // Generate a new script extending the appropriate abstract class and place it in the unit's directory
-        string scriptPath = Path.Combine(unitDir, $"{unitName}.cs");
-        File.WriteAllText(scriptPath, GenerateScriptContent(unitName, generaName, unit.speed, unit.health));
-        AssetDatabase.ImportAsset(scriptPath);
-
-        // Save the prefab in the unit's directory
-        string prefabPath = Path.Combine(unitDir, $"{unitName}.prefab");
-        PrefabUtility.SaveAsPrefabAsset(unitPrefab, prefabPath);
-        GameObject.DestroyImmediate(unitPrefab);
     }
 
 
@@ -304,10 +381,32 @@ public class CreatureHydrator : Editor
 
         return sprites.ToArray();
     }
-
-    private static AnimationClip CreateAnimationClip(Sprite[] sprites, int frames, string animationName, int frameRate, string animationFolderPath)
+    
+    private static AnimationClip CreateOrUpdateAnimationClip(Sprite[] sprites, int frames, string animationName, int frameRate, string animationFolderPath)
     {
-        AnimationClip clip = new AnimationClip();
+        string animFilePath = Path.Combine(animationFolderPath, $"{animationName}.anim");
+        AnimationClip clip;
+
+        // Check if the animation clip already exists
+        if (File.Exists(animFilePath))
+        {
+            // Load existing animation clip
+            clip = AssetDatabase.LoadAssetAtPath<AnimationClip>(animFilePath);
+
+            // Clear existing curve before updating
+            AnimationUtility.SetObjectReferenceCurve(clip, new EditorCurveBinding
+            {
+                path = "",
+                propertyName = "m_Sprite",
+                type = typeof(SpriteRenderer)
+            }, null);
+        }
+        else
+        {
+            // Create a new animation clip
+            clip = new AnimationClip();
+        }
+
         EditorCurveBinding curveBinding = new EditorCurveBinding
         {
             path = "",
@@ -336,9 +435,16 @@ public class CreatureHydrator : Editor
         settings.loopTime = true;
         AnimationUtility.SetAnimationClipSettings(clip, settings);
 
-        string animFilePath = Path.Combine(animationFolderPath, $"{animationName}.anim");
-        AssetDatabase.CreateAsset(clip, animFilePath);
-        
+        // Save the animation clip if it's newly created
+        if (!File.Exists(animFilePath))
+        {
+            AssetDatabase.CreateAsset(clip, animFilePath);
+        }
+        else
+        {
+            EditorUtility.SetDirty(clip);
+        }
+
         return clip;
     }           
 
