@@ -7,7 +7,7 @@ namespace Creatures.api.abilities.charged
      */
     public class StartChargingEvent : AbilityEvent
     {
-        public override AbilityExecutionResult Execute(IPlayable playable)
+        public override AbilityExecutionResult ExecuteAbility(IPlayable playable)
         {
             return playable.StartCharging(this);
         }

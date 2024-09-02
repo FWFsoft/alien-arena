@@ -9,7 +9,7 @@ namespace Creatures.api.abilities.character
      */
     public class CharacterAbilityEvent : AbilityEvent
     {
-        public override AbilityExecutionResult Execute(IPlayable playable)
+        public override AbilityExecutionResult ExecuteAbility(IPlayable playable)
         {
             return playable.CharacterAbility(this);
         }

@@ -1,4 +1,5 @@
 using Creatures.Api;
+using Creatures.api.abilities.states;
 
 namespace Creatures.api.abilities
 {
@@ -12,8 +13,14 @@ namespace Creatures.api.abilities
      */
     public abstract class AbilityEvent
     {
-        protected IAbilityState currentState;
-        public abstract AbilityExecutionResult Execute(IPlayable playable);
+        protected IAbilityState currentState = new ReadyState();
+
+        public AbilityExecutionResult Execute(IPlayable playable)
+        {
+            return currentState.Execute(playable, this);
+        }
+
+        public abstract AbilityExecutionResult ExecuteAbility(IPlayable playable);
         public void SetState(IAbilityState newState)
         {
             currentState.Exit();
