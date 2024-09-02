@@ -4,9 +4,9 @@ namespace Creatures.api.abilities.basic
 {
     public class BasicAttackEvent : AbilityEvent
     {
-        public override void Execute(IPlayable playable)
+        public override AbilityExecutionResult Execute(IPlayable playable)
         {
-            playable.BasicAttack(this);
+            return playable.BasicAttack(this);
         }
     }
 }

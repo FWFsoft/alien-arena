@@ -9,9 +9,9 @@ namespace Creatures.api.abilities.infusion
      */
     public class CoreInfusionAbilityEvent : AbilityEvent
     {
-        public override void Execute(IPlayable playable)
+        public override AbilityExecutionResult Execute(IPlayable playable)
         {
-            playable.CoreInfusionAbility(this);
+            return playable.CoreInfusionAbility(this);
         }
     }
 }

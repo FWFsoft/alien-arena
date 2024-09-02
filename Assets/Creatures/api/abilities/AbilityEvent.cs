@@ -12,6 +12,6 @@ namespace Creatures.api.abilities
      */
     public abstract class AbilityEvent
     {
-        public abstract void Execute(IPlayable playable);
+        public abstract AbilityExecutionResult Execute(IPlayable playable);
     }
 }

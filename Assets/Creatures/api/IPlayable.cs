@@ -12,7 +12,7 @@ namespace Creatures.Api
         // Basic Attack (aka LMB):
         // - Should be unaffected by Silence
         // - Only gated by GCD (aka no specific ability cooldown)
-        void BasicAttack(BasicAttackEvent basicAttackEvent);
+        AbilityExecutionResult BasicAttack(BasicAttackEvent basicAttackEvent);
         
         // Charged Ability (aka RMB):
         // - Player starts charging the ability by clicking RMB
@@ -20,23 +20,23 @@ namespace Creatures.Api
         // - Ability is activated when the player releases RMB
         // - Effects like Stuns or Silences will interrupt charging
         // - Only gated by GCD (aka no specific ability cooldown)
-        void StartCharging(StartChargingEvent startChargingEvent);
-        void InterruptCharging(InterruptChargingEvent interruptChargingEvent);
-        void ChargedAbility(ChargedAbilityEvent chargedAbilityEvent);
+        AbilityExecutionResult StartCharging(StartChargingEvent startChargingEvent);
+        AbilityExecutionResult InterruptCharging(InterruptChargingEvent interruptChargingEvent);
+        AbilityExecutionResult ChargedAbility(ChargedAbilityEvent chargedAbilityEvent);
         
         // Character Ability (aka Q):
         // - Unrestricted design space for characters, this should be
         // and iconic ability 
-        void CharacterAbility(CharacterAbilityEvent characterAbilityEvent);
+        AbilityExecutionResult CharacterAbility(CharacterAbilityEvent characterAbilityEvent);
         
         // Mobility Ability (aka LSHIFT):
         // - An ability that enhances a characters mobility
         // - For Defenders: this should be an additional Character Ability instead
-        void MobilityAbility(MobilityAbilityEvent mobilityAbilityEvent);
+        AbilityExecutionResult MobilityAbility(MobilityAbilityEvent mobilityAbilityEvent);
         
         // Core Infusion Ability (aka E):
         // - This is SET when the player equips their first infusion
-        void CoreInfusionAbility(CoreInfusionAbilityEvent coreInfusionAbilityEvent);
+        AbilityExecutionResult CoreInfusionAbility(CoreInfusionAbilityEvent coreInfusionAbilityEvent);
         ICoreInfusion CoreInfusion { get; set; }
     }
 }

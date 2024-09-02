@@ -7,9 +7,9 @@ namespace Creatures.api.abilities.charged
      */
     public class ChargedAbilityEvent : AbilityEvent
     {
-        public override void Execute(IPlayable playable)
+        public override AbilityExecutionResult Execute(IPlayable playable)
         {
-            playable.ChargedAbility(this);
+            return playable.ChargedAbility(this);
         }
     }
 }

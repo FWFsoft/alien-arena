@@ -13,9 +13,9 @@ namespace Creatures.api.abilities.charged
      */
     public class InterruptChargingEvent : AbilityEvent
     {
-        public override void Execute(IPlayable playable)
+        public override AbilityExecutionResult Execute(IPlayable playable)
         {
-            playable.InterruptCharging(this);
+            return playable.InterruptCharging(this);
         }
     }
 }
