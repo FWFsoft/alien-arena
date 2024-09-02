@@ -3,6 +3,7 @@ using Creatures.api.abilities.basic;
 using Creatures.api.abilities.character;
 using Creatures.api.abilities.charged;
 using Creatures.api.abilities.infusion;
+using Creatures.api.abilities.mobility;
 
 namespace Creatures.Api
 {
@@ -27,6 +28,11 @@ namespace Creatures.Api
         // - Unrestricted design space for characters, this should be
         // and iconic ability 
         void CharacterAbility(CharacterAbilityEvent characterAbilityEvent);
+        
+        // Mobility Ability (aka LSHIFT):
+        // - An ability that enhances a characters mobility
+        // - For Defenders: this should be an additional Character Ability instead
+        void MobilityAbility(MobilityAbilityEvent mobilityAbilityEvent);
         
         // Core Infusion Ability (aka E):
         // - This is SET when the player equips their first infusion
