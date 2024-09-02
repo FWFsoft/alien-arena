@@ -7,7 +7,7 @@ using Creatures.api.abilities.mobility;
 
 namespace Creatures.Api
 {
-    public interface IPlayable
+    public interface IPlayable : IStateNotifier
     {
         // Basic Attack (aka LMB):
         // - Should be unaffected by Silence

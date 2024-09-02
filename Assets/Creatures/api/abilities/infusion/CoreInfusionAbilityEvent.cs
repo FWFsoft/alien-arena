@@ -1,4 +1,5 @@
 using Creatures.Api;
+using Creatures.api.abilities.states;
 
 namespace Creatures.api.abilities.infusion
 {
@@ -12,6 +13,16 @@ namespace Creatures.api.abilities.infusion
         public override AbilityExecutionResult ExecuteAbility(IPlayable playable)
         {
             return playable.CoreInfusionAbility(this);
+        }
+        
+        public override void Subscribe(IStateNotifier notifier, CooldownState state)
+        {
+            notifier.Subscribe(state, this);
+        }
+        
+        public override void Unsubscribe(IStateNotifier notifier, CooldownState state)
+        {
+            notifier.Unsubscribe(state, this);
         }
     }
 }

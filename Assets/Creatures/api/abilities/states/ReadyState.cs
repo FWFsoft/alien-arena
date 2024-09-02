@@ -19,7 +19,7 @@ namespace Creatures.api.abilities.states
 
         public AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent)
         {
-            abilityEvent.SetState(new CooldownState());
+            abilityEvent.SetState(new CooldownState(playable, abilityEvent));
             return abilityEvent.ExecuteAbility(playable);
         }
     }

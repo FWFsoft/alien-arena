@@ -1,4 +1,5 @@
 using Creatures.Api;
+using Creatures.api.abilities.states;
 
 namespace Creatures.api.abilities.charged
 {
@@ -16,6 +17,16 @@ namespace Creatures.api.abilities.charged
         public override AbilityExecutionResult ExecuteAbility(IPlayable playable)
         {
             return playable.InterruptCharging(this);
+        }
+        
+        public override void Subscribe(IStateNotifier notifier, CooldownState state)
+        {
+            notifier.Subscribe(state, this);
+        }
+        
+        public override void Unsubscribe(IStateNotifier notifier, CooldownState state)
+        {
+            notifier.Unsubscribe(state, this);
         }
     }
 }
