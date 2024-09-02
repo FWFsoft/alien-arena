@@ -37,5 +37,6 @@ namespace Creatures.Api
         // Core Infusion Ability (aka E):
         // - This is SET when the player equips their first infusion
         void CoreInfusionAbility(CoreInfusionAbilityEvent coreInfusionAbilityEvent);
+        ICoreInfusion CoreInfusion { get; set; }
     }
 }
