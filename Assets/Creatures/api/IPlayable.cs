@@ -2,6 +2,7 @@ using Creatures.api.abilities;
 using Creatures.api.abilities.basic;
 using Creatures.api.abilities.character;
 using Creatures.api.abilities.charged;
+using Creatures.api.abilities.infusion;
 
 namespace Creatures.Api
 {
@@ -26,5 +27,9 @@ namespace Creatures.Api
         // - Unrestricted design space for characters, this should be
         // and iconic ability 
         void CharacterAbility(CharacterAbilityEvent characterAbilityEvent);
+        
+        // Core Infusion Ability (aka E):
+        // - This is SET when the player equips their first infusion
+        void CoreInfusionAbility(CoreInfusionAbilityEvent coreInfusionAbilityEvent);
     }
 }
