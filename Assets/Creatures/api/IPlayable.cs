@@ -1,5 +1,6 @@
 using Creatures.api.abilities;
 using Creatures.api.abilities.basic;
+using Creatures.api.abilities.character;
 using Creatures.api.abilities.charged;
 
 namespace Creatures.Api
@@ -20,5 +21,10 @@ namespace Creatures.Api
         void StartCharging(StartChargingEvent startChargingEvent);
         void InterruptCharging(InterruptChargingEvent interruptChargingEvent);
         void ChargedAttack(ChargedAttackEvent chargedAttackEvent);
+        
+        // Character Ability (aka Q):
+        // - Unrestricted design space for characters, this should be
+        // and iconic ability 
+        void CharacterAbility(CharacterAbilityEvent characterAbilityEvent);
     }
 }
