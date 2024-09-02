@@ -2,21 +2,25 @@ using Creatures.Api;
 
 namespace Creatures.api.abilities.states
 {
+    /**
+     * ReadyState indicates the ability is ready to be used.
+     */
     public class ReadyState : IAbilityState
     {
         public void Enter()
         {
-            throw new System.NotImplementedException();
+            // No-op
         }
 
         public void Exit()
         {
-            throw new System.NotImplementedException();
+            // No-op
         }
 
         public AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent)
         {
-            throw new System.NotImplementedException();
+            abilityEvent.SetState(new CooldownState());
+            return abilityEvent.ExecuteAbility(playable);
         }
     }
 }
