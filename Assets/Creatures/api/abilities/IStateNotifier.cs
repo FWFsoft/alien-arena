@@ -24,6 +24,7 @@ namespace Creatures.api.abilities
         void Unsubscribe(CooldownState cooldownState, CharacterAbilityEvent characterAbilityEvent);
         void Unsubscribe(CooldownState cooldownState, MobilityAbilityEvent mobilityAbilityEvent);
         void Unsubscribe(CooldownState cooldownState, CoreInfusionAbilityEvent coreInfusionAbilityEvent);
-        void Unsubscribe(ReactiveState reactiveState);
+        void Subscribe(DisabledState disabledState);
+        void Unsubscribe(DisabledState disabledState);
     }
 }

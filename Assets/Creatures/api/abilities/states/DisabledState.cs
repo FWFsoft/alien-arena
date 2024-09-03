@@ -2,21 +2,29 @@ using Creatures.Api;
 
 namespace Creatures.api.abilities.states
 {
-    public class DisabledState : IAbilityState
+    public class DisabledState : ReactiveState, IAbilityState
     {
-        public void Enter()
+        private readonly IStateNotifier disabledStateNotifier;
+
+        public DisabledState(IStateNotifier stateNotifier, AbilityEvent abilityEvent)
+            : base(abilityEvent)
         {
-            throw new System.NotImplementedException();
+            this.disabledStateNotifier = stateNotifier;
+        }
+        
+        public override void Enter()
+        {
+            disabledStateNotifier.Subscribe(this);
         }
 
-        public void Exit()
+        public override void Exit()
         {
-            throw new System.NotImplementedException();
+            disabledStateNotifier.Unsubscribe(this);
         }
 
-        public AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent)
+        public override AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent)
         {
-            throw new System.NotImplementedException();
+            return AbilityExecutionResult.Disabled;
         }
     }
 }
