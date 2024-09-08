@@ -14,7 +14,12 @@ namespace Creatures.api.abilities.infusion
         {
             return playable.CoreInfusionAbility(this);
         }
-        
+
+        public override AbilityIdentifier getId()
+        {
+            return AbilityIdentifier.CoreInfusionAbility;
+        }
+
         public override void Subscribe(IStateNotifier notifier, CooldownState state)
         {
             notifier.Subscribe(state, this);

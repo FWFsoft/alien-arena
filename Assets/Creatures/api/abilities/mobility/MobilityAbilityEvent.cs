@@ -15,7 +15,12 @@ namespace Creatures.api.abilities.mobility
         {
             return playable.MobilityAbility(this);
         }
-        
+
+        public override AbilityIdentifier getId()
+        {
+            return AbilityIdentifier.MobilityAbility;
+        }
+
         public override void Subscribe(IStateNotifier notifier, CooldownState state)
         {
             notifier.Subscribe(state, this);

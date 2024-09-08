@@ -12,7 +12,12 @@ namespace Creatures.api.abilities.charged
         {
             return playable.ChargedAbility(this);
         }
-        
+
+        public override AbilityIdentifier getId()
+        {
+            return AbilityIdentifier.ChargedAbility;
+        }
+
         public override void Subscribe(IStateNotifier notifier, CooldownState state)
         {
             notifier.Subscribe(state, this);

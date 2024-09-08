@@ -18,7 +18,12 @@ namespace Creatures.api.abilities.charged
         {
             return playable.InterruptCharging(this);
         }
-        
+
+        public override AbilityIdentifier getId()
+        {
+            return AbilityIdentifier.InterruptCharging;
+        }
+
         public override void Subscribe(IStateNotifier notifier, CooldownState state)
         {
             notifier.Subscribe(state, this);

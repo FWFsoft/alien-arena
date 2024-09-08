@@ -20,6 +20,8 @@ namespace Creatures.api.abilities
             return currentState.Execute(playable, this);
         }
 
+        public abstract AbilityIdentifier getId();
+
         public abstract void Subscribe(IStateNotifier notifier, CooldownState state);
         public abstract void Unsubscribe(IStateNotifier notifier, CooldownState state);
 

@@ -14,7 +14,12 @@ namespace Creatures.api.abilities.character
         {
             return playable.CharacterAbility(this);
         }
-        
+
+        public override AbilityIdentifier getId()
+        {
+            return AbilityIdentifier.CharacterAbility;
+        }
+
         public override void Subscribe(IStateNotifier notifier, CooldownState state)
         {
             notifier.Subscribe(state, this);

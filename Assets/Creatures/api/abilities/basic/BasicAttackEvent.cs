@@ -9,7 +9,12 @@ namespace Creatures.api.abilities.basic
         {
             return playable.BasicAttack(this);
         }
-        
+
+        public override AbilityIdentifier getId()
+        {
+            return AbilityIdentifier.BasicAttack;
+        }
+
         public override void Subscribe(IStateNotifier notifier, CooldownState state)
         {
             notifier.Subscribe(state, this);
