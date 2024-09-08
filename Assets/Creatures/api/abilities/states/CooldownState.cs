@@ -7,7 +7,7 @@ namespace Creatures.api.abilities.states
 {
     public class CooldownState : ReactiveState, IAbilityState
     {
-        private readonly IStateNotifier cooldownStateNotifier;
+        protected readonly IStateNotifier cooldownStateNotifier;
         private float startTime;
 
         public CooldownState(IStateNotifier cooldownStateNotifier, AbilityEvent abilityEvent)
@@ -18,7 +18,7 @@ namespace Creatures.api.abilities.states
         
         public override void Enter()
         {
-            _abilityEvent.Subscribe(cooldownStateNotifier, this);
+            _abilityEvent.Subscribe(cooldownStateNotifier, this, false);
         }
 
         public override void Exit()

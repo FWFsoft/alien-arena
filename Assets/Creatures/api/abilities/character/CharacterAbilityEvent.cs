@@ -20,9 +20,13 @@ namespace Creatures.api.abilities.character
             return AbilityIdentifier.CharacterAbility;
         }
 
-        public override void Subscribe(IStateNotifier notifier, CooldownState state)
+        public override void Subscribe(IStateNotifier notifier, CooldownState state, bool isTriggeredByGlobalCooldown)
         {
-            notifier.Subscribe(state, this.getId(), notifier.GetCharacterAbilityCooldown());
+            notifier.Subscribe(
+                state, 
+                getId(), 
+                notifier.GetCharacterAbilityCooldown(isTriggeredByGlobalCooldown)
+                );
         }
         
         public override void Unsubscribe(IStateNotifier notifier, CooldownState state)

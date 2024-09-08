@@ -24,7 +24,7 @@ namespace Creatures.api.abilities.charged
             return AbilityIdentifier.InterruptCharging;
         }
 
-        public override void Subscribe(IStateNotifier notifier, CooldownState state)
+        public override void Subscribe(IStateNotifier notifier, CooldownState state, bool isTriggeredByGlobalCooldown)
         {
             // Instantly complete the cooldown, since InterruptCharging shouldn't have a CD
             state.OnComplete();

@@ -22,7 +22,7 @@ namespace Creatures.api.abilities
 
         public abstract AbilityIdentifier getId();
 
-        public abstract void Subscribe(IStateNotifier notifier, CooldownState state);
+        public abstract void Subscribe(IStateNotifier notifier, CooldownState state, bool isTriggeredByGlobalCooldown);
         public abstract void Unsubscribe(IStateNotifier notifier, CooldownState state);
 
         public abstract AbilityExecutionResult ExecuteAbility(IPlayable playable);

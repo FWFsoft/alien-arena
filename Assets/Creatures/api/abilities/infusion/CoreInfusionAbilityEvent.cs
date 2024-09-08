@@ -20,9 +20,13 @@ namespace Creatures.api.abilities.infusion
             return AbilityIdentifier.CoreInfusionAbility;
         }
 
-        public override void Subscribe(IStateNotifier notifier, CooldownState state)
+        public override void Subscribe(IStateNotifier notifier, CooldownState state, bool isTriggeredByGlobalCooldown)
         {
-            notifier.Subscribe(state, this.getId(), notifier.GetCoreInfusionAbilityCooldown());
+            notifier.Subscribe(
+                state,
+                getId(),
+                notifier.GetCoreInfusionAbilityCooldown(isTriggeredByGlobalCooldown)
+                );
         }
         
         public override void Unsubscribe(IStateNotifier notifier, CooldownState state)

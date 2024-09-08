@@ -15,9 +15,13 @@ namespace Creatures.api.abilities.basic
             return AbilityIdentifier.BasicAttack;
         }
 
-        public override void Subscribe(IStateNotifier notifier, CooldownState state)
+        public override void Subscribe(IStateNotifier notifier, CooldownState state, bool isTriggeredByGlobalCooldown)
         {
-            notifier.Subscribe(state, this.getId(), notifier.GetBasicAttackCooldown());
+            notifier.Subscribe(
+                state, 
+                getId(), 
+                notifier.GetBasicAttackCooldown(isTriggeredByGlobalCooldown)
+                );
         }
         
         public override void Unsubscribe(IStateNotifier notifier, CooldownState state)

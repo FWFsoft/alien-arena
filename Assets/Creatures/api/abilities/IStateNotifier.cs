@@ -1,21 +1,65 @@
-using Creatures.Api;
-using Creatures.api.abilities.basic;
-using Creatures.api.abilities.character;
-using Creatures.api.abilities.charged;
-using Creatures.api.abilities.infusion;
-using Creatures.api.abilities.mobility;
 using Creatures.api.abilities.states;
 
 namespace Creatures.api.abilities
 {
     public interface IStateNotifier
     {
-     
-        float GetBasicAttackCooldown();
-        float GetStartChargingCooldown();
-        float GetCharacterAbilityCooldown();
-        float GetMobilityAbilityCooldown();
-        float GetCoreInfusionAbilityCooldown();
+        /// <summary>
+        /// Gets the final cooldown duration for the Basic Attack ability, considering all factors such as buffs, stats, procs, 
+        /// infusions, and whether the ability's affected by global cooldowns.
+        /// </summary>
+        /// <param name="isTriggeredByGlobalCooldown">Indicates whether the ability's cooldown is being affected by a global cooldown.</param>
+        /// <returns>
+        /// The final cooldown value for the Basic Attack ability, which includes any reductions or modifications 
+        /// due to buffs, stats, or other effects. If <paramref name="isTriggeredByGlobalCooldown"/> is true, the method 
+        /// also considers the global cooldown.
+        /// </returns>
+        float GetBasicAttackCooldown(bool isTriggeredByGlobalCooldown);
+
+        /// <summary>
+        /// Gets the final cooldown duration for the Start Charging ability, considering all factors such as buffs, stats, procs, 
+        /// infusions, and whether the ability's affected by global cooldowns.
+        /// </summary>
+        /// <param name="isTriggeredByGlobalCooldown">Indicates whether the ability's cooldown is being affected by a global cooldown.</param>
+        /// <returns>
+        /// The final cooldown value for the Start Charging ability, which includes any reductions or modifications 
+        /// due to external factors. If <paramref name="isTriggeredByGlobalCooldown"/> is true, the method also considers the global cooldown.
+        /// </returns>
+        float GetStartChargingCooldown(bool isTriggeredByGlobalCooldown);
+
+        /// <summary>
+        /// Gets the final cooldown duration for the Character Ability, considering all factors such as buffs, stats, procs, 
+        /// infusions, and whether the ability's affected by global cooldowns.
+        /// </summary>
+        /// <param name="isTriggeredByGlobalCooldown">Indicates whether the ability's cooldown is being affected by a global cooldown.</param>
+        /// <returns>
+        /// The final cooldown value for the Character Ability, which includes any reductions or modifications 
+        /// due to external factors. If <paramref name="isTriggeredByGlobalCooldown"/> is true, the method also considers the global cooldown.
+        /// </returns>
+        float GetCharacterAbilityCooldown(bool isTriggeredByGlobalCooldown);
+
+        /// <summary>
+        /// Gets the final cooldown duration for the Mobility Ability, considering all factors such as buffs, stats, procs, 
+        /// infusions, and whether the ability's affected by global cooldowns.
+        /// </summary>
+        /// <param name="isTriggeredByGlobalCooldown">Indicates whether the ability's cooldown is being affected by a global cooldown.</param>
+        /// <returns>
+        /// The final cooldown value for the Mobility Ability, which includes any reductions or modifications 
+        /// due to external factors. If <paramref name="isTriggeredByGlobalCooldown"/> is true, the method also considers the global cooldown.
+        /// </returns>
+        float GetMobilityAbilityCooldown(bool isTriggeredByGlobalCooldown);
+
+        /// <summary>
+        /// Gets the final cooldown duration for the Core Infusion ability, considering all factors such as buffs, stats, procs, 
+        /// infusions, and whether the ability's affected by global cooldowns.
+        /// </summary>
+        /// <param name="isTriggeredByGlobalCooldown">Indicates whether the ability's cooldown is being affected by a global cooldown.</param>
+        /// <returns>
+        /// The final cooldown value for the Core Infusion ability, which includes any reductions or modifications 
+        /// due to external factors. If <paramref name="isTriggeredByGlobalCooldown"/> is true, the method also considers the global cooldown.
+        /// </returns>
+        float GetCoreInfusionAbilityCooldown(bool isTriggeredByGlobalCooldown);
+
 
         /// <summary>
         /// Starts the cooldown for the specified ability with the given duration.

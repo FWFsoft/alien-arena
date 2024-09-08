@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Creatures.api.abilities;
 using Creatures.api.abilities.basic;
 using Creatures.api.abilities.character;
@@ -9,6 +10,29 @@ namespace Creatures.Api
 {
     public interface IPlayable : IStateNotifier
     {
+                
+        /// <summary>
+        /// Retrieves all abilities associated with the current playable character.
+        /// </summary>
+        /// <returns>
+        /// An <see cref="IEnumerable{T}"/> of <see cref="AbilityEvent"/> objects representing all abilities 
+        /// that the playable character can use.
+        /// </returns>
+        /// <remarks>
+        /// This method returns all abilities available to the character, including those that may be affected by global cooldowns.
+        /// </remarks>
+        IEnumerable<AbilityEvent> GetAbilities();
+        
+        /// <summary>
+        /// Triggers the global cooldown for all abilities except the one that is currently being used.
+        /// </summary>
+        /// <param name="abilityEvent">The ability that is currently being used and should not be affected by the global cooldown.</param>
+        /// <remarks>
+        /// This method sets all abilities, except the one provided by <paramref name="abilityEvent"/>, into a global cooldown state 
+        /// if they are subject to the global cooldown.
+        /// </remarks>
+        void triggerGlobalCooldown(AbilityEvent abilityEvent);
+        
         // Basic Attack (aka LMB):
         // - Should be unaffected by Silence
         // - Only gated by GCD (aka no specific ability cooldown)

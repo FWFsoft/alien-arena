@@ -21,9 +21,13 @@ namespace Creatures.api.abilities.mobility
             return AbilityIdentifier.MobilityAbility;
         }
 
-        public override void Subscribe(IStateNotifier notifier, CooldownState state)
+        public override void Subscribe(IStateNotifier notifier, CooldownState state, bool isTriggeredByGlobalCooldown)
         {
-            notifier.Subscribe(state, this.getId(), notifier.GetMobilityAbilityCooldown());
+            notifier.Subscribe(
+                state,
+                getId(),
+                notifier.GetMobilityAbilityCooldown(isTriggeredByGlobalCooldown)
+                );
         }
         
         public override void Unsubscribe(IStateNotifier notifier, CooldownState state)
