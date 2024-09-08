@@ -17,12 +17,12 @@ namespace Creatures.api.abilities.basic
 
         public override void Subscribe(IStateNotifier notifier, CooldownState state)
         {
-            notifier.Subscribe(state, this);
+            notifier.Subscribe(state, this.getId(), notifier.GetBasicAttackCooldown());
         }
         
         public override void Unsubscribe(IStateNotifier notifier, CooldownState state)
         {
-            notifier.Unsubscribe(state, this);
+            notifier.Unsubscribe(state, this.getId());
         }
     }
 }

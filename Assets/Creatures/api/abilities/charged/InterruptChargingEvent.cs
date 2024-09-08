@@ -26,12 +26,13 @@ namespace Creatures.api.abilities.charged
 
         public override void Subscribe(IStateNotifier notifier, CooldownState state)
         {
-            notifier.Subscribe(state, this);
+            // Instantly complete the cooldown, since InterruptCharging shouldn't have a CD
+            state.OnComplete();
         }
         
         public override void Unsubscribe(IStateNotifier notifier, CooldownState state)
         {
-            notifier.Unsubscribe(state, this);
+            // No-op since this should never be on CD
         }
     }
 }

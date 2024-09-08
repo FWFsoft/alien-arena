@@ -20,12 +20,12 @@ namespace Creatures.api.abilities.charged
 
         public override void Subscribe(IStateNotifier notifier, CooldownState state)
         {
-            notifier.Subscribe(state, this);
+            notifier.Subscribe(state, this.getId(), notifier.GetStartChargingCooldown());
         }
         
         public override void Unsubscribe(IStateNotifier notifier, CooldownState state)
         {
-            notifier.Unsubscribe(state, this);
+            notifier.Unsubscribe(state, this.getId());
         }
     }
 }
