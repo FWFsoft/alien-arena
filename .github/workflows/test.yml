@@ -18,7 +18,7 @@ jobs:
           dotnet-version: '6.0.x'
 
       - name: Run dotnet format
-        run: dotnet format alien-arena.sln --verify-no-changes --exclude *.csproj --exclude ./Library
+        run: dotnet format alien-arena.sln --verify-no-changes --exclude *.csproj --exclude ./Library  -v diag
 
   unity-test:
     runs-on: ubuntu-latest
