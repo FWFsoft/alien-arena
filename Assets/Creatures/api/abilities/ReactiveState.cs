@@ -6,7 +6,7 @@ namespace Creatures.Api
     public abstract class ReactiveState : IAbilityState
     {
         protected AbilityEvent _abilityEvent;
-        
+
         public abstract void Enter();
         public abstract void Exit();
         public abstract AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent);

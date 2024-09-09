@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using Unity.VisualScripting.FullSerializer;
+
 using UnityEngine;
 
 // Note: Singleton that represents all effects registered by enemies in the game.
@@ -9,7 +11,7 @@ using UnityEngine;
 // A DI container might be preferable if we wanted to unit test things
 public static class GlobalEffectsManager
 {
-    private static List<EffectsManagerScript> registeredEffectsManagers = new List<EffectsManagerScript>() ;
+    private static List<EffectsManagerScript> registeredEffectsManagers = new List<EffectsManagerScript>();
 
     public static void AddEffectsManagerReference(EffectsManagerScript effectsManagerScript)
     {
@@ -21,11 +23,11 @@ public static class GlobalEffectsManager
     {
         registeredEffectsManagers.Remove(effectsManagerScript);
     }
-    
+
     // TODO: Too tightly coupled?
     public static void doubleStacksOfFrothy()
     {
-        foreach(var effectsManager in registeredEffectsManagers)
+        foreach (var effectsManager in registeredEffectsManagers)
         {
             Debug.Log("Doubling stacks");
             effectsManager.doubleEffectStackIfPresent(Frothy.EFFECT_NAME);

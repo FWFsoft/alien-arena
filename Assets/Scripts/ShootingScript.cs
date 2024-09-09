@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 using UnityEngine.InputSystem;
@@ -19,7 +20,7 @@ public class ShootingScript : MonoBehaviour
     private bool canUseTab = true;
     private float tabTimer = 0;
     public float timeBetweenTab = 5;
-    
+
     private bool canUseD = true;
     private float dTimer = 0;
     public float timeBetweenD = 1;
@@ -39,7 +40,7 @@ public class ShootingScript : MonoBehaviour
     void Update()
     {
         // Paused
-        if(Time.timeScale == 0)
+        if (Time.timeScale == 0)
         {
             return;
         }
@@ -48,7 +49,7 @@ public class ShootingScript : MonoBehaviour
         if (!canFire)
         {
             timer += Time.deltaTime;
-            if(timer > timeBetweenFiring)
+            if (timer > timeBetweenFiring)
             {
                 canFire = true;
                 timer = 0;
@@ -64,7 +65,7 @@ public class ShootingScript : MonoBehaviour
             fireBullet();
         }
 
-        if(!canUseTab)
+        if (!canUseTab)
         {
             tabTimer += Time.deltaTime;
             if (tabTimer > timeBetweenTab)
@@ -74,7 +75,7 @@ public class ShootingScript : MonoBehaviour
             }
 
         }
-        if(input.tabPressed && canUseTab)
+        if (input.tabPressed && canUseTab)
         {
             canUseTab = false;
             StartCoroutine(fireD());

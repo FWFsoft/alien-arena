@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class CursorController : MonoBehaviour
@@ -11,7 +12,7 @@ public class CursorController : MonoBehaviour
 
     private Texture2D currentCursor;
 
-    private Vector2 hotSpot = new Vector2(0,0);
+    private Vector2 hotSpot = new Vector2(0, 0);
 
     void Start()
     {
@@ -23,7 +24,8 @@ public class CursorController : MonoBehaviour
         {
             currentCursor = clickCursor;
             Cursor.SetCursor(clickCursor, hotSpot, CursorMode.ForceSoftware);
-        } else if(!inputHandler.fire && currentCursor != defaultCursor)
+        }
+        else if (!inputHandler.fire && currentCursor != defaultCursor)
         {
             Cursor.SetCursor(defaultCursor, hotSpot, CursorMode.ForceSoftware);
             currentCursor = defaultCursor;

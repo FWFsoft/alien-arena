@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using Spawner.Api;
+
 using Creatures.Api;
 
-namespace Spawner.impl {
+using Spawner.Api;
+
+using UnityEngine;
+
+namespace Spawner.impl
+{
     public class SizeSpawnAction : CreatureSpawnAction
     {
         private readonly float sizeMultiplier;

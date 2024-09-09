@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using Creatures.Api;
+
 using Spawner.Api;
+
 using UnityEngine;
 
 namespace Spawner.Api
@@ -12,14 +15,16 @@ namespace Spawner.Api
         private Stack<CreatureSpawnAction> spawnActions;
         private Creature creatureInstance;
 
-        public SpawnChain(Creature creature, GameObject spawnPoint) {
+        public SpawnChain(Creature creature, GameObject spawnPoint)
+        {
             this.spawnActions = new Stack<CreatureSpawnAction>();
             this.creatureInstance = Object.Instantiate(creature, spawnPoint.transform.position, Quaternion.identity);
-            this.spawnPoint = spawnPoint;            
+            this.spawnPoint = spawnPoint;
         }
 
-        public SpawnChain with(CreatureSpawnAction spawner) {
-            spawnActions.Push(spawner); 
+        public SpawnChain with(CreatureSpawnAction spawner)
+        {
+            spawnActions.Push(spawner);
             return this;
         }
 

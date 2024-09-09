@@ -1,8 +1,10 @@
-﻿using UnityEngine;
-using UnityEditor;
 using System;
 using System.IO;
 using System.Linq;
+
+using UnityEditor;
+
+using UnityEngine;
 
 public class CreatureLinker : Editor
 {
@@ -112,14 +114,14 @@ public class CreatureLinker : Editor
         if (healthScript == null)
         {
             healthScript = unitPrefab.AddComponent<HealthScript>();
-            
+
             // Set the HealthScript field on the scriptComponent
             var healthScriptFieldScriptComponent = scriptType.GetProperty("HealthScript");
             if (healthScriptFieldScriptComponent != null && healthScriptFieldScriptComponent.CanWrite)
             {
                 healthScriptFieldScriptComponent.SetValue(scriptComponent, healthScript);
             }
-            
+
             var healthAnimatorField = healthScript.GetType().GetField("enemyAnimator");
             if (healthAnimatorField != null)
             {
@@ -129,10 +131,10 @@ public class CreatureLinker : Editor
             var healthBarField = healthScript.GetType().GetField("healthBar");
             if (healthBarField != null)
             {
-                
+
                 string healthBarPath = "Assets/AlienScifiCharacter/InnerHealthBar.prefab";
                 GameObject healthBarPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(healthBarPath);
-                
+
                 healthBarField.SetValue(healthScript, healthBarPrefab);
             }
         }
@@ -163,7 +165,7 @@ public class CreatureLinker : Editor
             var effectsAnimatorField = effectsManagerScript.GetType().GetField("effectsAnimator");
             if (effectsAnimatorField != null)
             {
-                
+
                 var dotControllerPath = "Assets/AlienScifiCharacter/DotController.prefab";
                 GameObject dotControllerPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(dotControllerPath);
                 effectsAnimatorField.SetValue(effectsManagerScript, dotControllerPrefab.GetComponent<Animator>());
@@ -172,7 +174,7 @@ public class CreatureLinker : Editor
             // Optionally call the SetupInstance method
             effectsManagerScript.SetupInstance();
         }
-        
+
         // Calculate and set the death animation length
         AnimationClip deathClip = animator.runtimeAnimatorController.animationClips.FirstOrDefault(clip => clip.name.Contains("Die"));
         if (deathClip != null)
