@@ -1,98 +1,89 @@
-using Creatures.Api;
-using Creatures.api.abilities.basic;
-using Creatures.api.abilities.character;
-using Creatures.api.abilities.charged;
-using Creatures.api.abilities.infusion;
-using Creatures.api.abilities.mobility;
 using Creatures.api.abilities.states;
 
 namespace Creatures.api.abilities
 {
     public interface IStateNotifier
     {
-        /**
-         * Begin the cooldown for BasicAttack, and call CooldownState.OnComplete when
-         * BasicAttack should enter the ReadyState (aka come off cooldown)
-         */
-        void Subscribe(CooldownState cooldownState, BasicAttackEvent basicAttackEvent);
+        /// <summary>
+        /// Gets the final cooldown duration for the Basic Attack ability, considering all factors such as buffs, stats, procs, 
+        /// infusions, and whether the ability's affected by global cooldowns.
+        /// </summary>
+        /// <param name="isTriggeredByGlobalCooldown">Indicates whether the ability's cooldown is being affected by a global cooldown.</param>
+        /// <returns>
+        /// The final cooldown value for the Basic Attack ability, which includes any reductions or modifications 
+        /// due to buffs, stats, or other effects. If <paramref name="isTriggeredByGlobalCooldown"/> is true, the method 
+        /// also considers the global cooldown.
+        /// </returns>
+        float GetBasicAttackCooldown(bool isTriggeredByGlobalCooldown);
+
+        /// <summary>
+        /// Gets the final cooldown duration for the Start Charging ability, considering all factors such as buffs, stats, procs, 
+        /// infusions, and whether the ability's affected by global cooldowns.
+        /// </summary>
+        /// <param name="isTriggeredByGlobalCooldown">Indicates whether the ability's cooldown is being affected by a global cooldown.</param>
+        /// <returns>
+        /// The final cooldown value for the Start Charging ability, which includes any reductions or modifications 
+        /// due to external factors. If <paramref name="isTriggeredByGlobalCooldown"/> is true, the method also considers the global cooldown.
+        /// </returns>
+        float GetStartChargingCooldown(bool isTriggeredByGlobalCooldown);
+
+        /// <summary>
+        /// Gets the final cooldown duration for the Character Ability, considering all factors such as buffs, stats, procs, 
+        /// infusions, and whether the ability's affected by global cooldowns.
+        /// </summary>
+        /// <param name="isTriggeredByGlobalCooldown">Indicates whether the ability's cooldown is being affected by a global cooldown.</param>
+        /// <returns>
+        /// The final cooldown value for the Character Ability, which includes any reductions or modifications 
+        /// due to external factors. If <paramref name="isTriggeredByGlobalCooldown"/> is true, the method also considers the global cooldown.
+        /// </returns>
+        float GetCharacterAbilityCooldown(bool isTriggeredByGlobalCooldown);
+
+        /// <summary>
+        /// Gets the final cooldown duration for the Mobility Ability, considering all factors such as buffs, stats, procs, 
+        /// infusions, and whether the ability's affected by global cooldowns.
+        /// </summary>
+        /// <param name="isTriggeredByGlobalCooldown">Indicates whether the ability's cooldown is being affected by a global cooldown.</param>
+        /// <returns>
+        /// The final cooldown value for the Mobility Ability, which includes any reductions or modifications 
+        /// due to external factors. If <paramref name="isTriggeredByGlobalCooldown"/> is true, the method also considers the global cooldown.
+        /// </returns>
+        float GetMobilityAbilityCooldown(bool isTriggeredByGlobalCooldown);
+
+        /// <summary>
+        /// Gets the final cooldown duration for the Core Infusion ability, considering all factors such as buffs, stats, procs, 
+        /// infusions, and whether the ability's affected by global cooldowns.
+        /// </summary>
+        /// <param name="isTriggeredByGlobalCooldown">Indicates whether the ability's cooldown is being affected by a global cooldown.</param>
+        /// <returns>
+        /// The final cooldown value for the Core Infusion ability, which includes any reductions or modifications 
+        /// due to external factors. If <paramref name="isTriggeredByGlobalCooldown"/> is true, the method also considers the global cooldown.
+        /// </returns>
+        float GetCoreInfusionAbilityCooldown(bool isTriggeredByGlobalCooldown);
+
+
+        /// <summary>
+        /// Starts the cooldown for the specified ability with the given duration.
+        /// </summary>
+        /// <param name="cooldownState">The state object that represents the cooldown state of the ability.</param>
+        /// <param name="abilityIdentifier">The unique identifier of the ability whose cooldown is being started.</param>
+        /// <param name="cooldownDuration">The duration of the cooldown in seconds.</param>
+        /// <remarks>
+        /// The cooldown timer runs asynchronously, and once the specified <paramref name="cooldownDuration"/> elapses, 
+        /// the method triggers <see cref="CooldownState.OnComplete"/> to indicate that the cooldown has finished.
+        /// </remarks>
+        void Subscribe(CooldownState cooldownState, AbilityIdentifier abilityIdentifier, float cooldownDuration);
         
-        /**
-         * Begin the cooldown for StartCharging, and call CooldownState.OnComplete when
-         * StartCharging should enter the ReadyState (aka come off cooldown)
-         */
-        void Subscribe(CooldownState cooldownState, StartChargingEvent startChargingEvent);
-        
-        /**
-         *  This should just immediately call CooldownState.OnComplete because being interrupted
-         *  on your charge shouldn't have a cooldown.
-         */
-        void Subscribe(CooldownState cooldownState, InterruptChargingEvent interruptChargingEvent);
-        
-        /**
-         *  This should just immediately call CooldownState.OnComplete because ending your charge
-         *  shouldn't have a cooldown. We'll control the CD of the charged attack by having a
-         *  cooldown on STARTING the charge.
-         */
-        void Subscribe(CooldownState cooldownState, ChargedAbilityEvent chargedAbilityEvent);
-        
-        /**
-         * Begin the cooldown for CharacterAbility, and call CooldownState.OnComplete when
-         * CharacterAbility should enter the ReadyState (aka come off cooldown)
-         */
-        void Subscribe(CooldownState cooldownState, CharacterAbilityEvent characterAbilityEvent);
-        
-        /**
-         * Begin the cooldown for MobilityAbility, and call CooldownState.OnComplete when
-         * MobilityAbility should enter the ReadyState (aka come off cooldown)
-         */
-        void Subscribe(CooldownState cooldownState, MobilityAbilityEvent mobilityAbilityEvent);
-        
-        /**
-         * Begin the cooldown for MobilityAbility, and call CooldownState.OnComplete when
-         * MobilityAbility should enter the ReadyState (aka come off cooldown)
-         */
-        void Subscribe(CooldownState cooldownState, CoreInfusionAbilityEvent coreInfusionAbilityEvent);
-        
-        /**
-         * Signifies that the next BasicAttackEvent will not be blocked on the cooldown. Can
-         * use this as an opportunity to reset a cooldown timer or clear out any temp state.
-         */
-        void Unsubscribe(CooldownState cooldownState, BasicAttackEvent basicAttackEvent);
-        
-        /**
-         * Signifies that the next StartChargingEvent will not be blocked on the cooldown. Can
-         * use this as an opportunity to reset a cooldown timer or clear out any temp state.
-         */
-        void Unsubscribe(CooldownState cooldownState, StartChargingEvent startChargingEvent);
-        
-        /**
-         * This should just No-Op, unless later on we decide to have a cooldown on interrupt
-         */
-        void Unsubscribe(CooldownState cooldownState, InterruptChargingEvent interruptChargingEvent);
-        
-        /**
-         * This should just No-Op, should never reject a ChargedAbilityEvent due to cooldown so we
-         * shouldn't have anything from Subscribe to clean up
-         */
-        void Unsubscribe(CooldownState cooldownState, ChargedAbilityEvent chargedAbilityEvent);
-        
-        /**
-         * Signifies that the next CharacterAbilityEvent will not be blocked on the cooldown. Can
-         * use this as an opportunity to reset a cooldown timer or clear out any temp state.
-         */
-        void Unsubscribe(CooldownState cooldownState, CharacterAbilityEvent characterAbilityEvent);
-        
-        /**
-         * Signifies that the next MobilityAbilityEvent will not be blocked on the cooldown. Can
-         * use this as an opportunity to reset a cooldown timer or clear out any temp state.
-         */
-        void Unsubscribe(CooldownState cooldownState, MobilityAbilityEvent mobilityAbilityEvent);
-        
-        /**
-         * Signifies that the next CoreInfusionAbilityEvent will not be blocked on the cooldown. Can
-         * use this as an opportunity to reset a cooldown timer or clear out any temp state.
-         */
-        void Unsubscribe(CooldownState cooldownState, CoreInfusionAbilityEvent coreInfusionAbilityEvent);
+        /// <summary>
+        /// Cancels the active cooldown for the specified ability and unsubscribes from the cooldown state.
+        /// </summary>
+        /// <param name="cooldownState">The state object representing the cooldown state of the ability.</param>
+        /// <param name="abilityIdentifier">The unique identifier of the ability whose cooldown is being canceled.</param>
+        /// <remarks>
+        /// This method stops the ongoing cooldown for the ability identified by <paramref name="abilityIdentifier"/> 
+        /// and unsubscribes the ability from the current <paramref name="cooldownState"/>. If the ability is not 
+        /// currently on cooldown, the method performs no action.
+        /// </remarks>
+        void Unsubscribe(CooldownState cooldownState, AbilityIdentifier abilityIdentifier);
         
         /**
          * Disabled functions more like a typical pub/sub, because disabling abilities will likely
