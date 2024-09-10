@@ -1,5 +1,6 @@
-using UnityEngine;
 using Creatures.Api;
+
+using UnityEngine;
 
 namespace Creatures.impl
 {

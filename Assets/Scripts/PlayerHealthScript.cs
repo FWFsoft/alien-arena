@@ -13,6 +13,6 @@ public class PlayerHealthScript : MonoBehaviour
     {
         var spritePosition = Mathf.Max(0, Mathf.FloorToInt((sprites.Length - 1) * blasterPlayerScript.playerHealthPercentage));
         healthBarImage.sprite = sprites[spritePosition];
-        
+
     }
 }

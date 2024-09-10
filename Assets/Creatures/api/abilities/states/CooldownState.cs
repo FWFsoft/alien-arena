@@ -1,6 +1,9 @@
 using Creatures.Api;
+
 using Unity.VisualScripting;
+
 using UnityEditor;
+
 using UnityEngine.InputSystem.EnhancedTouch;
 
 namespace Creatures.api.abilities.states
@@ -15,7 +18,7 @@ namespace Creatures.api.abilities.states
         {
             this.cooldownStateNotifier = cooldownStateNotifier;
         }
-        
+
         public override void Enter()
         {
             _abilityEvent.Subscribe(cooldownStateNotifier, this, false);

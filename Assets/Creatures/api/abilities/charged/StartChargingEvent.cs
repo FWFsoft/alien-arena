@@ -1,5 +1,5 @@
-using Creatures.Api;
 using Creatures.api.abilities.states;
+using Creatures.Api;
 
 namespace Creatures.api.abilities.charged
 {
@@ -21,12 +21,12 @@ namespace Creatures.api.abilities.charged
         public override void Subscribe(IStateNotifier notifier, CooldownState state, bool isTriggeredByGlobalCooldown)
         {
             notifier.Subscribe(
-                state, 
-                getId(), 
+                state,
+                getId(),
                 notifier.GetStartChargingCooldown(isTriggeredByGlobalCooldown)
                 );
         }
-        
+
         public override void Unsubscribe(IStateNotifier notifier, CooldownState state)
         {
             notifier.Unsubscribe(state, this.getId());

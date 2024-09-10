@@ -1,25 +1,44 @@
-name: Runs tests on Pull Requests
-on: pull_request
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+name: Lint and Test Unity Project
+
+on: [pull_request]
+
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dotnet-format globally
+        run: dotnet tool install -g dotnet-format
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+
+      - name: Run dotnet format
+        run: dotnet format ./Assets/Assets.csproj --verify-no-changes
+
   unity-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v3
-      - uses: actions/cache@v3
+
+      - name: Cache Unity Library
+        uses: actions/cache@v3
         with:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-
-      - name: Run tests
+
+      - name: Run Unity tests
         uses: game-ci/unity-test-runner@v4
         env:
-            UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-            UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-            UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-            projectPath: "."
+          projectPath: "."

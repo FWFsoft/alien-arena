@@ -1,5 +1,5 @@
-using Creatures.Api;
 using Creatures.api.abilities.states;
+using Creatures.Api;
 
 namespace Creatures.api.abilities
 {

@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections.Generic;
+
+using UnityEngine;
 
 namespace Creatures.Api
 {
@@ -25,7 +26,7 @@ namespace Creatures.Api
 
         [SerializeField]
         private HealthScript healthScript;
-        
+
 
         // Public properties to encapsulate the fields
         public Animator Animator

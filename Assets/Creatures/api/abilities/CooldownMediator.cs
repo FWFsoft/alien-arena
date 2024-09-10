@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Creatures.api.abilities.states;
 
 namespace Creatures.api.abilities
@@ -35,7 +36,7 @@ namespace Creatures.api.abilities
             {
                 existingCancellationToken.Cancel(); // Cancel any existing cooldown
             }
-            
+
             try
             {
                 var cancellationTokenSource = new CancellationTokenSource();
@@ -49,7 +50,7 @@ namespace Creatures.api.abilities
             }
         }
 
-        
+
         /// <summary>
         /// Cancels the active cooldown for the specified ability, causing the cooldown to complete immediately.
         /// </summary>
@@ -66,7 +67,7 @@ namespace Creatures.api.abilities
             }
         }
 
-        
+
         /// <summary>
         /// Cancels all active cooldowns, causing all abilities to complete their cooldowns immediately.
         /// </summary>

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+
 using UnityEngine;
 
 namespace Creatures.Api
@@ -9,13 +10,13 @@ namespace Creatures.Api
         private List<Transform> patrolPoints = new List<Transform>();
 
         private int currentPatrolIndex = 0;
-        
+
         public List<Transform> PatrolPoints
         {
             get => patrolPoints;
             set => patrolPoints = value;
         }
-        
+
         protected virtual void Update()
         {
             if (HealthScript.isDead())
@@ -23,11 +24,12 @@ namespace Creatures.Api
                 return;
             }
             var target = findPlayerInRange();
-            if(target == null)
+            if (target == null)
             {
                 Animator.SetBool("isMoving", false);
                 // Add patrol in here
-            } else
+            }
+            else
             {
                 // Move towards player
                 // TODO: Add an attack when a certain distance away
@@ -40,7 +42,7 @@ namespace Creatures.Api
                 transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
             }
         }
-        
+
         protected virtual void Patrol()
         {
             if (PatrolPoints == null || PatrolPoints.Count == 0)
@@ -61,7 +63,7 @@ namespace Creatures.Api
                 currentPatrolIndex = (currentPatrolIndex + 1) % PatrolPoints.Count;
             }
         }
-        
+
         protected virtual void MoveTowardsTarget(GameObject target)
         {
             var isLeft = target.transform.position.x < transform.position.x;

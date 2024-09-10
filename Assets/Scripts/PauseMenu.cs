@@ -8,12 +8,13 @@ public class PauseMenu : MonoBehaviour
     private bool isPaused = false;
     private void Update()
     {
-        if(inputHandler.togglePause)
+        if (inputHandler.togglePause)
         {
-            if(!isPaused)
+            if (!isPaused)
             {
                 Pause();
-            } else
+            }
+            else
             {
                 Resume();
             }

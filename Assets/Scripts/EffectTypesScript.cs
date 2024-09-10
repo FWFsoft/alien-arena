@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+
 using UnityEngine;
 
 // All effects have to implement this interface
@@ -60,7 +61,7 @@ public static class EffectFactory
     public static IEffect createEffect(string effectName)
     {
         var effect = effects.First(effect => effectName.Equals(effect.getEffectName(), System.StringComparison.InvariantCultureIgnoreCase));
-        if(effect == null)
+        if (effect == null)
         {
             throw new System.Exception("Effect Name Invalid");
         }

@@ -72,7 +72,7 @@ namespace Creatures.api.abilities
         /// the method triggers <see cref="CooldownState.OnComplete"/> to indicate that the cooldown has finished.
         /// </remarks>
         void Subscribe(CooldownState cooldownState, AbilityIdentifier abilityIdentifier, float cooldownDuration);
-        
+
         /// <summary>
         /// Cancels the active cooldown for the specified ability and unsubscribes from the cooldown state.
         /// </summary>
@@ -84,7 +84,7 @@ namespace Creatures.api.abilities
         /// currently on cooldown, the method performs no action.
         /// </remarks>
         void Unsubscribe(CooldownState cooldownState, AbilityIdentifier abilityIdentifier);
-        
+
         /**
          * Disabled functions more like a typical pub/sub, because disabling abilities will likely
          * span multiple abilities and begin and end all of those disabled states at the same time.
@@ -93,7 +93,7 @@ namespace Creatures.api.abilities
          * on when the Disabled effect ends.
          */
         void Subscribe(DisabledState disabledState);
-        
+
         /**
          * See above Subscribe comment for more detail, this is the clean-up action that occurs once
          * all the abilities have exited the disabled state.

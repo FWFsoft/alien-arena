@@ -11,7 +11,7 @@ namespace Creatures.api.abilities.states
         {
             this.disabledStateNotifier = stateNotifier;
         }
-        
+
         public override void Enter()
         {
             disabledStateNotifier.Subscribe(this);

@@ -1,5 +1,5 @@
-using Creatures.Api;
 using Creatures.api.abilities.states;
+using Creatures.Api;
 
 namespace Creatures.api.abilities.charged
 {
@@ -29,7 +29,7 @@ namespace Creatures.api.abilities.charged
             // Instantly complete the cooldown, since InterruptCharging shouldn't have a CD
             state.OnComplete();
         }
-        
+
         public override void Unsubscribe(IStateNotifier notifier, CooldownState state)
         {
             // No-op since this should never be on CD

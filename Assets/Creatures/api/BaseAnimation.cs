@@ -5,8 +5,8 @@ namespace Creatures.Api
     public enum BaseAnimation
     {
         Run,
-        Idle, 
+        Idle,
         Die
     }
-   
+
 }

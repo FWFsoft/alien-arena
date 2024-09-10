@@ -1,5 +1,5 @@
-using Creatures.Api;
 using Creatures.api.abilities.states;
+using Creatures.Api;
 
 namespace Creatures.api.abilities.infusion
 {
@@ -28,7 +28,7 @@ namespace Creatures.api.abilities.infusion
                 notifier.GetCoreInfusionAbilityCooldown(isTriggeredByGlobalCooldown)
                 );
         }
-        
+
         public override void Unsubscribe(IStateNotifier notifier, CooldownState state)
         {
             notifier.Unsubscribe(state, this.getId());

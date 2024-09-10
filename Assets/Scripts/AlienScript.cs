@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using Creatures.Api;
+
 using UnityEditor;
+
 using UnityEngine;
 
 public class AlienScript : Creature
@@ -15,11 +18,12 @@ public class AlienScript : Creature
             return;
         }
         var target = findPlayerInRange();
-        if(target == null)
+        if (target == null)
         {
             Animator.SetBool("isMoving", false);
             // Add patrol in here
-        } else
+        }
+        else
         {
             // Move towards player
             // TODO: Add an attack when a certain distance away

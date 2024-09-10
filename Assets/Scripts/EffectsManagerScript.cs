@@ -1,8 +1,9 @@
 
-using UnityEngine;
-using System.Collections.Generic;
 using System.Collections;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
+
+using UnityEngine;
 
 class EffectInstance
 {
@@ -29,13 +30,13 @@ class EffectInstance
 
     public void incrementStackAndTicks()
     {
-        if(effect.getMaxStacks() > stacks)
+        if (effect.getMaxStacks() > stacks)
         {
             stacks++;
         }
         // If we're at max stacks, still refresh the ticks
         ticks = effect.getMaxTicks();
-        
+
     }
 
     public int getStacks()
@@ -76,9 +77,10 @@ public class EffectsManagerScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // TODO: reusable for other characters
-        if(collision.gameObject.TryGetComponent<EffectHolderScript>(out var effectHolder))
+        if (collision.gameObject.TryGetComponent<EffectHolderScript>(out var effectHolder))
         {
-            foreach(var effectType in effectHolder.effectTypes) {
+            foreach (var effectType in effectHolder.effectTypes)
+            {
                 // Join like effects
                 var effect = EffectFactory.createEffect(effectType);
                 var effectName = effect.getEffectName();
@@ -97,7 +99,7 @@ public class EffectsManagerScript : MonoBehaviour
 
     public void doubleEffectStackIfPresent(string effectName)
     {
-        if(effectInstances.ContainsKey(effectName))
+        if (effectInstances.ContainsKey(effectName))
         {
             effectInstances.TryGetValue(effectName, out var effectInstance);
             effectInstance.doubleStacks();

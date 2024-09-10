@@ -1,13 +1,17 @@
-using UnityEngine;
-using UnityEditor;
-using UnityEditor.Animations;
-using YamlDotNet.Serialization;
-using YamlDotNet.Serialization.NamingConventions;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+
 using Creatures.Api;
+
+using UnityEditor;
+using UnityEditor.Animations;
+
+using UnityEngine;
+
+using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
 
 public class CreatureHydrator : Editor
 {
@@ -114,7 +118,7 @@ public class CreatureHydrator : Editor
 
         // Initialize the Idle sprite
         Sprite idleSprite = null;
-        
+
         // Initialize the Idle canvas size
         CanvasSize idleCanvasSize = null;
 
@@ -148,8 +152,8 @@ public class CreatureHydrator : Editor
             AnimatorState state = GetOrCreateAnimatorState(animatorController, animation.name);
 
             BaseAnimation baseAnimation = (BaseAnimation)Enum.Parse(typeof(BaseAnimation), animation.name, true);
-            
-            switch(baseAnimation)
+
+            switch (baseAnimation)
             {
                 case BaseAnimation.Run:
                     runState = state;
@@ -165,7 +169,7 @@ public class CreatureHydrator : Editor
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-          
+
 
             state.motion = clip;
         }
@@ -178,7 +182,7 @@ public class CreatureHydrator : Editor
 
         // Create or update transitions between Idle, Run, and Die states
         CreateOrUpdateTransitions(animatorController, idleState, runState, dieState);
-        
+
         // Assign the Animator Controller
         animator.runtimeAnimatorController = animatorController;
 
@@ -381,7 +385,7 @@ public class CreatureHydrator : Editor
 
         return sprites.ToArray();
     }
-    
+
     private static AnimationClip CreateOrUpdateAnimationClip(Sprite[] sprites, int frames, string animationName, int frameRate, string animationFolderPath)
     {
         string animFilePath = Path.Combine(animationFolderPath, $"{animationName}.anim");
@@ -446,31 +450,38 @@ public class CreatureHydrator : Editor
         }
 
         return clip;
-    }           
+    }
 
     private static string GenerateScriptContent(string unitName, string generaName, float speed, int health)
     {
-        return $@"using UnityEngine;
-using Creatures.Api;
+        return $@"using Creatures.Api;
+
+
+using UnityEngine;
+
 
 namespace Creatures.impl
 {{
     public class {unitName} : {generaName}
     {{
-        
+
+
         void Start()
         {{
             Speed = {speed}f;
             HealthScript = gameObject.AddComponent<HealthScript>();
             HealthScript.health = {health};
 
+
             // Add custom initialization logic here
         }}
+
 
         // Optional: Override the Update method if custom logic is needed
         protected override void Update()
         {{
             base.Update();
+
 
             // Add custom update logic here, if necessary
         }}

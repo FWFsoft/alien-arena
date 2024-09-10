@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class ProjectileBehavior : MonoBehaviour
@@ -21,7 +22,7 @@ public class ProjectileBehavior : MonoBehaviour
 
     private void Update()
     {
-        var distance =  Vector2.Distance(explosionPosition, new Vector2(transform.position.x, transform.position.y));
+        var distance = Vector2.Distance(explosionPosition, new Vector2(transform.position.x, transform.position.y));
         // MousePosition
         //Vector2.Distance(new Vector2())
         if (distance < 0.1)

@@ -6,8 +6,8 @@ namespace Creatures.api.abilities
      */
     public enum AbilityExecutionResult
     {
-    Success,
-    OnCooldown,
-    Disabled // Used when the character is Stunned, Silenced, or has not learned the ability yet
+        Success,
+        OnCooldown,
+        Disabled // Used when the character is Stunned, Silenced, or has not learned the ability yet
     }
 }

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Creatures.Api;
+
 using Creatures.api.abilities;
 using Creatures.api.abilities.basic;
 using Creatures.api.abilities.character;
@@ -7,11 +7,12 @@ using Creatures.api.abilities.charged;
 using Creatures.api.abilities.infusion;
 using Creatures.api.abilities.mobility;
 using Creatures.api.abilities.states;
+using Creatures.Api;
 
 namespace Creatures
 {
     public abstract class PlayableCreatureBase : Creature, IPlayable
-    {        
+    {
         public ICoreInfusion CoreInfusion { get; set; }
         private readonly CooldownMediator _cooldownMediator = new CooldownMediator();
         private IEnumerable<AbilityEvent> abilityEvents = new List<AbilityEvent>
@@ -24,12 +25,12 @@ namespace Creatures
             new CoreInfusionAbilityEvent(),
             new MobilityAbilityEvent()
         };
-        
+
         public IEnumerable<AbilityEvent> GetAbilities()
         {
             return abilityEvents;
         }
-        
+
         public void Subscribe(CooldownState cooldownState, AbilityIdentifier abilityIdentifier, float cooldownDuration)
         {
             _cooldownMediator.StartCooldown(cooldownState, abilityIdentifier, cooldownDuration);
@@ -52,7 +53,7 @@ namespace Creatures
                 abilityEvent.SetState(new GlobalCooldownState(this, abilityEvent));
             }
         }
-        
+
         //TODO: Figure out how to handle DisabledState
         //TODO: Probably put this off to a later ticket because it's directly tied to the effects system
         public void Subscribe(DisabledState disabledState)
@@ -64,7 +65,7 @@ namespace Creatures
         {
             throw new System.NotImplementedException();
         }
-        
+
         public abstract float GetBasicAttackCooldown(bool isTriggeredByGlobalCooldown);
         public abstract float GetStartChargingCooldown(bool isTriggeredByGlobalCooldown);
         public abstract float GetCharacterAbilityCooldown(bool isTriggeredByGlobalCooldown);

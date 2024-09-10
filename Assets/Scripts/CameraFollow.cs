@@ -1,5 +1,7 @@
 using Unity.VisualScripting;
+
 using UnityEngine;
+
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class CameraFollow : MonoBehaviour
@@ -21,7 +23,8 @@ public class CameraFollow : MonoBehaviour
         if (followTarget || inputHandler.isScreenLocked)
         {
             setCameraToPlayer();
-        } else
+        }
+        else
         {
             unlockCameraMovementAsAppropriate();
         }
