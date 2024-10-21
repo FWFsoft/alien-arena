@@ -1,0 +1,55 @@
+" ============================================================================
+" Netrw Directory Listing                                        (netrw v173)
+"   /home/indirection/repo/alien-arena/Assets/Blaster
+"   Sorted by      name
+"   Sort sequence: [\/]$,\<core\%(\.\d\+\)\=\>,\.h$,\.c$,\.cpp$,\~\=\*$,*,\.o$,\.obj$,\.info$,\.swp$,\.bak$,\~$
+"   Quick Help: <F1>:help  -:go up dir  D:delete  R:rename  s:sort-by  x:special
+" ==============================================================================
+../
+./
+Idle/
+Run_E/
+Run_N/
+Run_NE/
+Run_NW/
+Run_S/
+Run_SE/
+Run_SW/
+Run_W/
+Blaster.prefab
+Blaster.prefab.meta
+BlasterDummy.prefab
+BlasterDummy.prefab.meta
+Blaster_Idle_Controller.controller
+Blaster_Idle_Controller.controller.meta
+Blaster_SpriteSheet Blaster_SpriteSheet_0 1.png
+Blaster_SpriteSheet Blaster_SpriteSheet_0 1.png.meta
+Blaster_SpriteSheet Blaster_SpriteSheet_0.png
+Blaster_SpriteSheet Blaster_SpriteSheet_0.png.meta
+Blaster_SpriteSheet.ase
+Blaster_SpriteSheet.ase.meta
+Blaster_SpriteSheet.png
+Blaster_SpriteSheet.png.meta
+Blaster_SpriteSheet_0.controller
+Blaster_SpriteSheet_0.controller.meta
+Blaster_SpriteSheet_10.controller
+Blaster_SpriteSheet_10.controller.meta
+Blaster_idle.anim
+Blaster_idle.anim.meta
+Blaster_running2anim.anim
+Blaster_running2anim.anim.meta
+Bullet.controller
+Bullet.controller.meta
+Bullet_4.prefab
+Bullet_4.prefab.meta
+Idle.meta
+Run_E.meta
+Run_N.meta
+Run_NE.meta
+Run_NW.meta
+Run_S.meta
+Run_SE.meta
+Run_SW.meta
+Run_W.meta
+Sprite-greencrystal.png
+Sprite-greencrystal.png.meta
