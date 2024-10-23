@@ -21,7 +21,7 @@ namespace Creatures.api.abilities.states
 
         public AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent, Vector2 mousePosition)
         {
-            abilityEvent.SetState(new CooldownState(playable, abilityEvent, mousePosition));
+            abilityEvent.SetState(new CooldownState(playable, abilityEvent));
             playable.triggerGlobalCooldown(abilityEvent);
             return abilityEvent.ExecuteAbility(playable, mousePosition);
         }
