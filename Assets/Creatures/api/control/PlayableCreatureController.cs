@@ -1,6 +1,12 @@
 using UnityEngine;
 using Creatures.api;
 using Creatures.api.abilities;
+using Creatures.api.abilities.basic;
+using Creatures.api.abilities.character;
+using Creatures.api.abilities.charged;
+using Creatures.api.abilities.infusion;
+using Creatures.api.abilities.mobility;
+
 
 namespace Creatures.control
 {
