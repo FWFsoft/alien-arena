@@ -27,6 +27,11 @@ namespace Creatures
             new MobilityAbilityEvent()
         };
 
+        public T GetAbility<T>() where T : AbilityEvent
+        {
+            return abilityEvents.OfType<T>().FirstOrDefault();
+        }
+
         public IEnumerable<AbilityEvent> GetAbilities()
         {
             return abilityEvents;

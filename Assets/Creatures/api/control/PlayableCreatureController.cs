@@ -25,14 +25,7 @@ namespace Creatures.control
         private void Start()
         {
             character = GetComponent<PlayableCreatureBase>();
-
-            basicAttackEvent = new BasicAttackEvent();
-            startChargingEvent = new StartChargingEvent();
-            chargedAbilityEvent = new ChargedAbilityEvent();
-            characterAbilityEvent = new CharacterAbilityEvent();
-            mobilityAbilityEvent = new MobilityAbilityEvent();
-            coreInfusionAbilityEvent = new CoreInfusionAbilityEvent();
-
+                
             // Subscribe to InputManager events
             InputManager.Instance.OnBasicAttack += HandleBasicAttack;
             InputManager.Instance.OnStartCharging += HandleStartCharging;
@@ -56,34 +49,34 @@ namespace Creatures.control
             }
         }
 
-        private void HandleBasicAttack(Vector3 mousePosition)
+         private void HandleBasicAttack(Vector3 mousePosition)
         {
-            ExecuteAbility(basicAttackEvent, mousePosition);
+            ExecuteAbility(character.GetAbility<BasicAttackEvent>(), mousePosition);
         }
 
         private void HandleStartCharging(Vector3 mousePosition)
         {
-            ExecuteAbility(startChargingEvent, mousePosition);
+            ExecuteAbility(character.GetAbility<StartChargingEvent>(), mousePosition);
         }
 
         private void HandleChargedAbility(Vector3 mousePosition)
         {
-            ExecuteAbility(chargedAbilityEvent, mousePosition);
+            ExecuteAbility(character.GetAbility<ChargedAbilityEvent>(), mousePosition);
         }
 
         private void HandleCharacterAbility(Vector3 mousePosition)
         {
-            ExecuteAbility(characterAbilityEvent, mousePosition);
+            ExecuteAbility(character.GetAbility<CharacterAbilityEvent>(), mousePosition);
         }
 
         private void HandleMobilityAbility(Vector3 mousePosition)
         {
-            ExecuteAbility(mobilityAbilityEvent, mousePosition);
+            ExecuteAbility(character.GetAbility<MobilityAbilityEvent>(), mousePosition);
         }
 
         private void HandleCoreInfusionAbility(Vector3 mousePosition)
         {
-            ExecuteAbility(coreInfusionAbilityEvent, mousePosition);
+            ExecuteAbility(character.GetAbility<CoreInfusionAbilityEvent>(), mousePosition);
         }
 
         private void ExecuteAbility(AbilityEvent abilityEvent, Vector3 mousePosition)
