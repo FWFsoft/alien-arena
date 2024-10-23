@@ -9,9 +9,23 @@ namespace Creatures.control
         // TODO: Need to figure out how to dependency inject this
         private PlayableCreatureBase character;
 
+        private BasicAttackEvent basicAttackEvent;
+        private StartChargingEvent startChargingEvent;
+        private ChargedAbilityEvent chargedAbilityEvent;
+        private CharacterAbilityEvent characterAbilityEvent;
+        private MobilityAbilityEvent mobilityAbilityEvent;
+        private CoreInfusionAbilityEvent coreInfusionAbilityEvent;
+        
         private void Start()
         {
             character = GetComponent<PlayableCreatureBase>();
+
+            basicAttackEvent = new BasicAttackEvent();
+            startChargingEvent = new StartChargingEvent();
+            chargedAbilityEvent = new ChargedAbilityEvent();
+            characterAbilityEvent = new CharacterAbilityEvent();
+            mobilityAbilityEvent = new MobilityAbilityEvent();
+            coreInfusionAbilityEvent = new CoreInfusionAbilityEvent();
 
             // Subscribe to InputManager events
             InputManager.Instance.OnBasicAttack += HandleBasicAttack;
@@ -38,37 +52,31 @@ namespace Creatures.control
 
         private void HandleBasicAttack()
         {
-            BasicAttackEvent basicAttackEvent = new BasicAttackEvent(); 
             ExecuteAbility(basicAttackEvent);
         }
 
         private void HandleStartCharging()
         {
-            StartChargingEvent startChargingEvent = new StartChargingEvent(); 
             ExecuteAbility(startChargingEvent);
         }
 
         private void HandleChargedAbility()
         {
-            ChargedAbilityEvent chargedAbilityEvent = new ChargedAbilityEvent(); 
             ExecuteAbility(chargedAbilityEvent);
         }
 
         private void HandleCharacterAbility()
         {
-            CharacterAbilityEvent characterAbilityEvent = new CharacterAbilityEvent(); 
             ExecuteAbility(characterAbilityEvent);
         }
 
         private void HandleMobilityAbility()
         {
-            MobilityAbilityEvent mobilityAbilityEvent = new MobilityAbilityEvent(); 
             ExecuteAbility(mobilityAbilityEvent);
         }
 
         private void HandleCoreInfusionAbility()
         {
-            CoreInfusionAbilityEvent coreInfusionAbilityEvent = new CoreInfusionAbilityEvent();
             ExecuteAbility(coreInfusionAbilityEvent);
         }
 
