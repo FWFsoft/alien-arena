@@ -12,6 +12,6 @@ namespace Creatures.api.abilities
     {
         void Enter();
         void Exit();
-        AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent, Vector2 mousePosition);
+        AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent, Vector3 mousePosition);
     }
 }

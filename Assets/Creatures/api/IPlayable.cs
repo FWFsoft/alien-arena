@@ -38,7 +38,7 @@ namespace Creatures.Api
         // Basic Attack (aka LMB):
         // - Should be unaffected by Silence
         // - Only gated by GCD (aka no specific ability cooldown)
-        AbilityExecutionResult BasicAttack(BasicAttackEvent basicAttackEvent, Vector2 mousePosition);
+        AbilityExecutionResult BasicAttack(BasicAttackEvent basicAttackEvent, Vector3 mousePosition);
 
         // Charged Ability (aka RMB):
         // - Player starts charging the ability by clicking RMB
@@ -46,23 +46,23 @@ namespace Creatures.Api
         // - Ability is activated when the player releases RMB
         // - Effects like Stuns or Silences will interrupt charging
         // - Only gated by GCD (aka no specific ability cooldown)
-        AbilityExecutionResult StartCharging(StartChargingEvent startChargingEvent, Vector2 mousePosition);
-        AbilityExecutionResult InterruptCharging(InterruptChargingEvent interruptChargingEvent, Vector2 mousePosition);
-        AbilityExecutionResult ChargedAbility(ChargedAbilityEvent chargedAbilityEvent, Vector2 mousePosition);
+        AbilityExecutionResult StartCharging(StartChargingEvent startChargingEvent, Vector3 mousePosition);
+        AbilityExecutionResult InterruptCharging(InterruptChargingEvent interruptChargingEvent, Vector3 mousePosition);
+        AbilityExecutionResult ChargedAbility(ChargedAbilityEvent chargedAbilityEvent, Vector3 mousePosition);
 
         // Character Ability (aka Q):
         // - Unrestricted design space for characters, this should be
         // and iconic ability 
-        AbilityExecutionResult CharacterAbility(CharacterAbilityEvent characterAbilityEvent, Vector2 mousePosition);
+        AbilityExecutionResult CharacterAbility(CharacterAbilityEvent characterAbilityEvent, Vector3 mousePosition);
 
         // Mobility Ability (aka LSHIFT):
         // - An ability that enhances a characters mobility
         // - For Defenders: this should be an additional Character Ability instead
-        AbilityExecutionResult MobilityAbility(MobilityAbilityEvent mobilityAbilityEvent, Vector2 mousePosition);
+        AbilityExecutionResult MobilityAbility(MobilityAbilityEvent mobilityAbilityEvent, Vector3 mousePosition);
 
         // Core Infusion Ability (aka E):
         // - This is SET when the player equips their first infusion
-        AbilityExecutionResult CoreInfusionAbility(CoreInfusionAbilityEvent coreInfusionAbilityEvent, Vector2 mousePosition);
+        AbilityExecutionResult CoreInfusionAbility(CoreInfusionAbilityEvent coreInfusionAbilityEvent, Vector3 mousePosition);
         ICoreInfusion CoreInfusion { get; set; }
     }
 }

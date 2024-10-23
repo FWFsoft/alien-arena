@@ -7,7 +7,7 @@ namespace Creatures.api.abilities.basic
 {
     public class BasicAttackEvent : AbilityEvent
     {
-        public override AbilityExecutionResult ExecuteAbility(IPlayable playable, Vector2 mousePosition)
+        public override AbilityExecutionResult ExecuteAbility(IPlayable playable, Vector3 mousePosition)
         {
             return playable.BasicAttack(this, mousePosition);
         }

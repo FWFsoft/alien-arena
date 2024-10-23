@@ -56,37 +56,37 @@ namespace Creatures.control
             }
         }
 
-        private void HandleBasicAttack(Vector2 mousePosition)
+        private void HandleBasicAttack(Vector3 mousePosition)
         {
             ExecuteAbility(basicAttackEvent, mousePosition);
         }
 
-        private void HandleStartCharging(Vector2 mousePosition)
+        private void HandleStartCharging(Vector3 mousePosition)
         {
             ExecuteAbility(startChargingEvent, mousePosition);
         }
 
-        private void HandleChargedAbility(Vector2 mousePosition)
+        private void HandleChargedAbility(Vector3 mousePosition)
         {
             ExecuteAbility(chargedAbilityEvent, mousePosition);
         }
 
-        private void HandleCharacterAbility(Vector2 mousePosition)
+        private void HandleCharacterAbility(Vector3 mousePosition)
         {
             ExecuteAbility(characterAbilityEvent, mousePosition);
         }
 
-        private void HandleMobilityAbility(Vector2 mousePosition)
+        private void HandleMobilityAbility(Vector3 mousePosition)
         {
             ExecuteAbility(mobilityAbilityEvent, mousePosition);
         }
 
-        private void HandleCoreInfusionAbility(Vector2 mousePosition)
+        private void HandleCoreInfusionAbility(Vector3 mousePosition)
         {
             ExecuteAbility(coreInfusionAbilityEvent, mousePosition);
         }
 
-        private void ExecuteAbility(AbilityEvent abilityEvent, Vector2 mousePosition)
+        private void ExecuteAbility(AbilityEvent abilityEvent, Vector3 mousePosition)
         {
             // TODO: just logging right now, but we may want to fire VO for the character here
             // The classic "I can't do that right now."

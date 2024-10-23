@@ -24,7 +24,7 @@ namespace Creatures.api.abilities.states
             disabledStateNotifier.Unsubscribe(this);
         }
 
-        public override AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent, Vector2 mousePosition)
+        public override AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent, Vector3 mousePosition)
         {
             return AbilityExecutionResult.Disabled;
         }

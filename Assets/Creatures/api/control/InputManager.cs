@@ -7,17 +7,17 @@ namespace Creatures.control
     {
         public static InputManager Instance { get; private set; }
 
-        public event Action<Vector2> OnBasicAttack;
-        public event Action<Vector2> OnStartCharging;
-        public event Action<Vector2> OnChargedAbility;
-        public event Action<Vector2> OnCharacterAbility;
-        public event Action<Vector2> OnMobilityAbility;
-        public event Action<Vector2> OnCoreInfusionAbility;
+        public event Action<Vector3> OnBasicAttack;
+        public event Action<Vector3> OnStartCharging;
+        public event Action<Vector3> OnChargedAbility;
+        public event Action<Vector3> OnCharacterAbility;
+        public event Action<Vector3> OnMobilityAbility;
+        public event Action<Vector3> OnCoreInfusionAbility;
 
         private static int LMB = 0;
         private static int RMB = 1;
 
-        public Vector2 MousePosition => Input.mousePosition;
+        public Vector3 MousePosition => Input.mousePosition;
 
         private void Awake()
         {
@@ -40,7 +40,7 @@ namespace Creatures.control
 
         private void HandleMouseInput()
         {
-            Vector2 mousePosition = MousePosition;
+            Vector3 mousePosition = MousePosition;
 
             if (Input.GetMouseButtonDown(LMB))
             {
@@ -62,7 +62,7 @@ namespace Creatures.control
 
         private void HandleKeyboardInput()
         {
-            Vector2 mousePosition = MousePosition;
+            Vector3 mousePosition = MousePosition;
 
             if (Input.GetKeyDown(KeyCode.Q))
             {

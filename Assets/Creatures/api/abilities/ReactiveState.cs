@@ -11,7 +11,7 @@ namespace Creatures.Api
 
         public abstract void Enter();
         public abstract void Exit();
-        public abstract AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent, Vector2 mousePosition);
+        public abstract AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent, Vector3 mousePosition);
 
         public ReactiveState(AbilityEvent abilityEvent)
         {

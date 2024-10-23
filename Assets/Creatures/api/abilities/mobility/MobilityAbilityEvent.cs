@@ -13,7 +13,7 @@ namespace Creatures.api.abilities.mobility
      */
     public class MobilityAbilityEvent : AbilityEvent
     {
-        public override AbilityExecutionResult ExecuteAbility(IPlayable playable, Vector2 mousePosition)
+        public override AbilityExecutionResult ExecuteAbility(IPlayable playable, Vector3 mousePosition)
         {
             return playable.MobilityAbility(this, mousePosition);
         }

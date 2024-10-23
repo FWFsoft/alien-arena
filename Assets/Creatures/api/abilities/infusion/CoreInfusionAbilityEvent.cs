@@ -12,7 +12,7 @@ namespace Creatures.api.abilities.infusion
      */
     public class CoreInfusionAbilityEvent : AbilityEvent
     {
-        public override AbilityExecutionResult ExecuteAbility(IPlayable playable, Vector2 mousePosition)
+        public override AbilityExecutionResult ExecuteAbility(IPlayable playable, Vector3 mousePosition)
         {
             return playable.CoreInfusionAbility(this, mousePosition);
         }

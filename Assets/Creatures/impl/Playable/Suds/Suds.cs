@@ -36,37 +36,37 @@ namespace Creatures.impl.Playable.Suds
             throw new System.NotImplementedException();
         }
 
-        public override AbilityExecutionResult BasicAttack(BasicAttackEvent basicAttackEvent, Vector2 mousePosition)
+        public override AbilityExecutionResult BasicAttack(BasicAttackEvent basicAttackEvent, Vector3 mousePosition)
         {
             throw new System.NotImplementedException();
         }
 
-        public override AbilityExecutionResult StartCharging(StartChargingEvent startChargingEvent, Vector2 mousePosition)
+        public override AbilityExecutionResult StartCharging(StartChargingEvent startChargingEvent, Vector3 mousePosition)
         {
             throw new System.NotImplementedException();
         }
 
-        public override AbilityExecutionResult InterruptCharging(InterruptChargingEvent interruptChargingEvent, Vector2 mousePosition)
+        public override AbilityExecutionResult InterruptCharging(InterruptChargingEvent interruptChargingEvent, Vector3 mousePosition)
         {
             throw new System.NotImplementedException();
         }
 
-        public override AbilityExecutionResult ChargedAbility(ChargedAbilityEvent chargedAbilityEvent, Vector2 mousePosition)
+        public override AbilityExecutionResult ChargedAbility(ChargedAbilityEvent chargedAbilityEvent, Vector3 mousePosition)
         {
             throw new System.NotImplementedException();
         }
 
-        public override AbilityExecutionResult CharacterAbility(CharacterAbilityEvent characterAbilityEvent, Vector2 mousePosition)
+        public override AbilityExecutionResult CharacterAbility(CharacterAbilityEvent characterAbilityEvent, Vector3 mousePosition)
         {
             throw new System.NotImplementedException();
         }
 
-        public override AbilityExecutionResult MobilityAbility(MobilityAbilityEvent mobilityAbilityEvent, Vector2 mousePosition)
+        public override AbilityExecutionResult MobilityAbility(MobilityAbilityEvent mobilityAbilityEvent, Vector3 mousePosition)
         {
             throw new System.NotImplementedException();
         }
 
-        public override AbilityExecutionResult CoreInfusionAbility(CoreInfusionAbilityEvent coreInfusionAbilityEvent, Vector2 mousePosition)
+        public override AbilityExecutionResult CoreInfusionAbility(CoreInfusionAbilityEvent coreInfusionAbilityEvent, Vector3 mousePosition)
         {
             throw new System.NotImplementedException();
         }
