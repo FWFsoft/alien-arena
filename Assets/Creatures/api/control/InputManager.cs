@@ -7,15 +7,17 @@ namespace Creatures.control
     {
         public static InputManager Instance { get; private set; }
 
-        public event Action OnBasicAttack;
-        public event Action OnStartCharging;
-        public event Action OnChargedAbility;
-        public event Action OnCharacterAbility;
-        public event Action OnMobilityAbility;
-        public event Action OnCoreInfusionAbility;
+        public event Action<Vector2> OnBasicAttack;
+        public event Action<Vector2> OnStartCharging;
+        public event Action<Vector2> OnChargedAbility;
+        public event Action<Vector2> OnCharacterAbility;
+        public event Action<Vector2> OnMobilityAbility;
+        public event Action<Vector2> OnCoreInfusionAbility;
 
         private static int LMB = 0;
         private static int RMB = 1;
+
+        public Vector2 MousePosition => Input.mousePosition;
 
         private void Awake()
         {
@@ -38,39 +40,43 @@ namespace Creatures.control
 
         private void HandleMouseInput()
         {
+            Vector2 mousePosition = MousePosition;
+
             if (Input.GetMouseButtonDown(LMB))
             {
-                OnBasicAttack?.Invoke();
+                OnBasicAttack?.Invoke(mousePosition);
             }
 
             // RMB press to start charging
             if (Input.GetMouseButtonDown(RMB))
             {
-                OnStartCharging?.Invoke();
+                OnStartCharging?.Invoke(mousePosition);
             }
 
             // RMB release to trigger the charged ability
             if (Input.GetMouseButtonUp(RMB))
             {
-                OnChargedAbility?.Invoke();
+                OnChargedAbility?.Invoke(mousePosition);
             }
         }
 
         private void HandleKeyboardInput()
         {
+            Vector2 mousePosition = MousePosition;
+
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                OnCharacterAbility?.Invoke();
+                OnCharacterAbility?.Invoke(mousePosition);
             }
 
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                OnMobilityAbility?.Invoke();
+                OnMobilityAbility?.Invoke(mousePosition);
             }
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                OnCoreInfusionAbility?.Invoke();
+                OnCoreInfusionAbility?.Invoke(mousePosition);
             }
         }
     }

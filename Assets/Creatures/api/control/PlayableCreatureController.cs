@@ -50,41 +50,41 @@ namespace Creatures.control
             }
         }
 
-        private void HandleBasicAttack()
+        private void HandleBasicAttack(Vector2 mousePosition)
         {
-            ExecuteAbility(basicAttackEvent);
+            ExecuteAbility(basicAttackEvent, mousePosition);
         }
 
-        private void HandleStartCharging()
+        private void HandleStartCharging(Vector2 mousePosition)
         {
-            ExecuteAbility(startChargingEvent);
+            ExecuteAbility(startChargingEvent, mousePosition);
         }
 
-        private void HandleChargedAbility()
+        private void HandleChargedAbility(Vector2 mousePosition)
         {
-            ExecuteAbility(chargedAbilityEvent);
+            ExecuteAbility(chargedAbilityEvent, mousePosition);
         }
 
-        private void HandleCharacterAbility()
+        private void HandleCharacterAbility(Vector2 mousePosition)
         {
-            ExecuteAbility(characterAbilityEvent);
+            ExecuteAbility(characterAbilityEvent, mousePosition);
         }
 
-        private void HandleMobilityAbility()
+        private void HandleMobilityAbility(Vector2 mousePosition)
         {
-            ExecuteAbility(mobilityAbilityEvent);
+            ExecuteAbility(mobilityAbilityEvent, mousePosition);
         }
 
-        private void HandleCoreInfusionAbility()
+        private void HandleCoreInfusionAbility(Vector2 mousePosition)
         {
-            ExecuteAbility(coreInfusionAbilityEvent);
+            ExecuteAbility(coreInfusionAbilityEvent, mousePosition);
         }
 
-        private void ExecuteAbility(AbilityEvent abilityEvent)
+        private void ExecuteAbility(AbilityEvent abilityEvent, Vector2 mousePosition)
         {
             // TODO: just logging right now, but we may want to fire VO for the character here
             // The classic "I can't do that right now."
-            AbilityExecutionResult result = abilityEvent.Execute();
+            AbilityExecutionResult result = abilityEvent.Execute(character, mousePosition);
             switch (result)
             {
                 case AbilityExecutionResult.Success:
