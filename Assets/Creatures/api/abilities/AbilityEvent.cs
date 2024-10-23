@@ -1,3 +1,5 @@
+using UnityEngine;
+
 using Creatures.api.abilities.states;
 using Creatures.Api;
 
@@ -15,9 +17,9 @@ namespace Creatures.api.abilities
     {
         protected IAbilityState currentState = new ReadyState();
 
-        public AbilityExecutionResult Execute(IPlayable playable)
+        public AbilityExecutionResult Execute(IPlayable playable, Vector2 mousePosition)
         {
-            return currentState.Execute(playable, this);
+            return currentState.Execute(playable, this, mousePosition);
         }
 
         public abstract AbilityIdentifier getId();
@@ -25,7 +27,7 @@ namespace Creatures.api.abilities
         public abstract void Subscribe(IStateNotifier notifier, CooldownState state, bool isTriggeredByGlobalCooldown);
         public abstract void Unsubscribe(IStateNotifier notifier, CooldownState state);
 
-        public abstract AbilityExecutionResult ExecuteAbility(IPlayable playable);
+        public abstract AbilityExecutionResult ExecuteAbility(IPlayable playable, Vector2 mousePosition);
         public void SetState(IAbilityState newState)
         {
             currentState.Exit();

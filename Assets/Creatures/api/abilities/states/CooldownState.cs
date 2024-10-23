@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 
 using UnityEditor;
 
+using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 
 namespace Creatures.api.abilities.states
@@ -29,7 +30,7 @@ namespace Creatures.api.abilities.states
             _abilityEvent.Unsubscribe(cooldownStateNotifier, this);
         }
 
-        public override AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent)
+        public override AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent, Vector2 mousePosition)
         {
             return AbilityExecutionResult.OnCooldown;
         }

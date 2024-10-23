@@ -1,3 +1,5 @@
+using UnityEngine;
+
 using Creatures.api.abilities.states;
 using Creatures.Api;
 
@@ -8,9 +10,9 @@ namespace Creatures.api.abilities.charged
      */
     public class ChargedAbilityEvent : AbilityEvent
     {
-        public override AbilityExecutionResult ExecuteAbility(IPlayable playable)
+        public override AbilityExecutionResult ExecuteAbility(IPlayable playable, Vector2 mousePosition)
         {
-            return playable.ChargedAbility(this);
+            return playable.ChargedAbility(this, mousePosition);
         }
 
         public override AbilityIdentifier getId()

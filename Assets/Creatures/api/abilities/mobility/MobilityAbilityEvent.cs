@@ -1,3 +1,5 @@
+using UnityEngine;
+
 using Creatures.api.abilities.states;
 using Creatures.Api;
 
@@ -11,9 +13,9 @@ namespace Creatures.api.abilities.mobility
      */
     public class MobilityAbilityEvent : AbilityEvent
     {
-        public override AbilityExecutionResult ExecuteAbility(IPlayable playable)
+        public override AbilityExecutionResult ExecuteAbility(IPlayable playable, Vector2 mousePosition)
         {
-            return playable.MobilityAbility(this);
+            return playable.MobilityAbility(this, mousePosition);
         }
 
         public override AbilityIdentifier getId()

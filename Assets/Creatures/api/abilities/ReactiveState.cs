@@ -1,3 +1,5 @@
+using UnityEngine;
+
 using Creatures.api.abilities;
 using Creatures.api.abilities.states;
 
@@ -9,7 +11,7 @@ namespace Creatures.Api
 
         public abstract void Enter();
         public abstract void Exit();
-        public abstract AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent);
+        public abstract AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent, Vector2 mousePosition);
 
         public ReactiveState(AbilityEvent abilityEvent)
         {

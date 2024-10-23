@@ -1,3 +1,5 @@
+using UnityEngine;
+
 using Creatures.api.abilities.states;
 using Creatures.Api;
 
@@ -14,9 +16,9 @@ namespace Creatures.api.abilities.charged
      */
     public class InterruptChargingEvent : AbilityEvent
     {
-        public override AbilityExecutionResult ExecuteAbility(IPlayable playable)
+        public override AbilityExecutionResult ExecuteAbility(IPlayable playable, Vector2 mousePosition)
         {
-            return playable.InterruptCharging(this);
+            return playable.InterruptCharging(this, mousePosition);
         }
 
         public override AbilityIdentifier getId()

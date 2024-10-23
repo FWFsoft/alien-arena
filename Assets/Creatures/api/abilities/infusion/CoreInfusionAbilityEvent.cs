@@ -1,3 +1,5 @@
+using UnityEngine;
+
 using Creatures.api.abilities.states;
 using Creatures.Api;
 
@@ -10,9 +12,9 @@ namespace Creatures.api.abilities.infusion
      */
     public class CoreInfusionAbilityEvent : AbilityEvent
     {
-        public override AbilityExecutionResult ExecuteAbility(IPlayable playable)
+        public override AbilityExecutionResult ExecuteAbility(IPlayable playable, Vector2 mousePosition)
         {
-            return playable.CoreInfusionAbility(this);
+            return playable.CoreInfusionAbility(this, mousePosition);
         }
 
         public override AbilityIdentifier getId()

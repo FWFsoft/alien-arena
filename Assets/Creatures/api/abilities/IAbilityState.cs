@@ -1,3 +1,5 @@
+using UnityEngine;
+
 using Creatures.Api;
 
 namespace Creatures.api.abilities
@@ -10,6 +12,6 @@ namespace Creatures.api.abilities
     {
         void Enter();
         void Exit();
-        AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent);
+        AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent, Vector2 mousePosition);
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 using Creatures.api.abilities;
 using Creatures.api.abilities.basic;
@@ -71,12 +72,12 @@ namespace Creatures
         public abstract float GetCharacterAbilityCooldown(bool isTriggeredByGlobalCooldown);
         public abstract float GetMobilityAbilityCooldown(bool isTriggeredByGlobalCooldown);
         public abstract float GetCoreInfusionAbilityCooldown(bool isTriggeredByGlobalCooldown);
-        public abstract AbilityExecutionResult BasicAttack(BasicAttackEvent basicAttackEvent);
-        public abstract AbilityExecutionResult StartCharging(StartChargingEvent startChargingEvent);
-        public abstract AbilityExecutionResult InterruptCharging(InterruptChargingEvent interruptChargingEvent);
-        public abstract AbilityExecutionResult ChargedAbility(ChargedAbilityEvent chargedAbilityEvent);
-        public abstract AbilityExecutionResult CharacterAbility(CharacterAbilityEvent characterAbilityEvent);
-        public abstract AbilityExecutionResult MobilityAbility(MobilityAbilityEvent mobilityAbilityEvent);
-        public abstract AbilityExecutionResult CoreInfusionAbility(CoreInfusionAbilityEvent coreInfusionAbilityEvent);
+        public abstract AbilityExecutionResult BasicAttack(BasicAttackEvent basicAttackEvent, Vector2 mousePosition);
+        public abstract AbilityExecutionResult StartCharging(StartChargingEvent startChargingEvent, Vector2 mousePosition);
+        public abstract AbilityExecutionResult InterruptCharging(InterruptChargingEvent interruptChargingEvent, Vector2 mousePosition);
+        public abstract AbilityExecutionResult ChargedAbility(ChargedAbilityEvent chargedAbilityEvent, Vector2 mousePosition);
+        public abstract AbilityExecutionResult CharacterAbility(CharacterAbilityEvent characterAbilityEvent, Vector2 mousePosition);
+        public abstract AbilityExecutionResult MobilityAbility(MobilityAbilityEvent mobilityAbilityEvent, Vector2 mousePosition);
+        public abstract AbilityExecutionResult CoreInfusionAbility(CoreInfusionAbilityEvent coreInfusionAbilityEvent, Vector2 mousePosition);
     }
 }
