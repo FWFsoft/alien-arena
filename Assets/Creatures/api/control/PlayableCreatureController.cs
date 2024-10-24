@@ -12,7 +12,8 @@ namespace Creatures.control
 {
     public class PlayableCreatureController : MonoBehaviour
     {
-        // TODO: Need to figure out how to dependency inject this
+        //When we implement character selection, this will need to be dynamically set
+        [SerializeField] 
         private PlayableCreatureBase character;
 
         private BasicAttackEvent basicAttackEvent;
@@ -24,8 +25,6 @@ namespace Creatures.control
         
         private void Start()
         {
-            character = GetComponent<PlayableCreatureBase>();
-                
             // Subscribe to InputManager events
             InputManager.Instance.OnBasicAttack += HandleBasicAttack;
             InputManager.Instance.OnStartCharging += HandleStartCharging;
