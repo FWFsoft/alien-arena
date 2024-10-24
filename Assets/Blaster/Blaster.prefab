@@ -9,8 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1199259909295300250}
-  - component: {fileID: 5141671621906454399}
   - component: {fileID: 1902088016896234017}
+  - component: {fileID: 4159483052238200146}
+  - component: {fileID: 6959379162218666013}
+  - component: {fileID: 3503343822437272251}
+  - component: {fileID: 6578712773543440237}
   m_Layer: 3
   m_Name: Blaster
   m_TagString: Player
@@ -35,25 +38,6 @@ Transform:
   - {fileID: 6235937317241141853}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5141671621906454399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2544064931094984291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a78b0605f5f0b924f98f0b2973ba2318, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input: {fileID: 0}
-  speed: 5
-  animator: {fileID: 6730454749060221978}
-  playerHealthPercentage: 1
-  maxPlayerHealth: 100
-  blasterCharacter: {fileID: 5977107145962822985}
-  launchOffset: {fileID: 0}
 --- !u!70 &1902088016896234017
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -89,6 +73,79 @@ CapsuleCollider2D:
   m_Offset: {x: 0.0032019727, y: -0.15875955}
   m_Size: {x: 0.2948234, y: 0.08888622}
   m_Direction: 1
+--- !u!50 &4159483052238200146
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2544064931094984291}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &6959379162218666013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2544064931094984291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6ea9d725e94da090ef322ad1485a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 6730454749060221978}
+  maximumAttackDistance: 100
+  health: 100
+  speed: 1
+  speedEnabled: 1
+  isDead: 0
+  healthScript: {fileID: 0}
+  bullet: {fileID: 6276327117399051027, guid: c186534f8e3196e409aaf263d4ae4567, type: 3}
+  bulletExitTransform: {fileID: 1199259909295300250}
+--- !u!114 &3503343822437272251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2544064931094984291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e55b1e64b20c1fa8a42c1a0f441945b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 6959379162218666013}
+--- !u!114 &6578712773543440237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2544064931094984291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422c7864c0cf626f9aed2533ff325f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5977107145962822985
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,7 +157,6 @@ GameObject:
   - component: {fileID: 5608295005990095001}
   - component: {fileID: 5624620321258577084}
   - component: {fileID: 6730454749060221978}
-  - component: {fileID: 8463875632132403813}
   m_Layer: 3
   m_Name: BlasterCharacter
   m_TagString: Untagged
@@ -196,25 +252,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8463875632132403813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5977107145962822985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00b50ae480048704681287511e0900d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 6276327117399051027, guid: c186534f8e3196e409aaf263d4ae4567, type: 3}
-  bulletExitTransform: {fileID: 1199259909295300250}
-  timeBetweenFiring: 1
-  timeBetweenTab: 5
-  timeBetweenD: 0.5
-  input: {fileID: 0}
-  force: 2
 --- !u!1 &6507786229415094740
 GameObject:
   m_ObjectHideFlags: 0
