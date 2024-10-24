@@ -53,7 +53,6 @@ namespace Creatures.impl.Playable.Suds
 
         public override AbilityExecutionResult BasicAttack(BasicAttackEvent basicAttackEvent, Vector3 mousePosition)
         {
-            Debug.Log("mousePosition is: " + mousePosition);
             var bulletInstance = Instantiate(bullet, bulletExitTransform.position, Quaternion.identity);
             var projectileBehavior = bulletInstance.GetComponent<ProjectileBehavior>();
             projectileBehavior.explosionPosition = mousePosition;
