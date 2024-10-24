@@ -1,5 +1,7 @@
 using Creatures.Api;
 
+using UnityEngine;
+
 namespace Creatures.api.abilities.states
 {
     public class DisabledState : ReactiveState, IAbilityState
@@ -22,7 +24,7 @@ namespace Creatures.api.abilities.states
             disabledStateNotifier.Unsubscribe(this);
         }
 
-        public override AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent)
+        public override AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent, Vector3 mousePosition)
         {
             return AbilityExecutionResult.Disabled;
         }

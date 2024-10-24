@@ -1,5 +1,7 @@
 using Creatures.Api;
 
+using UnityEngine;
+
 namespace Creatures.api.abilities.states
 {
     /**
@@ -17,11 +19,11 @@ namespace Creatures.api.abilities.states
             // No-op
         }
 
-        public AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent)
+        public AbilityExecutionResult Execute(IPlayable playable, AbilityEvent abilityEvent, Vector3 mousePosition)
         {
             abilityEvent.SetState(new CooldownState(playable, abilityEvent));
             playable.triggerGlobalCooldown(abilityEvent);
-            return abilityEvent.ExecuteAbility(playable);
+            return abilityEvent.ExecuteAbility(playable, mousePosition);
         }
     }
 }

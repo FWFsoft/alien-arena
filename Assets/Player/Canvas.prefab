@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 6350143372459582775}
   - component: {fileID: 906946512721072238}
   - component: {fileID: 617883425697094923}
-  - component: {fileID: 654388437040032828}
+  - component: {fileID: 7519982263265761447}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -367,7 +367,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &654388437040032828
+--- !u!114 &7519982263265761447
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -424,7 +424,7 @@ MonoBehaviour:
   - {fileID: 570837400, guid: d7f120b935c16df4097121e89368bdaa, type: 3}
   healthBarImage: {fileID: 617883425697094923}
   healthPercentage: 1
-  blasterPlayerScript: {fileID: 0}
+  playerScript: {fileID: 0}
 --- !u!1 &2838701387964836335
 GameObject:
   m_ObjectHideFlags: 0

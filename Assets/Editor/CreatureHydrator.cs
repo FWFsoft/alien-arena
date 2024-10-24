@@ -18,13 +18,14 @@ public class CreatureHydrator : Editor
     [MenuItem("Tools/Hydrate Creatures")]
     public static void HydrateCreatures()
     {
-        string rootGeneraPath = "Assets/Creatures/impl";
+        string rootGeneraPath = "Assets/Creatures/impl/NonPlayable";
         string[] generaDirectories = Directory.GetDirectories(rootGeneraPath);
 
         foreach (var generaDir in generaDirectories)
         {
             HydrateAllUnitsForGenera(generaDir);
         }
+
     }
 
     private static void HydrateAllUnitsForGenera(string generaDir)
