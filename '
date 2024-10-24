@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using System;
 
 namespace Creatures.control
@@ -7,7 +6,6 @@ namespace Creatures.control
     public class InputManager : MonoBehaviour
     {
         public static InputManager Instance { get; private set; }
-        private Camera mainCam;
 
         public event Action<Vector2> OnMove;
         public event Action<Vector3> OnBasicAttack;
@@ -19,7 +17,8 @@ namespace Creatures.control
 
         private static int LMB = 0;
         private static int RMB = 1;
-        
+
+        public Vector3 MousePosition => Input.mousePosition;
 
         private void Awake()
         {
@@ -34,11 +33,6 @@ namespace Creatures.control
             }
         }
 
-        private void Start()
-        {
-            mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        }
-
         private void Update()
         {
             HandleMouseInput();
@@ -47,10 +41,12 @@ namespace Creatures.control
 
         private void HandleMouseInput()
         {
-            Vector3 mousePosition = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            Vector3 mousePosition = MousePosition;
 
             if (Input.GetMouseButtonDown(LMB))
             {
+                Debug.Log("Left mouse button down (Basic Attack) at position: " + mousePosition);
+
                 OnBasicAttack?.Invoke(mousePosition);
             }
 
@@ -69,10 +65,10 @@ namespace Creatures.control
 
         private void HandleKeyboardInput()
         {
-            Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             OnMove?.Invoke(moveInput);
 
-            Vector3 mousePosition = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            Vector3 mousePosition = MousePosition;
 
             if (Input.GetKeyDown(KeyCode.Q))
             {

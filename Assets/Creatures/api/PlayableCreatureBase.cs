@@ -97,7 +97,7 @@ namespace Creatures
         {
             // Initialize movement based on input
             Vector3 movement = Vector3.zero;
-
+            Debug.Log("Movement Vector: " +inputDirection);
             if (inputDirection.y > 0 && inputDirection.x > 0) // W + D
             {
                 movement = new Vector3(isoUpRight.x, isoUpRight.y, 0);

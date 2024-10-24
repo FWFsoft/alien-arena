@@ -32,6 +32,7 @@ namespace Creatures.control
             InputManager.Instance.OnCharacterAbility += HandleCharacterAbility;
             InputManager.Instance.OnMobilityAbility += HandleMobilityAbility;
             InputManager.Instance.OnCoreInfusionAbility += HandleCoreInfusionAbility;
+            InputManager.Instance.OnMove += HandleMove;
         }
 
         private void OnDestroy()
@@ -45,6 +46,7 @@ namespace Creatures.control
                 InputManager.Instance.OnCharacterAbility -= HandleCharacterAbility;
                 InputManager.Instance.OnMobilityAbility -= HandleMobilityAbility;
                 InputManager.Instance.OnCoreInfusionAbility -= HandleCoreInfusionAbility;
+                InputManager.Instance.OnMove -= HandleMove;
             }
         }
 

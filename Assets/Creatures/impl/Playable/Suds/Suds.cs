@@ -17,35 +17,43 @@ public class Suds : PlayableCreatureBase
         public Transform bulletExitTransform;
 
         private const float BasicAttackCooldown = 1.0f;
-        private float force = 0.1f;
+        private const float StartChargingCooldown = 2.5f;
+        private const float CharacterAbilityCooldown = 5.0f;
+        private const float MobilityAbilityCooldown = 3.0f;
+        private const float CoreInfusionAbilityCooldown = 7.0f;
+
+        private const float GlobalCooldown = 0.5f;
+
+        private float force = 2.0f;
 
         public override float GetBasicAttackCooldown(bool isTriggeredByGlobalCooldown)
         {
-            return BasicAttackCooldown;
+            return isTriggeredByGlobalCooldown ? GlobalCooldown : BasicAttackCooldown;
         }
 
         public override float GetStartChargingCooldown(bool isTriggeredByGlobalCooldown)
         {
-            throw new System.NotImplementedException();
+            return isTriggeredByGlobalCooldown ? GlobalCooldown : StartChargingCooldown;
         }
 
         public override float GetCharacterAbilityCooldown(bool isTriggeredByGlobalCooldown)
         {
-            throw new System.NotImplementedException();
+            return isTriggeredByGlobalCooldown ? GlobalCooldown : CharacterAbilityCooldown;
         }
 
         public override float GetMobilityAbilityCooldown(bool isTriggeredByGlobalCooldown)
         {
-            throw new System.NotImplementedException();
+            return isTriggeredByGlobalCooldown ? GlobalCooldown : MobilityAbilityCooldown;
         }
 
         public override float GetCoreInfusionAbilityCooldown(bool isTriggeredByGlobalCooldown)
         {
-            throw new System.NotImplementedException();
+            return isTriggeredByGlobalCooldown ? GlobalCooldown : CoreInfusionAbilityCooldown;
         }
 
         public override AbilityExecutionResult BasicAttack(BasicAttackEvent basicAttackEvent, Vector3 mousePosition)
         {
+            Debug.Log("mousePosition is: " + mousePosition);
             var bulletInstance = Instantiate(bullet, bulletExitTransform.position, Quaternion.identity);
             var projectileBehavior = bulletInstance.GetComponent<ProjectileBehavior>();
             projectileBehavior.explosionPosition = mousePosition;
