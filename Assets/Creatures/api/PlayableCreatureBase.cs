@@ -11,12 +11,17 @@ using Creatures.api.abilities.states;
 using Creatures.Api;
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Creatures
 {
     public abstract class PlayableCreatureBase : Creature, IPlayable
     {
         public ICoreInfusion CoreInfusion { get; set; }
+
+        public float playerHealthPercentage = 1;
+        public float maxPlayerHealth = 100;
+        private float playerHealth;
 
         private readonly CooldownMediator _cooldownMediator = new CooldownMediator();
         private IEnumerable<AbilityEvent> abilityEvents = new List<AbilityEvent>
@@ -35,6 +40,13 @@ namespace Creatures
         private Vector2 isoUpLeft = new Vector2(-1, 0.5f);
         private Vector2 isoDownRight = new Vector2(1, -0.5f);
         private Vector2 isoDownLeft = new Vector2(-1, -0.5f);
+
+        void Start()
+        {
+            this.playerHealth = maxPlayerHealth;
+            transform.position = new Vector3(0, 0, 0);
+            Cursor.visible = true;
+        }
 
         public T GetAbility<T>() where T : AbilityEvent
         {
@@ -140,6 +152,18 @@ namespace Creatures
             // Set Animator Parameters
             Animator.SetFloat("DirectionX", inputDirection.x);
             Animator.SetFloat("DirectionY", inputDirection.y);
+        }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            // Receive damage
+            // TODO: Based on target
+            playerHealth -= 10;
+            if (playerHealth == 0)
+            {
+                print("YOU DIED!");
+                return;
+            }
+            playerHealthPercentage = playerHealth / maxPlayerHealth;
         }
     }
 }
