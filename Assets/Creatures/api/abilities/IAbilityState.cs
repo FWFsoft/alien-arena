@@ -1,6 +1,6 @@
-using UnityEngine;
-
 using Creatures.Api;
+
+using UnityEngine;
 
 namespace Creatures.api.abilities
 {

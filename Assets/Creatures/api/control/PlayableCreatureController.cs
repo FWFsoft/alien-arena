@@ -1,4 +1,3 @@
-using UnityEngine;
 using Creatures.api;
 using Creatures.api.abilities;
 using Creatures.api.abilities.basic;
@@ -7,13 +6,15 @@ using Creatures.api.abilities.charged;
 using Creatures.api.abilities.infusion;
 using Creatures.api.abilities.mobility;
 
+using UnityEngine;
+
 
 namespace Creatures.control
 {
     public class PlayableCreatureController : MonoBehaviour
     {
         //When we implement character selection, this will need to be dynamically set
-        [SerializeField] 
+        [SerializeField]
         private PlayableCreatureBase character;
 
         private BasicAttackEvent basicAttackEvent;
@@ -22,7 +23,7 @@ namespace Creatures.control
         private CharacterAbilityEvent characterAbilityEvent;
         private MobilityAbilityEvent mobilityAbilityEvent;
         private CoreInfusionAbilityEvent coreInfusionAbilityEvent;
-        
+
         private void Start()
         {
             // Subscribe to InputManager events
@@ -55,7 +56,7 @@ namespace Creatures.control
             character.HandleMovement(inputDirection);
         }
 
-         private void HandleBasicAttack(Vector3 mousePosition)
+        private void HandleBasicAttack(Vector3 mousePosition)
         {
             ExecuteAbility(character.GetAbility<BasicAttackEvent>(), mousePosition);
         }

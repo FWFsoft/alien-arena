@@ -25,7 +25,7 @@ public class CreatureHydrator : Editor
         {
             HydrateAllUnitsForGenera(generaDir);
         }
-        
+
     }
 
     private static void HydrateAllUnitsForGenera(string generaDir)

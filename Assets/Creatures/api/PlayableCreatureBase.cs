@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
 
 using Creatures.api.abilities;
@@ -10,6 +9,8 @@ using Creatures.api.abilities.infusion;
 using Creatures.api.abilities.mobility;
 using Creatures.api.abilities.states;
 using Creatures.Api;
+
+using UnityEngine;
 
 namespace Creatures
 {
@@ -97,7 +98,7 @@ namespace Creatures
         {
             // Initialize movement based on input
             Vector3 movement = Vector3.zero;
-            Debug.Log("Movement Vector: " +inputDirection);
+            Debug.Log("Movement Vector: " + inputDirection);
             if (inputDirection.y > 0 && inputDirection.x > 0) // W + D
             {
                 movement = new Vector3(isoUpRight.x, isoUpRight.y, 0);
@@ -121,7 +122,7 @@ namespace Creatures
             else if (inputDirection.y < 0) // S
             {
                 movement = new Vector3(0, -1, 0);
-            } 
+            }
             else if (inputDirection.x > 0) // D
             {
                 movement = new Vector3(1, 0, 0);

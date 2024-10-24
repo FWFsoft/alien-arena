@@ -1,6 +1,7 @@
+using System;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System;
 
 namespace Creatures.control
 {
@@ -19,7 +20,7 @@ namespace Creatures.control
 
         private static int LMB = 0;
         private static int RMB = 1;
-        
+
 
         private void Awake()
         {

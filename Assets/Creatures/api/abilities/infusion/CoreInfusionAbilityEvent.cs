@@ -1,7 +1,7 @@
-using UnityEngine;
-
 using Creatures.api.abilities.states;
 using Creatures.Api;
+
+using UnityEngine;
 
 namespace Creatures.api.abilities.infusion
 {
