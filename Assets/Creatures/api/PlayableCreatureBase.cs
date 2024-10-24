@@ -16,6 +16,7 @@ namespace Creatures
     public abstract class PlayableCreatureBase : Creature, IPlayable
     {
         public ICoreInfusion CoreInfusion { get; set; }
+
         private readonly CooldownMediator _cooldownMediator = new CooldownMediator();
         private IEnumerable<AbilityEvent> abilityEvents = new List<AbilityEvent>
         {
@@ -27,6 +28,12 @@ namespace Creatures
             new CoreInfusionAbilityEvent(),
             new MobilityAbilityEvent()
         };
+
+        // Isometric movement vectors
+        private Vector2 isoUpRight = new Vector2(1, 0.5f);
+        private Vector2 isoUpLeft = new Vector2(-1, 0.5f);
+        private Vector2 isoDownRight = new Vector2(1, -0.5f);
+        private Vector2 isoDownLeft = new Vector2(-1, -0.5f);
 
         public T GetAbility<T>() where T : AbilityEvent
         {
@@ -85,5 +92,54 @@ namespace Creatures
         public abstract AbilityExecutionResult CharacterAbility(CharacterAbilityEvent characterAbilityEvent, Vector3 mousePosition);
         public abstract AbilityExecutionResult MobilityAbility(MobilityAbilityEvent mobilityAbilityEvent, Vector3 mousePosition);
         public abstract AbilityExecutionResult CoreInfusionAbility(CoreInfusionAbilityEvent coreInfusionAbilityEvent, Vector3 mousePosition);
+
+        public virtual void HandleMovement(Vector2 inputDirection)
+        {
+            // Initialize movement based on input
+            Vector3 movement = Vector3.zero;
+
+            if (inputDirection.y > 0 && inputDirection.x > 0) // W + D
+            {
+                movement = new Vector3(isoUpRight.x, isoUpRight.y, 0);
+            }
+            else if (inputDirection.y > 0 && inputDirection.x < 0) // W + A
+            {
+                movement = new Vector3(isoUpLeft.x, isoUpLeft.y, 0);
+            }
+            else if (inputDirection.y < 0 && inputDirection.x > 0) // S + D
+            {
+                movement = new Vector3(isoDownRight.x, isoDownRight.y, 0);
+            }
+            else if (inputDirection.y < 0 && inputDirection.x < 0) // S + A
+            {
+                movement = new Vector3(isoDownLeft.x, isoDownLeft.y, 0);
+            }
+            else if (inputDirection.y > 0) // W
+            {
+                movement = new Vector3(0, 1, 0);
+            }
+            else if (inputDirection.y < 0) // S
+            {
+                movement = new Vector3(0, -1, 0);
+            } 
+            else if (inputDirection.x > 0) // D
+            {
+                movement = new Vector3(1, 0, 0);
+            }
+            else if (inputDirection.x < 0) // A
+            {
+                movement = new Vector3(-1, 0, 0);
+            }
+
+            // Normalize movement for consistent speed and apply speed and time
+            movement = movement.normalized * Speed * Time.deltaTime;
+
+            // Move character
+            transform.Translate(movement);
+
+            // Set Animator Parameters
+            Animator.SetFloat("DirectionX", inputDirection.x);
+            Animator.SetFloat("DirectionY", inputDirection.y);
+        }
     }
 }

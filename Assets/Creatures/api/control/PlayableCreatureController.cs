@@ -48,6 +48,11 @@ namespace Creatures.control
             }
         }
 
+        private void HandleMove(Vector2 inputDirection)
+        {
+            character.HandleMovement(inputDirection);
+        }
+
          private void HandleBasicAttack(Vector3 mousePosition)
         {
             ExecuteAbility(character.GetAbility<BasicAttackEvent>(), mousePosition);

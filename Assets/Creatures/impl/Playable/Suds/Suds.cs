@@ -9,11 +9,19 @@ using Creatures.api.abilities.mobility;
 
 namespace Creatures.impl.Playable.Suds
 {
-    public class Suds : PlayableCreatureBase
+public class Suds : PlayableCreatureBase
     {
+        [SerializeField]
+        public GameObject bullet;
+        [SerializeField]
+        public Transform bulletExitTransform;
+
+        private const float BasicAttackCooldown = 1.0f;
+        private float force = 0.1f;
+
         public override float GetBasicAttackCooldown(bool isTriggeredByGlobalCooldown)
         {
-            throw new System.NotImplementedException();
+            return BasicAttackCooldown;
         }
 
         public override float GetStartChargingCooldown(bool isTriggeredByGlobalCooldown)
@@ -38,7 +46,16 @@ namespace Creatures.impl.Playable.Suds
 
         public override AbilityExecutionResult BasicAttack(BasicAttackEvent basicAttackEvent, Vector3 mousePosition)
         {
-            throw new System.NotImplementedException();
+            var bulletInstance = Instantiate(bullet, bulletExitTransform.position, Quaternion.identity);
+            var projectileBehavior = bulletInstance.GetComponent<ProjectileBehavior>();
+            projectileBehavior.explosionPosition = mousePosition;
+
+            var rigidBody = projectileBehavior.rigidBody;
+
+            Vector3 direction = mousePosition - transform.position;
+            rigidBody.velocity = new Vector2(direction.x, direction.y).normalized * force;
+
+            return AbilityExecutionResult.Success;
         }
 
         public override AbilityExecutionResult StartCharging(StartChargingEvent startChargingEvent, Vector3 mousePosition)

@@ -7,6 +7,7 @@ namespace Creatures.control
     {
         public static InputManager Instance { get; private set; }
 
+        public event Action<Vector2> OnMove;
         public event Action<Vector3> OnBasicAttack;
         public event Action<Vector3> OnStartCharging;
         public event Action<Vector3> OnChargedAbility;
@@ -62,6 +63,9 @@ namespace Creatures.control
 
         private void HandleKeyboardInput()
         {
+            Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            OnMove?.Invoke(moveInput);
+
             Vector3 mousePosition = MousePosition;
 
             if (Input.GetKeyDown(KeyCode.Q))
