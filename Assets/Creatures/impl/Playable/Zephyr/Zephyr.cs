@@ -30,6 +30,7 @@ namespace Creatures.impl.Playable.Zephyr
         private float dashDuration = 0.3f;
         private float swipeRange = 5.0f; // Range of the swipe attack
         private float knockbackForce = 10.0f; // Force applied to enemies hit by the swipe attack
+        private float knockbackDuration = 0.2f; // Duration of knockback effect
 
         public override float GetBasicAttackCooldown(bool isTriggeredByGlobalCooldown)
         {
@@ -73,7 +74,7 @@ namespace Creatures.impl.Playable.Zephyr
                     if (enemyRigidbody != null)
                     {
                         Vector2 knockbackDirection = (hit.collider.transform.position - transform.position).normalized;
-                        enemyRigidbody.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+                        StartCoroutine(ApplyKnockback(enemyRigidbody, knockbackDirection * knockbackForce));
                     }
                 }
             }
@@ -96,7 +97,21 @@ namespace Creatures.impl.Playable.Zephyr
             // Disable the swipe object after the animation completes
             StartCoroutine(DisableSwipeAfterAnimation(swipeAnimator));
 
-            return AbilityExecutionResult.Success;
+            return AbilityExecutionResult.Success;    
+        }
+
+        private System.Collections.IEnumerator ApplyKnockback(Rigidbody2D enemyRigidbody, Vector2 force)
+        {
+            float startTime = Time.time;
+
+            while (Time.time < startTime + knockbackDuration)
+            {
+                enemyRigidbody.velocity = force;
+                yield return null;
+            }
+
+            // Stop the enemy's movement after knockback duration
+            enemyRigidbody.velocity = Vector2.zero;
         }
 
         private System.Collections.IEnumerator DisableSwipeAfterAnimation(Animator swipeAnimator)
