@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 465837479380825189}
   m_Layer: 0
   m_Name: Glacili
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4095522468452206148, guid: 49ee19beadc9bed499a710584262e39a, type: 3}
+  m_Sprite: {fileID: 4095522468452206148, guid: 0aeb545da181f864db85eee64d59f29c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -100,7 +100,7 @@ Animator:
   m_GameObject: {fileID: 7870370853110904655}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4aaa70377b3463e498da0eaccd8a69e2, type: 2}
+  m_Controller: {fileID: 9100000, guid: 21265cd57d3c81e4a960011f486a0521, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7870370853110904655}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeaf3bc0b57a0fd40b72f033a4129593, type: 3}
+  m_Script: {fileID: 11500000, guid: d8c52f1fc0f9c444db488b292af9c3e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 3931344771997276587}

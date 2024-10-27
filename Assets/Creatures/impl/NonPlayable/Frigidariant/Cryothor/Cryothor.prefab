@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -4566291267209678133}
   m_Layer: 0
   m_Name: Cryothor
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6955655709802878292, guid: 8143465aa5eb7d848b76b4bc3d755b5e, type: 3}
+  m_Sprite: {fileID: 6955655709802878292, guid: 56637a8e611bebe49a01febdfc878b85, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -100,7 +100,7 @@ Animator:
   m_GameObject: {fileID: 7485374867303925955}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 74835646c08ebbe4e98a21785804b15c, type: 2}
+  m_Controller: {fileID: 9100000, guid: cf97883fb081c9542858f3e492a771e7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7485374867303925955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10a9b7953c28a0f4f9177007e42dfeec, type: 3}
+  m_Script: {fileID: 11500000, guid: 543e6cd11907bd24599e5d6771903efa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8261812693521831089}

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -1801579392821555704}
   m_Layer: 0
   m_Name: Frosthulm
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8172312535000862657, guid: b26ca24738de4a3478b24fb0860d8658, type: 3}
+  m_Sprite: {fileID: -8172312535000862657, guid: a24139561d3b5d14f8da338457a685fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -100,7 +100,7 @@ Animator:
   m_GameObject: {fileID: 7686034776046368700}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a565b8ccbddd9e8479cd2ca46d4011b4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8bbb497dbfdb34147a6ee4ae9fd10efd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7686034776046368700}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2098e79586a83f4c851256b64a5c542, type: 3}
+  m_Script: {fileID: 11500000, guid: c5ef977fe4be5414eac37c66ccf9804c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 3916900054078870510}
