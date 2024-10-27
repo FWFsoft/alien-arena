@@ -1,4 +1,5 @@
 using System.Collections;
+
 using UnityEngine;
 
 namespace Creatures.impl.Playable.Zephyr
@@ -7,14 +8,14 @@ namespace Creatures.impl.Playable.Zephyr
     {
         [SerializeField]
         public GameObject vortex;
-        [SerializeField] 
+        [SerializeField]
         private GameObject dissipateEffect;
-        [SerializeField] 
+        [SerializeField]
         private GameObject explosionEffect;
-        [SerializeField] 
+        [SerializeField]
         private GameObject smokeRingEffect;
         [SerializeField]
-        private float vortexScaleFactor = 1.0f; 
+        private float vortexScaleFactor = 1.0f;
         [SerializeField]
         private float smokeRingScaleFactor = 1.0f;
         [SerializeField]
@@ -31,7 +32,7 @@ namespace Creatures.impl.Playable.Zephyr
 
         public Vortex()
         {
-            IsCharging = false;    
+            IsCharging = false;
         }
 
         void Start()
@@ -63,7 +64,7 @@ namespace Creatures.impl.Playable.Zephyr
             vortex.SetActive(true);
             vortexAnimator.SetBool("IsCharging", true);
             Vector3 mousePosition = Input.mousePosition;
-            Vector3 worldPosition =  mainCamera.ScreenToWorldPoint(mousePosition);
+            Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
             worldPosition.y += positionYAdjustment;
             worldPosition.x += positionXAdjustment;
             vortex.transform.position = worldPosition;
@@ -72,7 +73,7 @@ namespace Creatures.impl.Playable.Zephyr
 
         public void releaseCharging()
         {
-            if (IsCharging) 
+            if (IsCharging)
             {
                 vortexAnimator.SetTrigger("Release"); // Release need to occur first to avoid a race condition
                 IsCharging = false;
@@ -97,7 +98,7 @@ namespace Creatures.impl.Playable.Zephyr
             }
             else
             {
-                Debug.Log("Charging was interrupted before the button was released, do nothing."); 
+                Debug.Log("Charging was interrupted before the button was released, do nothing.");
             }
         }
 
@@ -141,7 +142,7 @@ namespace Creatures.impl.Playable.Zephyr
             else
             {
                 Debug.LogError("vortex GameObject is null in UpdateVortexPosition. Cannot update position.");
-            }        
+            }
         }
 
         private IEnumerator DeactivateVortexAfterDelay(float delay)

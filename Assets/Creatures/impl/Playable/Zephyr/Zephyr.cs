@@ -6,6 +6,7 @@ using Creatures.api.abilities.infusion;
 using Creatures.api.abilities.mobility;
 
 using UnityEngine;
+
 using static UnityEngine.Physics2D;
 
 namespace Creatures.impl.Playable.Zephyr
@@ -97,7 +98,7 @@ namespace Creatures.impl.Playable.Zephyr
             // Disable the swipe object after the animation completes
             StartCoroutine(DisableSwipeAfterAnimation(swipeAnimator));
 
-            return AbilityExecutionResult.Success;    
+            return AbilityExecutionResult.Success;
         }
 
         private System.Collections.IEnumerator ApplyKnockback(Rigidbody2D enemyRigidbody, Vector2 force)
@@ -130,7 +131,7 @@ namespace Creatures.impl.Playable.Zephyr
 
         public override AbilityExecutionResult InterruptCharging(InterruptChargingEvent interruptChargingEvent, Vector3 mousePosition)
         {
-            vortex.interruptCharging(); 
+            vortex.interruptCharging();
             return AbilityExecutionResult.Success;
         }
 
