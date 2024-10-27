@@ -8,18 +8,26 @@ namespace Creatures.impl.Playable.Zephyr
         [SerializeField]
         public GameObject vortex;
         [SerializeField] 
-        private GameObject channelTornadoEffect;
+        private GameObject dissipateEffect;
         [SerializeField] 
-        private GameObject vortexEffect;
+        private GameObject explosionEffect;
         [SerializeField] 
         private GameObject smokeRingEffect;
-       
+        [SerializeField]
+        private float vortexScaleFactor = 1.0f; 
+        [SerializeField]
+        private float smokeRingScaleFactor = 1.0f;
+        [SerializeField]
+        private float followSpeed = 1.0f;
+
         private bool IsCharging { get; set; }
         private Animator vortexAnimator;
-        private Animator channelTornadoAnimator;
-        private Animator vortexExplosionAnimator;
+        private Animator dissipateAnimator;
+        private Animator explosionAnimator;
         private Animator smokeRingAnimator;
         private Camera mainCamera;
+        private float positionYAdjustment = 0.445f;
+        private float positionXAdjustment = 0.05f;
 
         public Vortex()
         {
@@ -30,15 +38,14 @@ namespace Creatures.impl.Playable.Zephyr
         {
 
             vortexAnimator = vortex.GetComponent<Animator>();
-            channelTornadoAnimator = channelTornadoEffect.GetComponent<Animator>();
-            vortexExplosionAnimator = vortexEffect.GetComponent<Animator>();
+            dissipateAnimator = dissipateEffect.GetComponent<Animator>();
+            explosionAnimator = explosionEffect.GetComponent<Animator>();
             smokeRingAnimator = smokeRingEffect.GetComponent<Animator>();
             mainCamera = Camera.main;
             vortex.SetActive(false);
-            channelTornadoEffect.SetActive(false);
-            vortexEffect.SetActive(false);
+            dissipateEffect.SetActive(false);
+            explosionEffect.SetActive(false);
             smokeRingEffect.SetActive(false);
-            Debug.Log("Vortex set to inactive initially.");
         }
 
         void Update()
@@ -55,6 +62,11 @@ namespace Creatures.impl.Playable.Zephyr
             IsCharging = true;
             vortex.SetActive(true);
             vortexAnimator.SetBool("IsCharging", true);
+            Vector3 mousePosition = Input.mousePosition;
+            Vector3 worldPosition =  mainCamera.ScreenToWorldPoint(mousePosition);
+            worldPosition.y += positionYAdjustment;
+            worldPosition.x += positionXAdjustment;
+            vortex.transform.position = worldPosition;
             Debug.Log("Charging Started ...");
         }
 
@@ -66,12 +78,15 @@ namespace Creatures.impl.Playable.Zephyr
                 IsCharging = false;
                 vortexAnimator.SetBool("IsCharging", IsCharging);
 
-                channelTornadoEffect.SetActive(true);
-                vortexEffect.SetActive(true);
+                dissipateEffect.SetActive(true);
+                explosionEffect.SetActive(true);
                 smokeRingEffect.SetActive(true);
 
-                channelTornadoAnimator.SetTrigger("Release");
-                vortexExplosionAnimator.SetTrigger("Release");
+                explosionEffect.transform.localScale = Vector3.one * vortexScaleFactor;
+                smokeRingEffect.transform.localScale = Vector3.one * smokeRingScaleFactor;
+
+                dissipateAnimator.SetTrigger("Release");
+                explosionAnimator.SetTrigger("Release");
                 smokeRingAnimator.SetTrigger("Release");
 
 
@@ -108,13 +123,20 @@ namespace Creatures.impl.Playable.Zephyr
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = 10.0f;
             Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
+            Vector3 adjustedPosition = mainCamera.ScreenToWorldPoint(mousePosition);
+            adjustedPosition.y += positionYAdjustment;
+            adjustedPosition.x += positionXAdjustment;
+
+            // Make the tornado lag behind the cursor a bit
+            Vector3 smoothPosition = Vector3.MoveTowards(vortex.transform.position, adjustedPosition, followSpeed * Time.deltaTime);
+
             if (vortex != null)
             {
-                vortex.transform.position = worldPosition;
-                channelTornadoEffect.transform.position = worldPosition;
-                vortexEffect.transform.position = worldPosition;
-                smokeRingEffect.transform.position = worldPosition;
-                Debug.Log($"Vortex position updated to {worldPosition}");
+                vortex.transform.position = smoothPosition;
+                dissipateEffect.transform.position = smoothPosition;
+                explosionEffect.transform.position = smoothPosition;
+                smokeRingEffect.transform.position = smoothPosition;
+                Debug.Log($"Vortex position updated to {smoothPosition}");
             }
             else
             {
@@ -125,8 +147,8 @@ namespace Creatures.impl.Playable.Zephyr
         private IEnumerator DeactivateVortexAfterDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
-            channelTornadoEffect.SetActive(false);
-            vortexEffect.SetActive(false);
+            dissipateEffect.SetActive(false);
+            explosionEffect.SetActive(false);
             smokeRingEffect.SetActive(false);
             vortex.SetActive(false);
         }
