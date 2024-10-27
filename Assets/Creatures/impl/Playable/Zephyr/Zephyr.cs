@@ -23,6 +23,8 @@ namespace Creatures.impl.Playable.Zephyr
         private const float GlobalCooldown = 0.5f;
 
         private float force = 2.0f;
+        private float dashSpeed = 50.0f;
+        private float dashDuration = 0.3f; 
 
         public override float GetBasicAttackCooldown(bool isTriggeredByGlobalCooldown)
         {
@@ -79,12 +81,25 @@ namespace Creatures.impl.Playable.Zephyr
 
         public override AbilityExecutionResult MobilityAbility(MobilityAbilityEvent mobilityAbilityEvent, Vector3 mousePosition)
         {
-            throw new System.NotImplementedException();
+            Vector3 direction = (mousePosition - transform.position).normalized;
+            StartCoroutine(Dash(direction));
+            return AbilityExecutionResult.Success;
         }
 
         public override AbilityExecutionResult CoreInfusionAbility(CoreInfusionAbilityEvent coreInfusionAbilityEvent, Vector3 mousePosition)
         {
             throw new System.NotImplementedException();
+        }
+
+        private System.Collections.IEnumerator Dash(Vector3 direction)
+        {
+            float startTime = Time.time;
+
+            while (Time.time < startTime + dashDuration)
+            {
+                transform.Translate(direction * dashSpeed * Time.deltaTime);
+                yield return null;
+            }
         }
     }
 }
