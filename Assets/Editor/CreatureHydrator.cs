@@ -91,6 +91,9 @@ public class CreatureHydrator : Editor
             unitPrefab = new GameObject(unitName);
         }
 
+        // Set the tag to "Enemy"
+        unitPrefab.tag = "Enemy";
+
         // Add or update SpriteRenderer
         SpriteRenderer spriteRenderer = unitPrefab.GetComponent<SpriteRenderer>() ?? unitPrefab.AddComponent<SpriteRenderer>();
         spriteRenderer.flipX = true;
