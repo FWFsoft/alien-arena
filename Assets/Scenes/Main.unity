@@ -32172,6 +32172,14 @@ PrefabInstance:
       propertyPath: blasterPlayerScript
       value: 
       objectReference: {fileID: 3031927}
+    - target: {fileID: 3367433217397973599, guid: 16cd918dac472a84a9e8cb20584876c1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1992341281}
+    - target: {fileID: 3367433217397973599, guid: 16cd918dac472a84a9e8cb20584876c1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Home
+      objectReference: {fileID: 0}
     - target: {fileID: 3450697196598956709, guid: 16cd918dac472a84a9e8cb20584876c1, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 120
