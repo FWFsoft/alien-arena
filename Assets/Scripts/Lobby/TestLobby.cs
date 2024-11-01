@@ -8,7 +8,6 @@ using Unity.Services.Lobbies;
 using UnityEngine.Rendering;
 using Unity.Services.Lobbies.Models;
 using System.Threading;
-using QFSW.QC;
 using Mono.CSharp;
 using UnityEngine.UI;
 using System.Text;
@@ -17,7 +16,7 @@ using UnityEngine.UIElements;
 public class TestLobby : MonoBehaviour
 {
     private static readonly string PLAYER_NAME_KEY = "PlayerName";
-    private static readonly string GAME_MODE_KEY= "GameMode";
+    private static readonly string GAME_MODE_KEY = "GameMode";
     private static readonly string MAP_KEY = "Map";
 
     [SerializeField]
@@ -65,7 +64,8 @@ public class TestLobby : MonoBehaviour
                     await LobbyService.Instance.SendHeartbeatPingAsync(hostLobby.Id);
                 }
             }
-        } catch (LobbyServiceException e)
+        }
+        catch (LobbyServiceException e)
         {
             Debug.Log(e);
         }
@@ -95,7 +95,7 @@ public class TestLobby : MonoBehaviour
 
     public async Task<Lobby> CreateLobby(string lobbyName = "myLobby")
     {
-       try
+        try
         {
             int maxPlayers = 4;
             var createLobbyOptions = new CreateLobbyOptions
@@ -113,7 +113,8 @@ public class TestLobby : MonoBehaviour
             setLobbyInfo(lobbyInfo);
             hostLobby = lobby;
             return lobby;
-        } catch (LobbyServiceException e)
+        }
+        catch (LobbyServiceException e)
         {
             Debug.Log(e);
             return null;
@@ -126,7 +127,6 @@ public class TestLobby : MonoBehaviour
         Debug.Log(lobbyInfo);
     }
 
-    [Command]
     private async void UpdateLobbyGameMode(string gameMode)
     {
         try
@@ -138,15 +138,16 @@ public class TestLobby : MonoBehaviour
                 }
             });
             Debug.Log(hostLobby);
-        } catch (LobbyServiceException e)
+        }
+        catch (LobbyServiceException e)
         {
             Debug.Log(e);
         }
     }
 
     private Player getPlayer(string playerName = null)
-    { 
-        var realizedPlayerName= playerName != null ? playerName : "Player" + Random.Range(1, 10000).ToString();
+    {
+        var realizedPlayerName = playerName != null ? playerName : "Player" + Random.Range(1, 10000).ToString();
         var player = new Player
         {
             Data = new Dictionary<string, PlayerDataObject>
@@ -157,7 +158,6 @@ public class TestLobby : MonoBehaviour
         return player;
     }
 
-    [Command]
     private async void UpdatePlayerName(string playerName)
     {
         await LobbyService.Instance.UpdatePlayerAsync(joinedLobby.Id, AuthenticationService.Instance.PlayerId, new UpdatePlayerOptions
@@ -172,7 +172,6 @@ public class TestLobby : MonoBehaviour
         JoinLobbyByCode(this.lobbyId.text);
     }
 
-    [Command]
     private async void JoinLobbyByCode(string lobbyCode)
     {
         try
@@ -183,23 +182,22 @@ public class TestLobby : MonoBehaviour
             };
             var lobby = await Lobbies.Instance.JoinLobbyByCodeAsync(lobbyCode);
             PrintPlayers(lobby);
-        } catch (LobbyServiceException e)
+        }
+        catch (LobbyServiceException e)
         {
             Debug.Log(e);
         }
     }
 
-    [Command]
     private async void QuickJoinLobby()
     {
         try { await LobbyService.Instance.QuickJoinLobbyAsync(); }
-        catch(LobbyServiceException e)
+        catch (LobbyServiceException e)
         {
             Debug.Log(e);
         }
     }
 
-    [Command]
     private async void ListLobbies()
     {
         var queryLobbiesOptions = new QueryLobbiesOptions
@@ -216,19 +214,18 @@ public class TestLobby : MonoBehaviour
         };
         var queryResponse = await Lobbies.Instance.QueryLobbiesAsync(queryLobbiesOptions);
         Debug.Log("Lobbies found " + queryResponse.Results.Count);
-        foreach(var lobby in queryResponse.Results)
+        foreach (var lobby in queryResponse.Results)
         {
             PrintPlayers(lobby);
         }
     }
 
-    [Command]
     private void PrintPlayers(Lobby lobby)
     {
         var builder = new StringBuilder();
         builder.Append("Players in lobby " + lobby.Id + " " + lobby.Data[GAME_MODE_KEY].Value + " " + lobby.Data[MAP_KEY].Value);
         builder.Append("\n");
-        foreach(Player player in lobby.Players)
+        foreach (Player player in lobby.Players)
         {
             Debug.Log(player.Id + " " + player.Data[PLAYER_NAME_KEY].Value);
             builder.Append("\n");
