@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -1003402509686986961}
   m_Layer: 0
   m_Name: Cerebrax
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -323019379665244387, guid: cf07a463e47e87248bd2d5fbb7b7b17a, type: 3}
+  m_Sprite: {fileID: -323019379665244387, guid: 21282dc894bfb714f8700074473695e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -100,7 +100,7 @@ Animator:
   m_GameObject: {fileID: 8916135616219623765}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8e55a8610d48d604a837a9eba8a1477e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 16a6ce70f471a684aa07bc5ee29e0369, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8916135616219623765}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47d99bb746495044c91e106ff9fcc424, type: 3}
+  m_Script: {fileID: 11500000, guid: 5404e86a2593292498dc9cc488f454bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5216802633960517686}

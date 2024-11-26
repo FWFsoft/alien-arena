@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -2998969628912310850}
   m_Layer: 0
   m_Name: Synaptogon
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3675441080954791574, guid: cb9e8679c330fd648b7784573da716aa, type: 3}
+  m_Sprite: {fileID: 3675441080954791574, guid: dbd358461e35c0d4db0f9da246fefdd4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -100,7 +100,7 @@ Animator:
   m_GameObject: {fileID: 8441666662189676677}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d17b8d2bb8566094cba760717ac6e098, type: 2}
+  m_Controller: {fileID: 9100000, guid: b05c70b8e955d4e4998788e4a13e237d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8441666662189676677}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 330663485c1b4054f98aa558edd938b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 550fa25baee995949bba6dd8517245c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2126360252917526042}

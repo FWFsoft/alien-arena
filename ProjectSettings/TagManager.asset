@@ -8,6 +8,7 @@ TagManager:
   - SpawnPoint
   - HealthBar
   - Frothy
+  - Enemy
   layers:
   - Default
   - TransparentFX

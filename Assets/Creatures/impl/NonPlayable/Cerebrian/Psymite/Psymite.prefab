@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -5324046571597489392}
   m_Layer: 0
   m_Name: Psymite
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6210488291590701762, guid: afe81e5c148e5e841a7ed8d85db6b596, type: 3}
+  m_Sprite: {fileID: -6210488291590701762, guid: 067991a1a17b1aa418c399ec102eeaf9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -100,7 +100,7 @@ Animator:
   m_GameObject: {fileID: 9089560180542499551}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6d2b271d2a6d0bf43bbbe7e74a20032a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8de51fa1b25e2a3488e438293ab90a07, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9089560180542499551}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ead97e2dfa87044c89bdaaf1aec4469, type: 3}
+  m_Script: {fileID: 11500000, guid: 6afb81916b17f3b479e1b99512945b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6114366046442459422}
